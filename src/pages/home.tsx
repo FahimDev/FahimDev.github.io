@@ -6,8 +6,11 @@ import Education from "@/components/home/Education";
 import Training from "@/components/home/Training";
 import MostProudOf from "@/components/home/MostProudOf";
 import Publications from "@/components/home/Publications";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+    const navigate = useNavigate();
     return (
         <>
             <h1 className="text-4xl font-extrabold text-center my-7">
@@ -16,8 +19,15 @@ export default function Home() {
             <section className="border-b pb-10">
                 <div className="container">
                     <MacBox
-                        title="What I do"
-                        desc="Im currently Doing ......... ....."
+                        title="Read my blogs"
+                        desc={
+                            <Button
+                                onClick={() => navigate("/blogs")}
+                                className="rounded-xl mt-2 bg-border text-white hover:bg-border/75"
+                            >
+                                From Here
+                            </Button>
+                        }
                     />
                 </div>
             </section>
@@ -56,7 +66,6 @@ export default function Home() {
             <section className="bg-background py-7 border-b">
                 <Publications />
             </section>
-
         </>
     );
 }

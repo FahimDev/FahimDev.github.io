@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 import ContactButton from "./ContactButton";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Props {
     title: string;
@@ -57,13 +63,22 @@ export default function MacBoxProject({
                                 {tech_icons &&
                                     Object.keys(tech_icons).map(
                                         (key: any, index) => (
-                                            <div className="" key={index}>
-                                                <img
-                                                    className="size-14 rounded-full"
-                                                    src={tech_icons[key]}
-                                                    alt={key}
-                                                />
-                                            </div>
+                                            <TooltipProvider key={index}>
+                                                <Tooltip>
+                                                    <TooltipTrigger>
+                                                        <img
+                                                            className="size-14 rounded-full"
+                                                            src={
+                                                                tech_icons[key]
+                                                            }
+                                                            alt={key}
+                                                        />
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <p>{key}</p>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
                                         )
                                     )}
                             </div>

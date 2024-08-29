@@ -3,7 +3,7 @@ import ContactButton from "./ContactButton";
 
 interface Props {
     title: string;
-    desc: string;
+    desc?: any;
 }
 
 export default function MacBox({ title, desc }: Props) {

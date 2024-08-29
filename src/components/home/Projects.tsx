@@ -8,6 +8,7 @@ import {
 import { PROJECTS } from "@/constants/projects";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Link } from "react-router-dom";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Projects() {
     return (
@@ -18,10 +19,18 @@ export default function Projects() {
                 opts={{
                     align: "start",
                 }}
+                plugins={[
+                    Autoplay({
+                        delay: 2000,
+                    }),
+                ]}
             >
                 <CarouselContent>
                     {PROJECTS.map((project, idx) => (
-                        <CarouselItem className="lg:basis-1/3 md:basis-1/2" key={idx}>
+                        <CarouselItem
+                            className="lg:basis-1/3 md:basis-1/2"
+                            key={idx}
+                        >
                             <Card className="bg-background rounded-xl">
                                 <img
                                     className="w-full h-44 rounded-t-xl"
