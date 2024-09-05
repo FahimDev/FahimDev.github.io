@@ -22,8 +22,8 @@ export default function MacBox({ title, desc }: Props) {
                 </div>
             </div>
             <div className="bg-secondary py-3 px-5 rounded-xl h-96">
-                <div className="grid lg:grid-cols-2 grid-cols-1 gap-44 h-full">
-                    <div className="h-full flex justify-end items-center">
+                <div className="grid lg:grid-cols-2 grid-cols-1 gap-3 lg:gap-44 h-full">
+                    <div className="h-full flex lg:justify-end justify-center items-center">
                         <img className="size-52 rounded-xl" src="/images/profile.jpg" />
                     </div>
                     <div className="h-full flex justify-start items-center">
