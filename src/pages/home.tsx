@@ -32,38 +32,38 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="bg-secondary py-7 border-b">
+            <section id="more_about_me" className="bg-secondary py-7 border-b">
                 <div className="container">
                     <MoreAboutMe />
                 </div>
             </section>
 
-            <section className="bg-background py-7 border-b">
+            <section id="exprience" className="bg-background py-7 border-b">
                 <div className="container">
                     <Experience />
                 </div>
             </section>
 
-            <section className="bg-secondary py-7 border-b">
+            <section id="projects" className="bg-secondary py-7 border-b">
                 <div className="container">
                     <Projects />
                 </div>
             </section>
 
-            <section className="bg-background py-7 border-b">
+            <section id="container" className="bg-background py-7 border-b">
                 <div className="container">
                     <Education />
                 </div>
             </section>
 
-            <section className="bg-secondary py-7 border-b">
+            <section id="training" className="bg-secondary py-7 border-b">
                 <div className="grid lg:grid-cols-2 grid-cols-1 container">
                     <Training />
                     <MostProudOf />
                 </div>
             </section>
 
-            <section className="bg-background py-7">
+            <section id="publications" className="bg-background py-7">
                 <Publications />
             </section>
         </>
