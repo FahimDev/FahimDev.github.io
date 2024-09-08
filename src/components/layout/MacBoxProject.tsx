@@ -36,8 +36,8 @@ export default function MacBoxProject({
                     <ContactButton />
                 </div>
             </div>
-            <div className="bg-secondary py-3 px-5 rounded-xl h-96">
-                <div className="grid lg:grid-cols-2 grid-cols-1 gap-20 h-full">
+            <div className="bg-secondary py-3 px-5 rounded-xl lg:py-20">
+                <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-20 gap-5 h-full">
                     <div className="h-full flex justify-end items-center">
                         <img
                             className="lg:w-96 w-72 h-52 rounded-xl"

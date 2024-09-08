@@ -25,7 +25,7 @@ export default function Publications() {
                                         <div className="max-w-72 h-full">
                                             {point.title}
                                         </div>
-                                        <div>
+                                        <div className="flex lg:justify-center">
                                             {point.image && (
                                                 <img
                                                     src={point.image}

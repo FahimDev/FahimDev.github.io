@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className='text-center p-6 text-base'>
+    <footer className='text-center p-6 text-base border-t'>
         Developed & Designed by <a className='text-cyan-500 hover:underline' href="https://github.com/antonin686">Antonin Islam</a>
     </footer>
   )

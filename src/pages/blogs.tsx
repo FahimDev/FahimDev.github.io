@@ -15,7 +15,7 @@ export default function Blogs() {
                 </div>
             </div>
 
-            <section className="border-b pb-10">
+            <section className="pb-10">
                 <div className="container">
                     <div className="flex flex-col gap-5">
                         {BLOGS.map((item: any, idx: number) => (

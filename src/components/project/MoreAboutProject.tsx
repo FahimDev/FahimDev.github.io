@@ -7,7 +7,7 @@ export default function MoreAboutProject({ project }: Props) {
         <>
             {project ? (
                 <div className="flex flex-col gap-5">
-                    <div className="flex justify-center items-center gap-20">
+                    <div className="flex flex-wrap justify-center items-center gap-20">
                         <div className="max-w-96">
                             <h3 className="text-2xl mb-3">
                                 Business Challenges

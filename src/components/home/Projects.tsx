@@ -15,7 +15,7 @@ export default function Projects() {
         <div className="flex flex-col gap-5 items-center">
             <h1 className="text-2xl">Some of my projects</h1>
             <Carousel
-                className="w-full max-w-4xl"
+                className="w-full lg:max-w-4xl max-w-72"
                 opts={{
                     align: "start",
                 }}

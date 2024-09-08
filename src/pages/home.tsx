@@ -63,7 +63,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="bg-background py-7 border-b">
+            <section className="bg-background py-7">
                 <Publications />
             </section>
         </>

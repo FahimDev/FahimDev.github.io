@@ -6,7 +6,7 @@ import { KEYWORDS } from "@/constants/keywords";
 
 export default function MoreAboutMe() {
     return (
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-2 gap-5">
             <div>
                 <h2 className="text-2xl mb-4">More About Me</h2>
                 <p className="text-base font-light">
