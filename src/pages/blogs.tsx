@@ -19,7 +19,7 @@ export default function Blogs() {
                 <div className="container">
                     <div className="flex flex-col gap-5">
                         {BLOGS.map((item: any, idx: number) => (
-                            <BlogCard blog={item} />
+                            <BlogCard key={idx} blog={item} />
                         ))}
                     </div>
                 </div>
