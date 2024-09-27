@@ -4,10 +4,13 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: "/fahimdev.github.io/",
+  base: "/fahimdev.github.io/docs",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build : {
+    outDir: "docs"
+  }
 })
