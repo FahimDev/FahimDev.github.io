@@ -17,7 +17,6 @@ export default function ProjectView() {
         );
         setProject(projectData);
     }, [slug]);
-
     return (
         <div>
             <div className="container">
@@ -33,6 +32,9 @@ export default function ProjectView() {
                         desc={project?.description}
                         image={project?.cover_img}
                         tech_icons={project?.tech_icons}
+                        subtitle={project?.subtitle}
+                        client={project?.client}
+                        location={project?.location}
                     />
                 </div>
             </section>

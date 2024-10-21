@@ -6,9 +6,13 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Building, MapPin } from "lucide-react";
 
 interface Props {
     title: string;
+    subtitle?: string;
+    client?: string;
+    location?: string;
     desc: string;
     image: string;
     techs?: string[];
@@ -21,6 +25,9 @@ export default function MacBoxProject({
     image,
     techs,
     tech_icons,
+    subtitle,
+    client,
+    location,
 }: Props) {
     return (
         <div className="border rounded-xl">
@@ -40,14 +47,37 @@ export default function MacBoxProject({
                 <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-20 gap-5 h-full">
                     <div className="h-full flex justify-end items-center">
                         <img
-                            className="lg:w-96 w-72 h-52 rounded-xl"
+                            className="lg:w-96 w-72 h-64 rounded-xl"
                             src={image}
                         />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-5">
                             <h3 className="text-4xl">{title}</h3>
-                            <p className="text-base">{desc}</p>
+                            {subtitle && (
+                                <h4 className="text-sm font-normal -mt-4">
+                                    {subtitle}
+                                </h4>
+                            )}
+                            <div className="flex gap-5 items-center">
+                                {client && (
+                                    <div className="flex gap-2 items-center">
+                                        <Building />
+                                        <p className="text-sm text-gray-300">
+                                            {client}
+                                        </p>
+                                    </div>
+                                )}
+                                {location && (
+                                    <div className="flex gap-2 items-center">
+                                        <MapPin />
+                                        <p className="text-sm text-gray-300">
+                                            {location}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                            <p className="text-sm text-gray-300">{desc}</p>
                             <div className="flex flex-wrap gap-2 text-sm font-bold">
                                 {techs &&
                                     techs.map((tech, index) => (

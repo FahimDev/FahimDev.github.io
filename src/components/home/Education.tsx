@@ -35,11 +35,12 @@ export default function Education() {
                                     </div>
                                 </div>
                                 {education.link && (
-                                    <div className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none">
-                                        <a href={education.link}>
-                                            <PiCertificateFill />
-                                        </a>
-                                    </div>
+                                    <a
+                                        className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none"
+                                        href={education.link}
+                                    >
+                                        <PiCertificateFill />
+                                    </a>
                                 )}
                             </div>
                             <div className="flex gap-10 text-sm">

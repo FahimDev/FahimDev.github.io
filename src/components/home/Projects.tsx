@@ -25,14 +25,14 @@ export default function Projects() {
                             className="lg:basis-1/3 md:basis-1/2"
                             key={idx}
                         >
-                            <Card className="bg-background rounded-xl">
+                            <Card className="bg-background rounded-xl h-[22rem] flex flex-col justify-between">
                                 <img
                                     className="w-full h-44 rounded-t-xl"
                                     src={project.cover_img}
                                 />
                                 <CardContent className="flex flex-col gap-1 pt-6">
                                     <h2>{project.title}</h2>
-                                    <p className="text-sm">
+                                    <p className="text-sm line-clamp-3">
                                         {project.description}
                                     </p>
                                 </CardContent>

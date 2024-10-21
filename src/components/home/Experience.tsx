@@ -32,11 +32,12 @@ export default function Experience() {
                                     </div>
                                 </div>
                                 {experience.link && (
-                                    <div className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none">
-                                        <a href={experience.link}>
-                                            <PiCertificateFill />
-                                        </a>
-                                    </div>
+                                    <a
+                                        className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none"
+                                        href={experience.link}
+                                    >
+                                        <PiCertificateFill />
+                                    </a>
                                 )}
                             </div>
                             <div className="flex gap-10 text-sm">

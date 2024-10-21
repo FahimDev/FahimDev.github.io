@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <>
             <h1 className="text-4xl font-extrabold text-center my-7">
-                Hi, I'm Ariful Islam Fahim
+                Hi, I'm Ariful Islam
             </h1>
             <section className="border-b pb-10">
                 <div className="container">

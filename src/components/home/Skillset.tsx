@@ -37,8 +37,8 @@ export default function Skillset() {
                 <p className="col-span-8">{SKILLS[0].options}</p>
             </div>
             <CollapsibleContent className="space-y-2">
-                {SKILLS.slice(1).map((skill: any) => (
-                    <div className="rounded-xl border px-4 py-3 text-sm grid grid-cols-12 items-center gap-5 bg-background">
+                {SKILLS.slice(1).map((skill: any, idx: number) => (
+                    <div key={idx} className="rounded-xl border px-4 py-3 text-sm grid grid-cols-12 items-center gap-5 bg-background">
                         <h4 className="col-span-4 font-bold tracking-widest">
                             {skill.category}
                         </h4>
