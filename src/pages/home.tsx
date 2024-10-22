@@ -19,14 +19,23 @@ export default function Home() {
             <section className="border-b pb-10">
                 <div className="container">
                     <MacBox
-                        title="Read my blogs"
+                        title="Discover My Work"
                         desc={
-                            <Button
-                                onClick={() => navigate("/blogs")}
-                                className="rounded-xl mt-2 bg-border text-white hover:bg-border/75"
-                            >
-                                From Here
-                            </Button>
+                            <div className="flex gap-3 items-center h-fit">
+                                <Button
+                                    onClick={() => navigate("/blogs")}
+                                    className="rounded-xl mt-2 bg-border text-white hover:bg-border/75"
+                                >
+                                    Blogs
+                                </Button>
+                                {"|"}
+                                <Button
+                                    onClick={() => navigate("/projects")}
+                                    className="rounded-xl mt-2 bg-border text-white hover:bg-border/75"
+                                >
+                                    Projects
+                                </Button>
+                            </div>
                         }
                     />
                 </div>

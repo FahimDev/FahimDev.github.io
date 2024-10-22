@@ -32,7 +32,7 @@ export default function MacBox({ title, desc }: Props) {
                                 <div id="corner-tl" className="corner"></div>
                                 <div id="corner-tr" className="corner"></div>
                                 <h3 className="my-4 text-2xl">{title}</h3>
-                                <p className="min-h-20 text-base">{desc}</p>
+                                <p className="min-h-16 text-base">{desc}</p>
                                 <div id="corner-br" className="corner"></div>
                                 <div id="corner-bl" className="corner"></div>
                             </div>

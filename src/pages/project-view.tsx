@@ -35,6 +35,7 @@ export default function ProjectView() {
                         subtitle={project?.subtitle}
                         client={project?.client}
                         location={project?.location}
+                        find_it_on={project?.find_it_on}
                     />
                 </div>
             </section>

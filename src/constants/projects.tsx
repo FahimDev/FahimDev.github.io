@@ -45,6 +45,18 @@ export const PROJECTS: any[] = [
             "The From and To dates were designed as dynamic metadata, enabling ERC721 NFTs to function as splittable reservations.",
             "To support the blueprint NFT marketplace microstructure, research was published on royalty collection for hotel partners from third-party marketplaces and stablecoin payment integration. 📜 DOI: 10.1109/icbc59979.2024.10634338",
         ],
+        contributions: [
+            "Tox ensure compliance with GDPR law in our system, we have integrated Auth0 into our architecture.",
+            "Tox obtain on-chain real-time exchange and swap rates of different currencies, Chainlink Oracle has been integrated.",
+            "The From and To dates were designed as dynamic metadata, enabling ERC721 NFTs to function as splittable reservations.",
+            "To support the blueprint NFT marketplace microstructure, research was published on royalty collection for hotel partners from third-party marketplaces and stablecoin payment integration. 📜 DOI: 10.1109/icbc59979.2024.10634338",
+        ],
+        features: [
+            "Toy ensure compliance with GDPR law in our system, we have integrated Auth0 into our architecture.",
+            "Toy obtain on-chain real-time exchange and swap rates of different currencies, Chainlink Oracle has been integrated.",
+            "The From and To dates were designed as dynamic metadata, enabling ERC721 NFTs to function as splittable reservations.",
+            "To support the blueprint NFT marketplace microstructure, research was published on royalty collection for hotel partners from third-party marketplaces and stablecoin payment integration. 📜 DOI: 10.1109/icbc59979.2024.10634338",
+        ],
         find_it_on: {
             github: {
                 url: "#",

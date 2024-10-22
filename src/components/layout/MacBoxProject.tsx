@@ -17,6 +17,7 @@ interface Props {
     image: string;
     techs?: string[];
     tech_icons: any;
+    find_it_on?: any;
 }
 
 export default function MacBoxProject({
@@ -28,6 +29,7 @@ export default function MacBoxProject({
     subtitle,
     client,
     location,
+    find_it_on,
 }: Props) {
     return (
         <div className="border rounded-xl">
@@ -43,13 +45,34 @@ export default function MacBoxProject({
                     <ContactButton />
                 </div>
             </div>
-            <div className="bg-secondary py-3 px-5 rounded-xl lg:py-20">
+            <div className="bg-secondary py-3 lg:px-20 px-5 rounded-xl lg:py-20">
                 <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-20 gap-5 h-full">
-                    <div className="h-full flex justify-end items-center">
-                        <img
-                            className="lg:w-96 w-72 h-64 rounded-xl"
-                            src={image}
-                        />
+                    <div className="h-full flex flex-col justify-center items-center">
+                        <img className="w-full h-64 rounded-xl" src={image} />
+                        {find_it_on && (
+                            <div className="flex flex-col gap-3 justify-center items-center">
+                                <h3 className="text-2xl mt-3">Find it on</h3>
+                                <div className="flex gap-3">
+                                    {Object.keys(find_it_on).map(
+                                        (key, index) => (
+                                            <div
+                                                key={index}
+                                                className="bg-white p-1 rounded-xl"
+                                            >
+                                                <a
+                                                    href={find_it_on[key].url}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="text-background"
+                                                >
+                                                    {find_it_on[key].icon}
+                                                </a>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <div className="flex flex-col justify-center">
                         <div className="flex flex-col gap-5">
