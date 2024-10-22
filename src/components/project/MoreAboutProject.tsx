@@ -8,19 +8,7 @@ export default function MoreAboutProject({ project }: Props) {
             {project ? (
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-wrap justify-center gap-20">
-                        <div className="max-w-96">
-                            <h3 className="text-2xl mb-3">
-                                Business Challenges
-                            </h3>
-                            <ul className="list-disc flex flex-col gap-3">
-                                {project.business_challenges.map(
-                                    (challenge: any, index: number) => (
-                                        <li key={index}>{challenge}</li>
-                                    )
-                                )}
-                            </ul>
-                        </div>
-                        <div className=" max-w-96">
+                        <div className=" max-w-[53rem]">
                             <h3 className="text-2xl mb-3">Feature List</h3>
                             <ul className="list-disc flex flex-col gap-3">
                                 {project.features.map(
@@ -32,18 +20,33 @@ export default function MoreAboutProject({ project }: Props) {
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap justify-center mt-4 gap-20">
+                    <div className="flex flex-wrap justify-center gap-20 my-5">
+                        <div className="max-w-96">
+                            <h3 className="text-2xl mb-3">
+                                Business Challenges
+                            </h3>
+                            <ol className="list-decimal flex flex-col gap-3">
+                                {project.business_challenges.map(
+                                    (challenge: any, index: number) => (
+                                        <li key={index}>{challenge}</li>
+                                    )
+                                )}
+                            </ol>
+                        </div>
                         <div className=" max-w-96">
                             <h3 className="text-2xl mb-3">Solutions</h3>
-                            <ul className="list-disc flex flex-col gap-3">
+                            <ol className="list-decimal flex flex-col gap-3">
                                 {project.solutions.map(
                                     (solution: any, index: number) => (
                                         <li key={index}>{solution}</li>
                                     )
                                 )}
-                            </ul>
+                            </ol>
                         </div>
-                        <div className=" max-w-96">
+                    </div>
+
+                    <div className="flex flex-wrap justify-center gap-20">
+                        <div className=" max-w-[53rem]">
                             <h3 className="text-2xl mb-3">My Contributions</h3>
                             <ul className="list-disc flex flex-col gap-3">
                                 {project.contributions.map(
