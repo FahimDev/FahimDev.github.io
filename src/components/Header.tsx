@@ -7,7 +7,7 @@ export default function Header() {
             <img src="images/avatar.png" className="w-20" />
         </div>
         <div className="flex flex-col gap-1">
-            <div className="text-5xl">Antonin Islam</div>
+            <div className="text-5xl">Ariful Islam</div>
             <Navbar />
         </div>
     </div>

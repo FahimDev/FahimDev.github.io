@@ -1,1 +1,1 @@
-export const KEYWORDS = ["Laravel", "Express JS", "TailwindCSS", "React", "Vue", "PHP"];
+export const KEYWORDS = ["Web3", "Microservice", "Blockchain", "Tokenomics", "Fabric", "Author"];

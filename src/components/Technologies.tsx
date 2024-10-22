@@ -9,7 +9,7 @@ const techs = [
     },
     {
         category: "Web 2.0 Techs",
-        options: "HTML5, CSS3, React, Redux",
+        options: "HTML5, React, Redux",
     },
     {
         category: "Web 3.0 Techs",
