@@ -17,8 +17,8 @@ export const PROJECTS: any[] = [
         techs: ["Solidity", "Polygon_PoS", "NestJs", "NextJs", "Rainbow_Kit", "PostgreSQL", "Auth0", "Chinlink_Oracle", "The_Graph",
              "Waffle_Chai", "Solidity Metrics (IDE Extension)", "Slither", "Aderyn"],
         tech_icons: {
-            NextJs: "/images/tech_logo/nestJS.jpg",
-            NestJs: "/images/tech_logo/nextJS.webp",
+            NextJs: "/images/tech_logo/nextJS.webp",
+            NestJs: "/images/tech_logo/nestJS.jpg",
             Rainbow_Kit: "/images/tech_logo/Rainbow.png",
             Auth0: "/images/tech_logo/auth0.svg",
             Solidity: "/images/tech_logo/solidity.jpg",
@@ -91,13 +91,40 @@ export const PROJECTS: any[] = [
         ],
     },
     {
-        title: "Hotelereum2",
-        slug: "hotelereum2",
-        description: "a hotel booking platform incorporating NFT technology",
-        techs: "JavaScript, Python, Solidity",
-        cover_img: "https://picsum.photos/200",
-        github_url: "https://github.com/antonin686/hotelereum",
-        view_url: "https://github.com/antonin686/hotelereum",
+        title: "ANAHATA ROCKS",
+        subtitle: "An on-chain e-commerce platform at DFINITY's ICP blockchain network",
+        client: "SEI✱✱OS LLC.",
+        location: "Netherlands 🇳🇱",
+        slug: "icp-blockchain-ecommerce",
+        description: `This project is an on-chain e-commerce shop on the ICP network. 
+        The frontend and backend are both deployed directly on the ICP network. 
+        The super-admin frontend and the vendor store manager frontend are deployed in different canisters. 
+        The core application’s backend is designed as a distributed system so that the ICP network can scale 
+        the subnets properly based on the loads of different service canisters. Its architecture includes an innovative contribution: 
+        the dynamic deployment of different vendor's backends on the ICP network as a multi-tenant system, which is rarely seen in 
+        the blockchain ecosystem. For authentication and authorization, they use Internet Identity.`,
+        tech_icons: {
+            NextJs: "/images/tech_logo/nextJS.webp",
+            RUST: "/images/tech_logo/rust.png",
+            ICP: "/images/tech_logo/icp.png",
+            identity_ic0: "/images/tech_logo/internet_identity.webp",
+            Internet_Identity: "/images/tech_logo/internet-identity.jpg",
+            Adyen:"/images/tech_logo/adyen.jpg",
+            Bitfinity:"/images/tech_logo/bitfinity.jpg",
+            NestJs: "/images/tech_logo/nestJS.jpg",
+        },
+        cover_img: "/images/projects/2/1.jpg",
+        github_url: "https://github.com/fahimdev",
+        view_url: "https://github.com/fahimdev",
+        features: [
+            "🛍 Shopping experience from the ICP main-net by signing up with Internet Identity.",
+            "🚀 Cross dApp shopping with fluid KYC authentication by a single internet identity.",
+            "🔁 Sync off-chain products with on-chain dApps to align inventory with 3rd parties like Shopify, WooCommerce, and NopCommerce etc.",
+            "🤖 Automatic initialization of Super-admin accounts by their principal addresses and internet identity.",
+            "💳 Vendor registration and subscription model integrated with the Adyen payment gateway for fiat and Bitfinity Wallet for crypto.",
+            "🛡️ Injected core canister ids into vendor’s dApps and service registry module to secure canisters from DoS Attack.",
+            "🔌 Dynamic canister deployment in form of Vendor’s dApp as a multi-tenant system.",
+        ],
         business_challenges: [
             "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
             "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
@@ -107,6 +134,10 @@ export const PROJECTS: any[] = [
             "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
             "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
             "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
+        ],
+        contributions: [
+            "Here I have contributed as a backend canister developer, worked on different service canisters in Rust.",
+            "Factory pattern to implement various integrations for syncing products through HTTP outcalls from different platform APIs, such as Shopify.",
         ],
         find_it_on: {
             github: {
