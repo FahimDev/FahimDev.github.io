@@ -2,9 +2,9 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export const PROJECTS: any[] = [
     {
-        title: "Hotelereum",
+        title: "Hoteler✱✱m",
         subtitle: "NFT Marketplace for Hotel Reservation & Reselling",
-        slug: "hotelereum",
+        slug: "hotel-booking-nft-marketplace",
         client: "InterCo✱✱✱✱✱✱✱tal",
         location: "UK 🇬🇧",
         description: <div>
@@ -91,7 +91,7 @@ export const PROJECTS: any[] = [
         ],
     },
     {
-        title: "ANAHATA ROCKS",
+        title: "ANAHATA R✱✱✱S",
         subtitle: "An on-chain e-commerce platform at DFINITY's ICP blockchain network",
         client: "SEI✱✱OS LLC.",
         location: "Netherlands 🇳🇱",
@@ -126,14 +126,10 @@ export const PROJECTS: any[] = [
             "🔌 Dynamic canister deployment in form of Vendor’s dApp as a multi-tenant system.",
         ],
         business_challenges: [
-            "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
-            "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
-            "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
+            "Principal address are unique for a single user when they sign-up with the same internet identity in different frontends",
         ],
         solutions: [
-            "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
-            "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
-            "Designing user interactions in Web3 for public services on blockchain posed significant challenges for the public",
+            "hmm...?",
         ],
         contributions: [
             "Here I have contributed as a backend canister developer, worked on different service canisters in Rust.",
