@@ -126,7 +126,12 @@ export const PROJECTS: any[] = [
             "🔌 Dynamic canister deployment in form of Vendor’s dApp as a multi-tenant system.",
         ],
         business_challenges: [
-            "Principal address are unique for a single user when they sign-up with the same internet identity in different frontends",
+            "Principal addresses are unique for each user when they sign up with the same internet identity across different frontends. As a result, users receive different addresses in various dApps and must top up their wallets individually for trading or shopping on each dApp.",
+            "Dynamically create multi-tenant vendor backend application's and automatic deployment to ICP mainnet",
+            "Creating a hybrid-consortium network which will be permission-based on a public ICP network where RBAC will be managed based on the Subscription model where different users will be registered under different vendor organizations.",
+            "Business subscription model and its associated RBAC contradicts Decentralization nature assurance.",
+            "The risk of cyber attacks from users with anonymous internet identities or through unidentified canisters via inter-canister calls is heightened, as our canisters are exposed on the ICP public network.",
+            "The dApp scaling issue is one of the major challenges for canister-based applications. Once deployed, the canister controller has limited control over scalability, unlike DevOps in cloud infrastructure.",
         ],
         solutions: [
             "hmm...?",
