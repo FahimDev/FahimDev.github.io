@@ -126,19 +126,27 @@ export const PROJECTS: any[] = [
             "🔌 Dynamic canister deployment in form of Vendor’s dApp as a multi-tenant system.",
         ],
         business_challenges: [
-            "Principal addresses are unique for each user when they sign up with the same internet identity across different frontends. As a result, users receive different addresses in various dApps and must top up their wallets individually for trading or shopping on each dApp.",
-            "Dynamically create multi-tenant vendor backend application's and automatic deployment to ICP mainnet",
+            "Principal addresses are unique for each user when they sign up with the same internet identity across different frontends. The principal addresses are uniquely assigned as user UUIDs and tailor customized with frontend domain addresses for the same internet identity holder.",
+            "As users receive different principal addresses in various dApps, their frontends are identified by different domains. Consequently, the linked ledger account ID is dedicated to holding crypto balances for each dApp. Therefore, users must top up their wallets individually for trading or shopping on each dApp with their crypto funds.",
+            "Dynamically creating multi-tenant vendor backend applications that are automatically deployed to the ICP mainnet can present challenges. One major issue is that if a frontend canister is also dynamically deployed for each store, consumers will have to sign up for each store individually to obtain their principal address. This could lead to a poor shopping experience.",
             "Creating a hybrid-consortium network which will be permission-based on a public ICP network where RBAC will be managed based on the Subscription model where different users will be registered under different vendor organizations.",
             "Business subscription model and its associated RBAC contradicts Decentralization nature assurance.",
             "The risk of cyber attacks from users with anonymous internet identities or through unidentified canisters via inter-canister calls is heightened, as our canisters are exposed on the ICP public network.",
             "The dApp scaling issue is one of the major challenges for canister-based applications. Once deployed, the canister controller has limited control over scalability, unlike DevOps in cloud infrastructure.",
+            "As ICP's canister methods are exposed directly to the frontend, it has created an exhausting situation for the frontend team, as they need to call all these functions as endpoints. Meanwhile, the backend team is bound to adhere to the Single Responsibility Principle in these functions. In conventional Web2 systems, they are accustomed to using REST API endpoints."
         ],
         solutions: [
-            "hmm...?",
+            "The architecture was designed accordingly. System Admins and Super Admins have a dedicated frontend, while vendors and consumers have a separate frontend. Even if a System Admin or Super Admin wants to explore different Vendor Shops, they will receive a new principal ID and an independent role under the same Internet Identity. Their Internet Identity Anchor Number will remain unchanged, but platform-specific principal IDs will differ, ensuring that their roles and permissions do not conflict across different platforms.",
+            <div>Infinite Wallet (3rd party) APIs have been integrated into the frontend. Users can now interact with the wallet principal from the ICP dApp via Infinite Wallet through their browser's wallet extension. No matter which platform they are exploring or what principal address they are using, the extension will enable them to make financial transactions from a consistent address.
+                <a href="https://infinityswap-docs-wallet.web.app/docs/wallet" target="_blank" rel="noopener noreferrer">[ℹ️]</a>.</div>,
+            <div>Our team has collaborated with the DevOps team to configure the Canister Controller wallet embedded in the Cloud Server environment. This setup allows permissions for the Bash Scripts to clone the template codebase, enabling the deployment of approved vendor shop applications simply by hitting APIs from the System Admin's frontend UI. Our frontend team strategically manages these dynamically created backends, allowing end users to explore multiple vendor shops from the same frontend with a single principal address.
+                <a href="https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/alternative-origins#constraints" target="_blank" rel="noopener noreferrer">[ℹ️]</a>.
+            </div>,
         ],
         contributions: [
             "Here I have contributed as a backend canister developer, worked on different service canisters in Rust.",
             "Factory pattern to implement various integrations for syncing products through HTTP outcalls from different platform APIs, such as Shopify.",
+            "",
         ],
         find_it_on: {
             github: {
