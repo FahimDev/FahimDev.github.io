@@ -7,7 +7,7 @@ export const SOCIAL_LINKS: any = {
         "icon": <FaGithub className="size-10" />,    
     },
     "twitter": {
-        "url": "https://x.com/ArifulIslamFah5",
+        "url": "https://x.com/FahimDev0373",
         "icon": <FaTwitter className="size-10" />,
     },
     "facebook": {

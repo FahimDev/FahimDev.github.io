@@ -1,7 +1,7 @@
 const email = {
-    to: "email@gmail.com",
+    to: "fahim.arif0373@outlook.com",
     subject: "Hello",
-    body: "Hello from website",
+    body: "Hello, just viewed your portfolio.",
 };
 
 export default function ContactButton() {

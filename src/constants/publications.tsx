@@ -10,14 +10,15 @@ export const PUBLICATIONS = [
                     <p>
                         M.A.Islam, “Distributed ledger technology based
                         integrated healthcare solution for bangladesh
-                        (blockchain)”, 🇳🇴 IEEE Access, vol. 11, 2022. DOI:{" "}
+                        (blockchain)”, IEEE Access, vol. 11, 2022. DOI:{" "}
                         <a
                             href="https://www.doi.org/10.1109/ACCESS.2023.3279724"
                             className="text-cyan-500 hover:underline"
                         >
-                            DOI Link
+                            10.1109/ACCESS.2023.3279724
                         </a>
                         .
+                       <br/>💰 <b>Funded by the <i>Research Council of Norway</i> 🇳🇴.</b>
                     </p>
                 ),
                 image: "images/publisher/ieee_access.png",
@@ -35,10 +36,10 @@ export const PUBLICATIONS = [
                         2nd IEEE International Workshop on Cryptocurrency Exchanges (CryptoEx 2024), Dublin, Ireland, 2024.
                         DOI:{" "}
                         <a
-                            href="https://doi.org/10.1109/ICBC59979.2024.10634338."
+                            href="https://doi.org/10.1109/ICBC59979.2024.10634338"
                             className="text-cyan-500 hover:underline"
                         >
-                            DOI Link
+                            10.1109/ICBC59979.2024.10634338
                         </a>
                     </p>
                 ),
@@ -56,7 +57,7 @@ export const PUBLICATIONS = [
                             href="https://doi.org/10.1145/3542954.3542985"
                             className="text-cyan-500 hover:underline"
                         >
-                            DOI Link
+                            10.1145/3542954.3542985
                         </a>
                     </p>
                 ),
