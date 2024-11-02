@@ -10,7 +10,7 @@ export const PUBLICATIONS = [
                     <p>
                         M.A.Islam, “Distributed ledger technology based
                         integrated healthcare solution for bangladesh
-                        (blockchain),” IEEE Access, vol. 11, 2022. DOI:{" "}
+                        (blockchain)”, 🇳🇴 IEEE Access, vol. 11, 2022. DOI:{" "}
                         <a
                             href="https://www.doi.org/10.1109/ACCESS.2023.3279724"
                             className="text-cyan-500 hover:underline"
@@ -20,7 +20,7 @@ export const PUBLICATIONS = [
                         .
                     </p>
                 ),
-                image: "images/frame.jpeg",
+                image: "images/publisher/ieee_access.png",
             },
         ],
     },
@@ -31,14 +31,54 @@ export const PUBLICATIONS = [
             {
                 title: (
                     <p>
-                        M.A.Islam, “Microservice paradigm: A proposal for orches
-                        trated on-chain and off-chain interaction in dapp
-                        development,” in 2024 IEEE International Conference on
-                        Blockchain (Blockchain 2024), Copenhagen, Denmark, 2024.
+                        M.A.Islam, “Unlocking defi literacy: Understanding nft market microstructure in the decentralized finance landscape”, in 🇮🇪 ICBC 2024: 
+                        2nd IEEE International Workshop on Cryptocurrency Exchanges (CryptoEx 2024), Dublin, Ireland, 2024.
+                        DOI:{" "}
+                        <a
+                            href="https://doi.org/10.1109/ICBC59979.2024.10634338."
+                            className="text-cyan-500 hover:underline"
+                        >
+                            DOI Link
+                        </a>
                     </p>
                 ),
-                image: "images/frame.jpeg",
+                image: "images/publisher/ieee_icbc.png",
+            },
+            {
+                title: (
+                    <p>
+                        M.A.Islam, “An automated monitoring and environmental control system 
+                        for laboratory-scale cultivation of oyster mushrooms using the internet 
+                        of agricultural thing (ioat)”, in 🇧🇩 ICCA ’2022: Proceedings of the 
+                        2nd International Conference on Computing Advancements, Dhaka, Bangladesh, 2022.
+                        DOI:{" "}
+                        <a
+                            href="https://doi.org/10.1145/3542954.3542985"
+                            className="text-cyan-500 hover:underline"
+                        >
+                            DOI Link
+                        </a>
+                    </p>
+                ),
+                image: "images/publisher/acm.jpg",
+            },
+            {
+                title: (
+                    <p>
+                        M.A.Islam, “Distributed architecture for decentralized application”, in 🇧🇩 ICCIT 2024: 
+                        IEEE 27th International Conference on Computer and Information Technology, Cox’s Bazar, Bangladesh, 2024..
+                        DOI:{" "}
+                        <a
+                            href="https://doi.org/#"
+                            className="text-cyan-500 hover:underline"
+                        >
+                            DOI Link
+                        </a>
+                    </p>
+                ),
+                image: "images/publisher/ieee_xplore.png",
             },
         ],
     },
+
 ];
