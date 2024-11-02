@@ -1,22 +1,22 @@
 export const EDUCATIONS = [
     {
-        institute: "IBA, University of Dhaka",
-        title: "M.D.P ACMP 4.0",
-        subtitle: "(Advance Certificate for Management Professionals 4.0)",
-        duration: "July 2022 - Present",
+        institute: "Institute of Business Administration, University of Dhaka",
+        title: "ACMP 4.0",
+        subtitle: "Advance Certificate for Management Professionals 4.0",
+        duration: "July 2023 - December 2023",
         location: "Dhaka, Bangladesh",
-        points: ["Web Development", "Machine Learning", "Data Science"],
-        logo: "/images/bs23.jpeg",
-        link: "#"
+        points: ["Management Development Program ", "Project Requirement Analysis", "Risk Management"],
+        logo: "/images/education/du_iba.jpeg",
+        link: "https://drive.google.com/file/d/1SmzN34tDjXdUVAbZZRYFehHKgGy8OZWr/view"
     },
     {
-        institute: "BrainStation 23",
-        title: "Software Engineer",
-        subtitle: "test",
-        duration: "July 2022 - Present",
+        institute: "American International University-Bangladesh (AIUB)",
+        title: "Software Engineering",
+        subtitle: "Bachelor of Science",
+        duration: "September 2016 - December 2020",
         location: "Dhaka, Bangladesh",
-        points: ["Web Development", "Machine Learning", "Data Science"],
-        logo: "/images/bs23.jpeg",
-        link: "#"
+        points: [],
+        logo: "/images/education/aiub.jpg",
+        link: "https://www.aiub.edu/"
     },
 ];
