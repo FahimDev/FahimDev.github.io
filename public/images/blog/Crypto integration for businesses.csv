@@ -1,0 +1,47 @@
+Payment Type,Cost Category,Cost Per Transaction,,Total Annual Cost,Scalability Cost,Time to Settlement,Compliance Complexity,Operational Risk,Customer Satisfaction (Rating),Notes
+,,Domestic,International,,,,,,,
+Traditional Banking/MFS,Transaction Fees,1%-5%,.5%-3%,,,,,Medium,Medium,Higher for cross-border transactions.
+,Foreign Exchange Fees,2%-3%,2%-3%,,,,,Low,Low,Costs can add up significantly for large transactions.
+,Processing time,1-2 days (MFS can be minutes),3-5 days,,,,,Low,Low,"Time-consuming, especially for international transfers."
+,Maintenance Costs,,,High,Medium,High,Medium,Medium,Medium,High due to complex infrastructure.
+,Compliance Costs,,,High,Medium,Medium,High,High,Medium,EU regulations like GDPR and AML add significant overhead.
+,Infrastructure Costs,,,High,Medium,High,Medium,Medium,Medium,Legacy systems require constant upgrades and maintenance.
+,Settlement Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,Costs depend on intermediary involvement.
+,Intermediary Fees,,,Medium,Medium,Medium,Medium,Medium,Medium,Multiple intermediaries increase costs and complexity.
+,Regulatory Fees,,,Medium,Medium,Medium,High,Medium,Low,Complying with multiple regulatory bodies adds costs.
+,Fraud Prevention Costs,,,High,Medium,Medium,High,Medium,Medium,High due to the need for sophisticated security measures.
+,Security & Encryption Costs,,,High,Medium,Medium,High,Medium,High,Essential for protecting sensitive financial data.
+,Upgrade/Integration Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,Costs associated with upgrading legacy systems.
+,Customer Support Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,High due to extensive support requirements.
+,Training & Onboarding Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,Necessary for staff training on regulatory and compliance.
+,Other Associated Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,"Additional costs for IT support, insurance, etc."
+,,,,,,,,,,
+Crypto-Enabled,Transaction Fees,1.175% -1.5 %,1.175% -1.5 %,,,,,"Low	",High,Lower fees but highly volatile depending on the network.
+,Foreign Exchange Fees,1%-2%,1%-2%,,,,,"Low	",High,Typically lower than traditional exchange rates.
+,Processing time,3 seconds - 10 minutes,3 seconds - 10 minutes,,,,,"Low	",High,"Almost instantaneous, depending on the network."
+,Maintenance Costs,,,Medium,Low,Low,Medium,Low,Medium,Lower due to decentralized infrastructure.
+,Compliance Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,Compliance with evolving crypto regulations is required.
+,Infrastructure Costs,,,Medium,Low,Low,Medium,Low,Medium,Lower due to blockchain's decentralized nature.
+,Settlement Costs,,,Low,Low,"Low	",Low,Low,High,Very low due to direct peer-to-peer nature.
+,Intermediary Fees,,,Low,Low,"Low	",Low,Low,High,"Minimal, as transactions occur directly between parties."
+,Regulatory Fees,,,Medium,Medium,Medium,High,Medium,Medium,Regulatory landscape is still evolving.
+,Fraud Prevention Costs,,,High,Medium,Medium,High,High,Medium,High due to the need for sophisticated security measures.
+,Security & Encryption Costs,,,High,Medium,Medium,High,High,Medium,Essential for protecting private keys and wallets.
+,Upgrade/Integration Costs,,,Medium,Low,"Low	",Medium,Medium,Medium,Costs associated with integrating crypto into existing systems.
+,Customer Support Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,High due to the need for educating users on crypto.
+,Training & Onboarding Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,Necessary for staff and customer onboarding.
+,Other Associated Costs,,,Medium,Medium,Medium,Medium,Medium,Medium,"Additional costs for security, legal, and compliance."
+,,,,,,,,,,
+,,,,,,,,,,
+citations,,,,,,,,,,
+https://www.coincover.com/blog/cryptocurrency-vs-traditional-banking-the-future-of-finance,,,,,,,,,,
+Cryptocurrency vs. Traditional Money: Key Differences (bitstamp.net),,,,,,,,,,
+Crypto vs. Traditional Payment Methods: A Comparative Analysis (inqud.com),,,,,,,,,,
+Crypto payments vs. traditional systems: Navigating the future of financial transactions (cointelegraph.com),,,,,,,,,,
+Crypto Payment Processing vs. Traditional Payment Methods: A Comparison - Facts.net,,,,,,,,,,
+Cryptocurrency vs traditional banking: The future of finance (coincover.com),,,,,,,,,,
+Cryptocurrency vs. Traditional Money: Key Differences (bitstamp.net),,,,,,,,,,
+Crypto vs Traditional Payments: Navigating the Future of Financial Transactions (coindcx.com),,,,,,,,,,
+The Role of Crypto in Cross-Border Payments: The Ultimate Comparison | CoinMarketCap,,,,,,,,,,
+market-insight-bitcoin-vs-traditional-payment.pdf (wisdomtree.eu),,,,,,,,,,
+Blockchain in cross-border payments: 2024 guide | BVNK Blog,,,,,,,,,,
