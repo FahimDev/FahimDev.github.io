@@ -188,6 +188,7 @@ export const PROJECTS: any[] = [
             Django: "/images/tech_logo/django.png",
             Python: "/images/tech_logo/python.jpg",
             AzureAD: "/images/tech_logo/azureAD.svg",
+            Supabase: "/images/tech_logo/supabase.avif",
             PostgreSQL: "/images/tech_logo/postgreSQL.png",
             Mobile_Device_Management: "/images/tech_logo/mdm.png",
             Flutter: "/images/tech_logo/flutter.jpg",
@@ -205,15 +206,18 @@ export const PROJECTS: any[] = [
         business_challenges: [
             "Automatically collect the device IMEI number and ownership status and install our apps in specific versions.",
             "As multiple hospitals need to be onboarded along with their employees, managing RBAC, authentication, and authorization was challenging.", 
+            "Sending real-time notification to dedicated mobile devices."
         ],
         solutions: [
             "The mobile team integrated Mobile Device Management (MDM) service which enable our backend to manage all this device oriented operations",
             "The Azure Active Directory (AzureAD) was integrated with this web application. So the administrator can onboarded different hospitals on the system and their employees and medical officers can have SSO facility to access the system with their organization email credentials",
+            "Supabase real-time database was used for sending live notification to different devices configured as a background service in the Django backend.",
         ],
         contributions: [
             "I have contributed as a backend engineer, worked on Django framework,", 
             "Designed the ER Diagram for the Database.", 
-            "configuration of Azure AD for Authentication and Authorization with SSO service.",
+            "Configuration of Azure AD for Authentication and Authorization with SSO service.",
+            "Configured Supabase real-time database in the Django backend.",
         ],
         find_it_on: {
             github: {
