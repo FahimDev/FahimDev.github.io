@@ -181,7 +181,7 @@ export const PROJECTS: any[] = [
         description: "It is a web application used by hospitals to mark & track their duty communication devices . This application is responsible for registering communication devices through their IMEI numbers, map those devices with hospital staff and manage devices with the help of MDM. ",
         client: "Sykehusp✱✱✱✱er",
         location: "Norway 🇳🇴",
-        cover_img: "https://picsum.photos/200",
+        cover_img: "/images/projects/3/cover.jpg",
         view_url: "https://github.com/antonin686/hotelereum",
         tech_icons: {
             VueJs: "/images/tech_logo/vuejs.png",
@@ -231,16 +231,77 @@ export const PROJECTS: any[] = [
         },
         gallery: [
             {
-                url: "https://picsum.photos/200",
-                alt: "image",
+                url: "/images/projects/3/1.png",
+                alt: "Marked Device List",
             },
             {
-                url: "https://picsum.photos/200",
-                alt: "image",
+                url: "/images/projects/3/2.png",
+                alt: "Upload CSV files for bulk device data input",
+            },
+        ],
+    },
+    {
+        title: "Customs Import Entitlement",
+        subtitle: "Customs Bond Commissionerate (CBC), a government agency of People's Republic of Bangladesh",
+        slug: "customs-house-gov-project",
+        description: `
+        The consumer section is available as a mobile application for basic queries by product HS-Code, while major 
+        import entitlement operations and administrative actions are handled through a web application. The mobile app is 
+        available on Google Play. In the web application, importers can apply to import raw materials in specific quantities 
+        for manufacturing and exporting goods as finished products to receive special tax considerations from the government. 
+        Customs officers can quickly review, verify, process, and track import entitlement applications, ensuring a transparent auditing process.
+        `,
+        client: "Bangladesh Customs",
+        location: "Dhaka, Bangladesh 🇧🇩",
+        cover_img: "/images/projects/4/1.PNG",
+        view_url: "#",
+        tech_icons: {
+            PostgreSQL: "/images/tech_logo/postgreSQL.png",
+            Flutter: "/images/tech_logo/flutter.jpg",
+        },
+        features: [
+            "Loading....",
+        ],
+        business_challenges: [
+            "Loading...",
+        ],
+        solutions: [
+            "Loading...",
+        ],
+        contributions: [
+            "I have contributed as a full-stack developer, worked on Laravel framework.", 
+            "In the mobile application part I contributed as a flutter developer and was responsible for responsive UI.",
+        ],
+        find_it_on: {
+            github: {
+                url: "#",
+                icon: <FaGithub className="size-10" />,
+            },
+            twitter: {
+                url: "#",
+                icon: <FaTwitter className="size-10" />,
+            },
+        },
+        gallery: [
+            {
+                url: "/images/projects/4/4.PNG",
+                alt: "Dashboard of customs import entitlement system",
             },
             {
-                url: "https://picsum.photos/200",
-                alt: "image",
+                url: "/images/projects/4/6.PNG",
+                alt: "Balance sheet of imported raw material and finished goods",
+            },
+            {
+                url: "/images/projects/4/12.png",
+                alt: "Group imported products by their custom marked HS code",
+            },
+            {
+                url: "/images/projects/4/13.PNG",
+                alt: "Dashboard of customs officials",
+            },
+            {
+                url: "/images/projects/4/24.PNG",
+                alt: "Endorsement popup from the ARO official window",
             },
         ],
     },
