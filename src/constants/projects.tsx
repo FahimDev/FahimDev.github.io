@@ -260,7 +260,12 @@ export const PROJECTS: any[] = [
             Flutter: "/images/tech_logo/flutter.jpg",
         },
         features: [
-            "Loading....",
+            "Importers can search listed products/material type by their HS-Code from both mobile and web application.",
+            "Importer organization can submit request for import approval for specific materials",
+            "Importer can calculate and provide details quantity of manufactured products with these imported materials",
+            "After getting approval for importing products importer can add the invoice and shipping details of the imported materials for fast verification and discharge from the port.",
+            "Customs officials can review these import requisitions and verify the required quantity of these materials and usage ratio of those to manufacture products in a certain amount for exporting.",
+            "The officials can check history to audit the stock availability of that organization and last export history to identify the quantity of manufactured products.",
         ],
         business_challenges: [
             "Loading...",
