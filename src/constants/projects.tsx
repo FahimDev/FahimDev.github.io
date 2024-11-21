@@ -91,10 +91,10 @@ export const PROJECTS: any[] = [
         ],
     },
     {
-        title: "ANAHATA R✱✱✱S",
+        title: "Fischerm✱✱y",
         subtitle: "An on-chain e-commerce platform at DFINITY's ICP blockchain network",
         client: "SEI✱✱OS LLC.",
-        location: "Netherlands 🇳🇱",
+        location: "Germany 🇩🇪",
         slug: "icp-blockchain-ecommerce",
         description: `This project is an on-chain e-commerce shop on the ICP network. 
         The frontend and backend are both deployed directly on the ICP network. 
@@ -256,7 +256,9 @@ export const PROJECTS: any[] = [
         cover_img: "/images/projects/4/1.PNG",
         view_url: "#",
         tech_icons: {
-            PostgreSQL: "/images/tech_logo/postgreSQL.png",
+            Laravel: "/images/tech_logo/laravel.jpg",
+            PostgreSQL: "/images/tech_logo/my_sql.jpg",
+            Firebase: "/images/tech_logo/firebase.png",
             Flutter: "/images/tech_logo/flutter.jpg",
         },
         features: [
@@ -264,14 +266,18 @@ export const PROJECTS: any[] = [
             "Importer organization can submit request for import approval for specific materials",
             "Importer can calculate and provide details quantity of manufactured products with these imported materials",
             "After getting approval for importing products importer can add the invoice and shipping details of the imported materials for fast verification and discharge from the port.",
+            "Manufacturing organization can create and customize raw material groups and their units by their HS-Codes which are required for manufacturing a specific product.",
             "Customs officials can review these import requisitions and verify the required quantity of these materials and usage ratio of those to manufacture products in a certain amount for exporting.",
             "The officials can check history to audit the stock availability of that organization and last export history to identify the quantity of manufactured products.",
+            "Before exporting the manufactured product the organizations can submit the export and shipping data to the Customs Bond so that the officials can review for better transparency.",
         ],
         business_challenges: [
-            "Loading...",
+            "As the government maintains special tax considerations for product manufacturers preparing for exporting raw materials, there is a high risk that some organizations may abuse this facility to import products for sale in the local market, depriving the government of tax revenue.",
+            "Importers often request large quantities of raw materials by demonstrating high demand for their exported manufactured products. However, in reality, they may export only a small fraction of these products, selling the remainder in the local market. By bypassing taxes, they can significantly increase their profits.",
         ],
         solutions: [
-            "Loading...",
+            "This entitlement system includes a wide range of raw materials and groups them according to their units for manufacturing a single finished product. This mapping between raw materials and finished goods helps customs officials approve the quantity of imported products based on the demand for manufactured items.",
+            "Though the system is titled the Import Entitlement System, the manufacturing organization must submit its export and shipping details to obtain clearance from the Customs Bond. As a result, the Customs House will have a detailed report on how much finished goods should be in that organization's stock based on their imported raw material data. The government agency has the authority to raid and audit these details.",
         ],
         contributions: [
             "I have contributed as a full-stack developer, worked on Laravel framework.", 
