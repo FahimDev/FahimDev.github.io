@@ -35,6 +35,7 @@ export default function Experience() {
                                     <a
                                         className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none"
                                         href={experience.link}
+                                        target="_blank"
                                     >
                                         <PiCertificateFill />
                                     </a>

@@ -38,6 +38,7 @@ export default function Education() {
                                     <a
                                         className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none"
                                         href={education.link}
+                                        target="_blank"
                                     >
                                         <PiCertificateFill />
                                     </a>

@@ -24,7 +24,7 @@ export default function MoreAboutMe() {
                 Blockend Engineer with a primary focus on decentralized software and distributed systems. Additionally, a growing tokenomist and stablecoin expert, 
                 consulting and managing the development of these dApps.
                     📁:{" "}
-                    <a download href="/resume.pdf" className="text-cyan-600 font-bold hover:underline">
+                    <a download href="/resume.pdf" className="text-cyan-600 font-bold hover:underline" target="_blank">
                         Download Resume
                     </a>.
                 </p>

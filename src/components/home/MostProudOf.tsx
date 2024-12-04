@@ -27,7 +27,7 @@ export default function MostProudOf() {
                                 </div>
                                 {training.link && (
                                     <div className="border-2 p-2 rounded-xl animate-pulse hover:scale-110 hover:animate-none">
-                                        <a href={training.link}>
+                                        <a href={training.link} target="_blank">
                                             <PiCertificateFill />
                                         </a>
                                     </div>
