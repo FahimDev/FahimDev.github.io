@@ -66,7 +66,7 @@ export default function Home() {
             </section>
 
             <section id="training" className="bg-secondary py-7 border-b">
-                <div className="grid lg:grid-cols-2 grid-cols-1 container">
+                <div className="grid lg:grid-cols-2 grid-cols-1 gap-10 container">
                     <Training />
                     <MostProudOf />
                 </div>

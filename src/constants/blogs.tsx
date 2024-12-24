@@ -28,11 +28,16 @@ export const BLOGS: any[] = [
     {
         title: "Enabling Web 2.0 users to perform Web3 transactions on Fabric Network 🪪",
         slug: "hyperledger-fabric-wallet-management",
-        description: `A tested implementation approach and published Q1 journal article. 
+        descriptionx: `A tested implementation approach and published Q1 journal article. 
         The Fabric Wallet contains critical components like a digital certificate, private key, 
         and membership ID that authenticate and authorize users in the Hyperledger Fabric network. 
         Without a Fabric Wallet, users cannot access or perform transactions on the private blockchain network. 
         DOI: https://doi.org/10.1109/ACCESS.2023.3279724`,
+        description: <p className="break-words">A tested implementation approach and published Q1 journal article. 
+        The Fabric Wallet contains critical components like a digital certificate, private key, 
+        and membership ID that authenticate and authorize users in the Hyperledger Fabric network. 
+        Without a Fabric Wallet, users cannot access or perform transactions on the private blockchain network. 
+        DOI: <span className="break-words">https://doi.org/10.1109/ACCESS.2023.3279724</span></p>,
         image: "images/blog/1.png",
         link: "https://www.linkedin.com/pulse/enabling-web-20-users-perform-web3-transactions-without-islam/",
     }
