@@ -17,27 +17,41 @@ export const TRAININGS = [
             },
         ]
     },
+    // {
+    //     title: "Certification on Game Development, Ministry of ICT Division (2017)",
+    //     link: "https://drive.google.com/file/d/10A9Mq6Y4SgeBWFtavqj9wzUNEANtGXpy/view?usp=sharing",
+    //     points: [
+    //         {
+    //             title: "Advanced Mobile Game Development",
+    //             link: "https://drive.google.com/file/d/10A9Mq6Y4SgeBWFtavqj9wzUNEANtGXpy/view?usp=sharing",
+    //         },
+    //         {
+    //             title: "Mobile Game Graphics Design",
+    //             link: "https://drive.google.com/file/d/1edjmgkQSiyWcCDeHHgRrF8nwTimkyrBR/view?usp=sharing",
+    //         }
+    //     ]
+    // },
     {
-        title: "Certification on Game Development, Ministry of ICT Division (2017)",
-        link: "https://drive.google.com/file/d/10A9Mq6Y4SgeBWFtavqj9wzUNEANtGXpy/view?usp=sharing",
+        title: "B-TopSE Program: Software Architecture Course by Japan International Cooperation Agency (Jica)",
+        link: "",
         points: [
             {
-                title: "Advanced Mobile Game Development",
-                link: "https://drive.google.com/file/d/10A9Mq6Y4SgeBWFtavqj9wzUNEANtGXpy/view?usp=sharing",
+                title: "Object-oriented analysis and design techniques"
             },
             {
-                title: "Mobile Game Graphics Design",
-                link: "https://drive.google.com/file/d/1edjmgkQSiyWcCDeHHgRrF8nwTimkyrBR/view?usp=sharing",
-            }
-        ]
-    },
-    {
-        title: "Autodesk Maya Essentials}, Cycore Studios",
-        link: "https://drive.google.com/file/d/1MAjNMRJKMZAPQcmc15mj0a9qKpyRqgSC/view?usp=sharing",
-        points: [
+                title: "Structural and behavioral modeling using UML"
+            },
             {
-                title: "3D Modeling and Animation (6 Months)",
-                link: "",
+                title: "Domain modeling and system analysis"
+            },
+            {
+                title: "ICONIX methodology: a use-case-driven"
+            },
+            {
+                title: "OO development approach"
+            },
+            {
+                title: "Practical exercises in modeling and software design"
             }
         ]
     },

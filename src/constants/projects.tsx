@@ -8,9 +8,15 @@ export const PROJECTS: any[] = [
         client: "InterCo✱✱✱✱✱✱✱tal",
         location: "UK 🇬🇧",
         description: <div>
-            It is a dApp of Marketplace where people can book hotels and resell them in proprietary or 3rd party marketplaces. 
-        Different hotels can join here as a partner to enable their services in Web3 networks. Reservations are identified as NFT digital objects. 
-        So the reservation owner can actually own their bookings and can resell those. So refund claiming will not  an issue anymore.
+                    Hotelereum is a Web3-based Online Travel Agency (OTA) that transforms hotel reservations into NFT-backed digital assets — making them resellable, traceable, and interoperable across platforms.
+        <br/>
+                    Beyond bookings, Hotelereum operates as a global messaging and coordination system for the tourism and hospitality supply chain. Each smart contract acts as a single source of truth, 
+                    securely transmitting token-based reservation data between hotels, OTAs, guests, and third-party service providers.
+
+        <br/>
+        <br/>
+        #Web3Travel #NFTMarketplace #BlockchainHospitality #DeFiTravel #TokenizedReservations #SmartContracts #Chainlink #Solidity #DecentralizedBooking
+        <br/>
         <br/>
         🕵 Smart Contract Audit: 📍 Rekt Test, 📍 Tincho Method, 📍 Cyfrin Standard
         </div>,
@@ -32,34 +38,30 @@ export const PROJECTS: any[] = [
         github_url: "https://github.com/antonin686/hotelereum",
         view_url: "https://github.com/antonin686/hotelereum",
         features: [
-            "🌐 Primary Marketplace for hotel booking, enabling reservations to be visible in 3rd party (secondary) marketplaces as NFTs. This unlocks business interoperability in the online hotel booking industry.",
-            "🫱🏿‍🫲🏽 Proprietary marketplace for reselling reservation NFT. 3rd party marketplace consumers can verify the NFT's reservation validity form this Proprietary marketplace as a complementary service. 𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃",
-            <div>💰 Reselling reservations in secondary marketplaces<sup>(third-party or proprietary)</sup> while guaranteeing <i>royalties</i> for the hotel partners.</div>,
-            "🏘 Register hotels as Partners in the primary market.",
-            "🖼 Minting NFTs as a Digital Twin ensures supply by keeping it synced with the inventory of hotel room availability.",
-            "📊 Purchase and reselling reservations are made on-chain. The reservation price is calculated in real-time using the Chainlink Oracle to determine the Matic/ETH exchange rate to USD. Payments made on-chain are accepted in USDC Stable Coin.",
-            "✂️ An NFT owner can resell reservations by splitting reservation dates and rooms from a single NFT into multiple NFTs.",
-            "💸 Royalty/commission collection from third-party marketplaces on each split NFT resale transaction.",
+            "🌐 NFT-based Hotel Reservations – Bookings are issued as NFTs, allowing customers to resell or trade them on proprietary or third-party marketplaces like OpenSea.",
+            "💸 Royalty Mechanism for Hotels – Each resale generates automated royalties, providing a new passive income stream for hotel partners.",
+            "🧾 Real-Time Stablecoin Payments – Payments are processed on-chain in USDC, with pricing pegged to USD using Chainlink Oracles for real-time exchange accuracy.",
+            "🪪 GDPR-Compliant Guest Verification – Integrated Auth0-based off-chain KYC ensures compliance with EU privacy regulations while maintaining user trust.",
+            "✂️ Splittable NFT Reservations – Guests can split multi-room or multi-day bookings into smaller NFTs, enabling flexible resale opportunities",
+            "🏨 Hotel Partner Onboarding – Hotels can join as verified partners, manage inventory, and access new Web3 audiences directly through the platform.",
         ],
         business_challenges: [
-            "As the product was mainly focused on European Union countries, contradictions have arisen regarding the use of user KYC data in public blockchain networks due to the GDPR law. 🇪🇺 🛡️ 🔐",
-            "As user KYC was not allowed to be stored on-chain, the dApp faced a challenge in verifying the validity and authenticity of hotel guests to our hotel partners. 🕵️‍♀️ 🪪 ✅",
-            "Solidity based smart contracts can't call external APIs, so they can't fetch real-time exchange rates. This creates a challenge when a customer wants to pay in a different cryptocurrency or stablecoin, as the contract can't accurately calculate the correct amount without live price feed. 💱 📈 💵",
-            "As guests can make a single booking for multiple rooms over several days, a single NFT is minted following OpenZeppelin's ERC standards to digitally represent that reservation. However, there is no provision for splitting these ERC standard NFTs when a guest wishes to resell them for separate rooms with flexible dates. 🛠️ 🗓️ 🔄",
-            "In the NFT marketplace, microstructures are poorly defined, leading developers to common mistakes and missed best practices in token distribution. Trusted guidelines are lacking, and most available articles aren't peer-reviewed. This results in issues like incorrect royalty distribution and missing micro units (e.g., wei, gwei). 🛒 💸 💰",
+            "GDPR Compliance & KYC Verification: EU data laws prohibit storing user KYC data on-chain, creating a verification gap between guests and hotels. 🇪🇺 🛡️ 🔐",
+            "Real-Time Crypto-to-Fiat Exchange Rates: Solidity smart contracts cannot natively fetch live exchange rates, leading to inaccurate crypto pricing.. 💱 📈 💵",
+            "Complex Multi-Room NFT Structures: ERC-721 NFTs lack native splitting features for multi-room, multi-day bookings. 🛠️ 🗓️ 🔄",
+            "Industry-Standard Marketplace Structure: Lack of NFT marketplace best practices caused royalty misallocations and crypto unit precision errors.. 🛒 💸 💰",
         ],
         solutions: [
-            "To ensure compliance with GDPR law in our system, we have integrated Auth0 into our architecture to deal with the user's KYC.",
-            <div><i>EIP-712</i> <sup>v4</sup> was implemented to store the hotel guest's KYC in the form of an <code>Elliptic Curve Digital Signature (ECDSA)</code>, allowing the hotel partner to collect and verify the KYC data directly from the Auth0 service provider.</div>,
-            "To obtain on-chain real-time exchange and swap rates of different currencies, Chainlink Oracle has been integrated.",
-            <div>The <code>"From"</code> and <code>"To"</code> dates were designed as dynamic metadata, enabling ERC721 NFTs to function as splittable reservations. This feature helps guests customize their resale deals based on the buyer's flexibility.</div>,
-            <div>To establish the blueprint for our proprietary hotel-based NFT marketplace, my team and I conducted research to address issues such as royalty collection for hotel partners from third-party marketplaces, stablecoin payment integration, and sustainable tokenomics to prevent fractional crypto units. Our approach has been validated, peer-reviewed, and published by IEEE under the title "NFT Marketplace Microstructure," ensuring compatibility with major platforms like OpenSea. <br/> <a href="https://doi.org/10.1109/icbc59979.2024.10634338" target="_blank" rel="noopener noreferrer" title="Unlocking DeFi Literacy: Understanding NFT Market Microstructure in the Decentralized Finance Landscape">🔗 Research DOI</a></div>,
+            "Integrated Auth0 for off-chain identity management and verified user signatures via EIP-712 v4 (ECDSA)",
+            "Implemented Chainlink Oracles for live market pricing to ensure real-time stablecoin conversions.",
+            "Introduced dynamic metadata within NFTs to support flexible date and room-level splits.",
+            "Led research validated and published by IEEE as “NFT Marketplace Microstructure” — establishing frameworks for royalty tracking, stablecoin integration, and tokenomics precision.",
         ],
         contributions: [
-            "Here I have contributed as a blockend engineer. Worked on NestJs microservices and Smart Contract development in Solidity.", 
-            "On-chain payment service and oracle integration are some of the major contributions of mine.", 
-            "To ensure the best practices of the Proprietary Marketplace, I led research on marketplace microstructure and prevention of fractional crypto units loss.",
-            "I also covered full unit test for my Smart Contract and prepared a full internal audit report before product release.",
+            "Developed Solidity smart contracts and NestJS microservices for on-chain hotel booking, royalty automation, and Oracle integration.", 
+            "Led the marketplace microstructure research, ensuring financial precision and long-term sustainability.", 
+            "Designed and executed full unit testing and audit cycles using Rekt Test, Tincho Method, and Cyfrin Standards.",
+            "Architected the Chainlink-based pricing service for real-time and transparent crypto payment management.",
         ],
         find_it_on: {
             github: {

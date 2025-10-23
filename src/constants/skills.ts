@@ -1,26 +1,22 @@
 export const SKILLS = [
     {
-        category: "Web 3.0 Techs",
-        options: "Ethereum, Polygon, The Graph, Uniswap V3, Zero-knowledge proof (ZKP), Alchemy, Internet Computer Protocol (ICP), Hyperledger Fabric",
-    },
-    {
-        category: "Web 2.0 Techs",
-        options: "Micro-Service, Message Broker, GraphQL, Node.js, Event Driven Architecture (EDA), Financial Data Exchange (FDX)",
-    },
-    {
         category: "Languages",
-        options: "Rust, Solidity, Type Script (JS), Python",
+        options: "Rust, Solidity, TypeScript (JS), Python",
     },
     {
         category: "Frameworks",
-        options: "NestJS, Django, Hardhat, ZoKrates, Fabric",
+        options: "NestJS, Django, Hardhat, Fabric",
+    },
+    {
+        category: "Software Engineering & Architecture",
+        options: "Object Oriented Design (OOD), UML, Design Patterns, SOLID Principles, Exchange Patterns, Microservice, Message Broker, GraphQL, Node.js, Event Driven Architecture (EDA), Financial Data Exchange (FDX)",
     },
     {
         category: "Web3 Ecosystems",
-        options: "DAO, DeFi, DEX, Rosetta API, NFT Marketplace Microstructure, Stablecoin, ",
+        options: "DAO Governance, dApp (Decentralized Application), DeFi, DEX, NFT Marketplace Microstructure, Stablecoin, HardHat, The Graph, Proxy Smart Contract, Zero-knowledge proof (ZKP), Alchemy, Internet Computer Protocol (ICP), Hyperledger Fabric",
     },
     {
-        category: "Others",
-        options: "Git, Bash, reactive Manifesto, Rate Limiting",
+        category: "DevOps, Monitoring & Observability",
+        options: "Docker, Docker Compose, GitHub Actions, Loki, OpenTelemetry,Grafana, pm2, Kong Proxy API Gateway, Kong Lua Plugin",
     },
 ];
