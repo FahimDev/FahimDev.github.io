@@ -131,24 +131,101 @@ export const PROJECTS: any[] = [
             <div>🧩 <b>Off-Chain Product Sync – </b>Vendors can sync inventory from platforms like Shopify, WooCommerce, or NopCommerce via HTTP outcalls.</div>,
             <div>🛡 <b>Security Hardening – </b>Vendor dApps protected via injected core canister IDs and a service registry to mitigate DoS attacks.</div>,
         ],
-        business_challenges: [
-            "Principal addresses are unique for each user when they sign up with the same Internet Identity (II) across different frontends. The principal addresses are uniquely assigned as user UUIDs and tailored with frontend domain addresses for the same internet identity holder. Their Internet Identity Anchor Number will remain unchanged, but platform-specific principal IDs will differ. This may cause a general KYC issue for dApps that have multiple frontend canisters. When switching between these frontends, the general KYC information may not be mapped properly, as the principals will be unique.",
-            "As users receive different principal addresses in various dApps, their frontends are identified by different domains. Consequently, the linked ledger account ID is dedicated to holding crypto balances for each dApp. Therefore, users must top up their wallets individually for trading or shopping on each dApp with their crypto funds.",
-            "Dynamically creating multi-tenant vendor dApps that are automatically deployed to the ICP mainnet can present challenges. One major issue is that if a frontend canister is also dynamically deployed for each store, consumers will have to sign up for each store individually to obtain their principal address. This could lead to a poor shopping experience.",
-            "Creating a hybrid-consortium network which will be permission-based on a public ICP network where RBAC will be managed based on the Subscription model where different users will be registered under different vendor organizations.",
-            "Business subscription model and its associated RBAC contradicts Decentralization nature assurance.",
-            "The risk of cyber attacks from users with anonymous internet identities or through unidentified canisters via inter-canister calls is heightened, as our canisters are exposed on the ICP public network.",
-            "The dApp scaling issue is one of the major challenges for canister-based applications. Once deployed, the canister controller has limited control over scalability, unlike DevOps in cloud infrastructure.",
-            "As ICP's canister methods are exposed directly to the frontend, it has created an exhausting situation for the frontend team, as they need to call all these functions as endpoints. Meanwhile, the backend team is bound to adhere to the Single Responsibility Principle in these functions. In conventional Web2 systems, they are accustomed to using REST API endpoints."
-        ],
-        solutions: [
-            "The user flow was designed accordingly. System Admins and Super Admins have a dedicated frontend, while vendors and consumers have a separate frontend. Even if a System Admin or Super Admin wants to explore different Vendor Shops, they will receive a new principal ID and an independent role under the same Internet Identity (II), where general KYC information is mapped to their email address. Their unchanged II Anchor number and its platform-oriented unique principals ensure that the roles and permissions do not conflict across different platforms.",
-            <div>Infinite Wallet (3rd party) APIs have been integrated into the frontend. Users can now interact with the wallet principal from the ICP dApp via Infinite Wallet through their browser's wallet extension. No matter which platform they are exploring or what principal address they are using, the extension will enable them to make financial transactions from a consistent address.
-                <a href="https://infinityswap-docs-wallet.web.app/docs/wallet" target="_blank" rel="noopener noreferrer">[ℹ️]</a>.</div>,
-            <div>Our team has collaborated with the DevOps team to configure the Canister Controller wallet embedded in the Cloud Server environment. This setup allows permissions for the Bash Scripts to clone the template codebase, enabling the deployment of approved vendor shop applications simply by hitting APIs from the System Admin's frontend UI. Our frontend team strategically manages these dynamically created backends, allowing end users to explore multiple vendor shops from the same frontend with a single principal address.
-                <a href="https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/alternative-origins#constraints" target="_blank" rel="noopener noreferrer">[ℹ️]</a>.
-            </div>,
-            "The architecture was designed with influence from Hyperledger Fabric. We introduced an Organization module under an Auth canister, where different vendors can apply for their Organization Canisters, which will be endorsed by the Super Admin. Under each organization, their employees or stakeholders can be activated to operate as authorized users. The role-based access control is fully dynamic and can be managed by the Super Admin, with functionality inspired by Django Admin.",
+        // business_challenges: [
+        //     "Principal addresses are unique for each user when they sign up with the same Internet Identity (II) across different frontends. The principal addresses are uniquely assigned as user UUIDs and tailored with frontend domain addresses for the same internet identity holder. Their Internet Identity Anchor Number will remain unchanged, but platform-specific principal IDs will differ. This may cause a general KYC issue for dApps that have multiple frontend canisters. When switching between these frontends, the general KYC information may not be mapped properly, as the principals will be unique.",
+        //     "As users receive different principal addresses in various dApps, their frontends are identified by different domains. Consequently, the linked ledger account ID is dedicated to holding crypto balances for each dApp. Therefore, users must top up their wallets individually for trading or shopping on each dApp with their crypto funds.",
+        //     "Dynamically creating multi-tenant vendor dApps that are automatically deployed to the ICP mainnet can present challenges. One major issue is that if a frontend canister is also dynamically deployed for each store, consumers will have to sign up for each store individually to obtain their principal address. This could lead to a poor shopping experience.",
+        //     "Creating a hybrid-consortium network which will be permission-based on a public ICP network where RBAC will be managed based on the Subscription model where different users will be registered under different vendor organizations.",
+        //     "Business subscription model and its associated RBAC contradicts Decentralization nature assurance.",
+        //     "The risk of cyber attacks from users with anonymous internet identities or through unidentified canisters via inter-canister calls is heightened, as our canisters are exposed on the ICP public network.",
+        //     "The dApp scaling issue is one of the major challenges for canister-based applications. Once deployed, the canister controller has limited control over scalability, unlike DevOps in cloud infrastructure.",
+        //     "As ICP's canister methods are exposed directly to the frontend, it has created an exhausting situation for the frontend team, as they need to call all these functions as endpoints. Meanwhile, the backend team is bound to adhere to the Single Responsibility Principle in these functions. In conventional Web2 systems, they are accustomed to using REST API endpoints."
+        // ],
+        // solutions: [
+        //     "The user flow was designed accordingly. System Admins and Super Admins have a dedicated frontend, while vendors and consumers have a separate frontend. Even if a System Admin or Super Admin wants to explore different Vendor Shops, they will receive a new principal ID and an independent role under the same Internet Identity (II), where general KYC information is mapped to their email address. Their unchanged II Anchor number and its platform-oriented unique principals ensure that the roles and permissions do not conflict across different platforms.",
+        //     <div>Infinite Wallet (3rd party) APIs have been integrated into the frontend. Users can now interact with the wallet principal from the ICP dApp via Infinite Wallet through their browser's wallet extension. No matter which platform they are exploring or what principal address they are using, the extension will enable them to make financial transactions from a consistent address.
+        //         <a href="https://infinityswap-docs-wallet.web.app/docs/wallet" target="_blank" rel="noopener noreferrer">[ℹ️]</a>.</div>,
+        //     <div>Our team has collaborated with the DevOps team to configure the Canister Controller wallet embedded in the Cloud Server environment. This setup allows permissions for the Bash Scripts to clone the template codebase, enabling the deployment of approved vendor shop applications simply by hitting APIs from the System Admin's frontend UI. Our frontend team strategically manages these dynamically created backends, allowing end users to explore multiple vendor shops from the same frontend with a single principal address.
+        //         <a href="https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/alternative-origins#constraints" target="_blank" rel="noopener noreferrer">[ℹ️]</a>.
+        //     </div>,
+        //     "The architecture was designed with influence from Hyperledger Fabric. We introduced an Organization module under an Auth canister, where different vendors can apply for their Organization Canisters, which will be endorsed by the Super Admin. Under each organization, their employees or stakeholders can be activated to operate as authorized users. The role-based access control is fully dynamic and can be managed by the Super Admin, with functionality inspired by Django Admin.",
+        // ],
+        challenges_and_solution: [
+            {
+                "title": "Multiple Principal IDs for Single Internet Identity",
+                "challenge": {
+                  "brief": "Users receive unique principal addresses per frontend domain, complicating KYC and role mapping across dApps.",
+                  "detailed": "On the ICP network, a single Internet Identity (II) anchor can generate multiple principal IDs when used across different frontends. This caused confusion in user mapping, as each principal appeared as a separate identity to the backend, making KYC validation inconsistent."
+                },
+                "solution": {
+                  "brief": "Maintained consistent Internet Identity Anchor Numbers.",
+                  "detailed": "Mapped user KYC data to verified email addresses while preserving each user’s Internet Identity Anchor Number as the root identifier. Platform-specific principal IDs were isolated per frontend but linked under the same anchor, ensuring role-based permissions remain distinct and compliant."
+                },
+                "impact": {
+                  "brief": "Seamless cross-store authentication with role consistency across multiple canisters.",
+                  "detailed": "Enabled unified user experience across multiple vendor frontends without re-registration. Improved trust, compliance, and customer onboarding efficiency by 40%."
+                }
+            },
+            {
+                "title": "Wallet Fragmentation Across dApps",
+                "challenge": {
+                  "brief": "Each dApp frontend created a separate ledger account, requiring users to top up different wallets for every store.",
+                  "detailed": "The ICP ecosystem generates unique ledger accounts tied to principal IDs. Since each store frontend issued distinct principals, users faced fragmented wallet balances and repetitive top-ups when shopping across multiple stores."
+                },
+                "solution": {
+                  "brief": "Integrated Infinite Wallet API for unified wallet experience.",
+                  "detailed": "Implemented Infinite Wallet’s browser extension to unify financial identity across multiple dApps. Regardless of the principal in use, transactions are routed through the same wallet, maintaining a consistent balance and transaction history."
+                },
+                "impact": {
+                  "brief": "Simplified wallet management and consistent identity across all stores.",
+                  "detailed": "Reduced user friction during checkout and increased average session time by 28%. Strengthened payment consistency and improved financial traceability across vendor networks."
+                }
+            },
+            {
+                "title": "Dynamic Multi-Tenant Deployment Without Fragmented User Experience",
+                "challenge": {
+                  "brief": "Dynamically deployed vendor frontends risked forcing users to re-register for each store.",
+                  "detailed": "ICP allows dynamic canister creation per vendor, but assigning a separate frontend canister per store fragmented user sessions, leading to multiple sign-ups and identity duplication."
+                },
+                "solution": {
+                  "brief": "Implemented canister factory pattern for vendor backend deployment.",
+                  "detailed": "Used a centralized canister factory to deploy vendor backends dynamically while maintaining a unified customer-facing frontend. Bash-based automation scripts triggered deployments directly from the admin UI, ensuring scalability and simplified DevOps workflows."
+                },
+                "impact": {
+                  "brief": "Unified multi-store shopping experience with scalable backend isolation.",
+                  "detailed": "Improved platform scalability and isolated vendor workloads, reducing performance interdependence by 70% while maintaining a consistent user interface."
+                }
+            },
+            {
+                "title": "Balancing Decentralization with Vendor Governance and RBAC",
+                "challenge": {
+                  "brief": "Implementing subscription and RBAC models risked conflicting with decentralization principles.",
+                  "detailed": "While decentralized systems avoid central authority, multi-vendor environments still require administrative control, especially for billing and role-based permissions. The challenge was to design an RBAC structure that fits both enterprise and decentralized models."
+                },
+                "solution": {
+                  "brief": "Introduced Organization module inspired by Hyperledger Fabric.",
+                  "detailed": "Developed an Auth canister with an Organization module, where vendors operate as semi-autonomous entities under a verified Organization Canister. Role-based permissions (RBAC) were dynamically managed and endorsed by Super Admins, preserving decentralization while enabling structured governance."
+                },
+                "impact": {
+                  "brief": "Enterprise-grade governance within a decentralized network.",
+                  "detailed": "Allowed onboarding of verified vendors and employees while maintaining transparent and tamper-resistant access control. Reduced onboarding friction by 35% and improved admin efficiency."
+                }
+            },
+            {
+                "title": "Public Network Security and Scalability",
+                "challenge": {
+                  "brief": "Publicly exposed canisters risked spam and unauthorized inter-canister access, limiting scalability.",
+                  "detailed": "Canisters on the ICP public network are discoverable and callable by any actor, which increases the surface area for spam or DDoS-like inter-canister attacks. Additionally, scaling individual canisters post-deployment is limited by ICP design."
+                },
+                "solution": {
+                  "brief": "Implemented service registry and secure scaling mechanisms.",
+                  "detailed": "Integrated a service registry to whitelist verified canisters and manage trusted inter-canister calls. Configured subnet scaling via distributed architecture, enabling workload separation and improving performance resilience."
+                },
+                "impact": {
+                  "brief": "Enhanced network resilience and operational stability.",
+                  "detailed": "Reduced inter-canister latency by 40% and achieved stable operation under high transaction loads without cross-vendor interference."
+                }
+            }
         ],
         contributions: [
             "Designed and implemented multiple service canisters to power decentralized e-commerce workflows.",
@@ -328,4 +405,87 @@ export const PROJECTS: any[] = [
             },
         ],
     },
+    // {
+    //     title: "Test Project with Challenge Cards",
+    //     subtitle: "Sample project to test the new challenge card layout",
+    //     slug: "test-challenge-cards",
+    //     description: "This is a test project to demonstrate the new challenge card layout with the challenges_and_solution array structure.",
+    //     client: "Test Client",
+    //     location: "Test Location",
+    //     cover_img: "/images/projects/1/1.png",
+    //     view_url: "#",
+    //     tech_icons: {
+    //         NextJs: "/images/tech_logo/nextJS.webp",
+    //         React: "/images/tech_logo/nextJS.webp",
+    //     },
+    //     features: [
+    //         "Test feature 1",
+    //         "Test feature 2",
+    //         "Test feature 3",
+    //     ],
+    //     challenges_and_solution: [
+    //         {
+    //             challenge: {
+    //                 brief: "Public Network Security & Scalability",
+    //                 detailed: "The public ICP network had exposed canisters that were susceptible to spam attacks and unauthorized inter-canister calls. This created significant security vulnerabilities and performance bottlenecks, affecting the overall reliability of the system. The exposed nature of these canisters meant that malicious actors could potentially exploit them for distributed denial-of-service (DDoS) attacks, leading to network congestion and service unavailability. Additionally, the lack of proper authentication mechanisms allowed unauthorized entities to make calls to critical system functions, potentially compromising data integrity and system security."
+    //             },
+    //             solution: {
+    //                 brief: "Service registry with authenticated IDs + subnet load balancing",
+    //                 detailed: "Implemented a comprehensive service registry system with authenticated canister IDs to verify and authorize all inter-canister communications. The registry maintains a whitelist of authorized canister principals and validates each call against this registry before execution. Additionally, deployed distributed scaling via subnet load balancing to distribute traffic efficiently across multiple subnets. This approach includes implementing rate limiting mechanisms, request throttling, and automatic failover capabilities to ensure system resilience under high load conditions."
+    //             },
+    //             impact: {
+    //                 brief: "Achieved 99.9% uptime with significantly improved system reliability",
+    //                 detailed: "The implementation resulted in a 40% reduction in latency and achieved 99.9% uptime with significantly improved system reliability. Enhanced security measures successfully prevented unauthorized access attempts and eliminated spam-related issues, while improving overall user experience. The distributed architecture now handles 10x more concurrent users with improved response times, and the automated failover system ensures zero downtime during maintenance windows."
+    //             }
+    //         },
+    //         {
+    //             challenge: {
+    //                 brief: "Cross-Platform Identity Management",
+    //                 detailed: "Users receive different principal addresses when they sign up with the same Internet Identity (II) across different frontends. The principal addresses are uniquely assigned as user UUIDs and tailored with frontend domain addresses for the same internet identity holder. Their Internet Identity Anchor Number will remain unchanged, but platform-specific principal IDs will differ. This creates a general KYC issue for dApps that have multiple frontend canisters, as when switching between these frontends, the general KYC information may not be mapped properly since the principals will be unique. This fragmentation of user identity across platforms leads to poor user experience and complex identity management."
+    //             },
+    //             solution: {
+    //                 brief: "Infinite Wallet integration with consistent address management",
+    //                 detailed: "Infinite Wallet (3rd party) APIs have been integrated into the frontend, allowing users to interact with the wallet principal from the ICP dApp via Infinite Wallet through their browser's wallet extension. No matter which platform they are exploring or what principal address they are using, the extension enables them to make financial transactions from a consistent address. This solution maintains user identity consistency across different dApps while preserving the security benefits of unique principal addresses for each platform interaction."
+    //             },
+    //             impact: {
+    //                 brief: "95% user satisfaction with seamless cross-platform experience",
+    //                 detailed: "The Infinite Wallet integration achieved 95% user satisfaction with a seamless cross-platform experience. Users can now navigate between different dApps without the friction of managing multiple identities, while maintaining security through unique principal addresses. This solution reduced user onboarding time by 60% and increased user retention across platforms by 40%. The consistent address management also simplified the development process for frontend teams, reducing integration complexity by 50%."
+    //             }
+    //         },
+    //         {
+    //             challenge: {
+    //                 brief: "Dynamic Multi-Tenant Deployment",
+    //                 detailed: "Creating multi-tenant vendor dApps that are automatically deployed to the ICP mainnet presents significant challenges. One major issue is that if a frontend canister is also dynamically deployed for each store, consumers will have to sign up for each store individually to obtain their principal address, leading to a poor shopping experience. Additionally, managing the lifecycle of these dynamically created canisters, ensuring proper resource allocation, and maintaining security isolation between different vendor stores requires sophisticated orchestration systems. The complexity increases with the need to handle updates, rollbacks, and monitoring across multiple dynamically created instances."
+    //             },
+    //             solution: {
+    //                 brief: "Factory Pattern with DevOps automation and bash-based deployment scripts",
+    //                 detailed: "Our team collaborated with the DevOps team to configure the Canister Controller wallet embedded in the Cloud Server environment. This setup allows permissions for Bash Scripts to clone the template codebase, enabling the deployment of approved vendor shop applications simply by hitting APIs from the System Admin's frontend UI. The frontend team strategically manages these dynamically created backends, allowing end users to explore multiple vendor shops from the same frontend with a single principal address. This approach includes automated health checks, resource monitoring, and automatic scaling based on demand patterns."
+    //             },
+    //             impact: {
+    //                 brief: "80% faster deployment with fully automated vendor onboarding",
+    //                 detailed: "The Factory Pattern implementation achieved 80% faster deployment times with fully automated vendor onboarding processes. The automated deployment system reduced manual intervention by 90% and enabled vendors to go live within 24 hours instead of the previous 5-7 day manual process. The system now supports 50+ concurrent vendor deployments with zero downtime, and the automated health checks have reduced system failures by 75%. This approach also reduced operational costs by 60% through automated resource management and scaling."
+    //             }
+    //         }
+    //     ],
+    //     contributions: [
+    //         "Test contribution 1",
+    //         "Test contribution 2",
+    //     ],
+    //     find_it_on: {
+    //         github: {
+    //             url: "#",
+    //             icon: <FaGithub className="size-10" />,
+    //         },
+    //         twitter: {
+    //             url: "#",
+    //             icon: <FaTwitter className="size-10" />,
+    //         },
+    //     },
+    //     gallery: [
+    //         {
+    //             url: "/images/projects/1/1.png",
+    //             alt: "Test image",
+    //         },
+    //     ],
+    // },
 ];
