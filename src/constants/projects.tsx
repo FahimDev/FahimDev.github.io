@@ -94,17 +94,21 @@ export const PROJECTS: any[] = [
     },
     {
         title: "Fischerm✱✱y",
-        subtitle: "An on-chain e-commerce platform at DFINITY's ICP blockchain network",
+        subtitle: "Decentralized Multi-Tenant E-Commerce with Internet Identity Integration Overview",
         client: "SEI✱✱OS LLC.",
-        location: "Germany 🇩🇪",
+        location: "Netherlands 🇳🇱",
         slug: "icp-blockchain-ecommerce",
-        description: `This project is an on-chain e-commerce shop on the ICP network. 
-        The frontend and backend are both deployed directly on the ICP network. 
-        The super-admin frontend and the vendor store manager frontend are deployed in different canisters. 
-        The core application’s backend is designed as a distributed system so that the ICP network can scale 
-        the subnets properly based on the loads of different service canisters. Its architecture includes an innovative contribution: 
-        the dynamic deployment of different vendor's backends on the ICP network as a multi-tenant system, which is rarely seen in 
-        the blockchain ecosystem. For authentication and authorization, they use Internet Identity.`,
+        description: 
+        <div>
+                    This project pioneers fully on-chain e-commerce on the DFINITY Internet Computer (ICP) network — where both frontend and backend live natively on-chain. Designed as a multi-tenant decentralized marketplace, it empowers multiple vendors to host isolated online stores, each running in its own dedicated canister backend for fault isolation and scalability.
+            <br/>
+                    Integrated with Internet Identity (II), users can securely log in without usernames or passwords, enjoying a single sign-on (SSO) experience across all participating vendor stores.
+                    The result: a first-of-its-kind, self-scaling blockchain e-commerce ecosystem, blending decentralization, security, and real-world retail readiness.
+            <br/>
+            <br/>
+                    #Web3Ecommerce #InternetComputer #ICPBlockchain #MultiTenantArchitecture #InternetIdentity #DecentralizedCommerce #BlockchainRetail #OnChainStore
+        </div>
+        ,
         tech_icons: {
             NextJs: "/images/tech_logo/nextJS.webp",
             RUST: "/images/tech_logo/rust.png",
@@ -115,17 +119,17 @@ export const PROJECTS: any[] = [
             Bitfinity:"/images/tech_logo/bitfinity.jpg",
             NestJs: "/images/tech_logo/nestJS.jpg",
         },
-        cover_img: "/images/projects/2/1.jpg",
+        cover_img: "/images/projects/2/4.jpg",
         github_url: "https://github.com/fahimdev",
         view_url: "https://github.com/fahimdev",
         features: [
-            "🛍 Shopping experience from the ICP main-net by signing up with Internet Identity.",
-            "🚀 Cross dApp shopping with fluid KYC authentication by a single internet identity.",
-            "🔁 Sync off-chain products with on-chain dApps to align inventory with 3rd parties like Shopify, WooCommerce, and NopCommerce etc.",
-            "🤖 Automatic initialization of Super-admin accounts by their principal addresses and internet identity.",
-            "💳 Vendor registration and subscription model integrated with the Adyen payment gateway for fiat and Bitfinity Wallet for crypto.",
-            "🛡️ Injected core canister ids into vendor’s dApps and service registry module to secure canisters from DoS Attack.",
-            "🔌 Dynamic canister deployment in form of Vendor’s dApp as a multi-tenant system.",
+            <div>🛍 <b>On-Chain Shopping Experience – </b>Complete e-commerce functionality directly on the ICP mainnet, accessible via Internet Identity.</div>,
+            <div>🔁 <b>Cross-dApp Shopping & Unified KYC – </b>Seamless browsing and checkout across multiple stores with a single digital identity.</div>,
+            <div>🔌 <b>Dynamic Canister Deployment – </b>Each vendor gets a dedicated backend canister dynamically deployed to ensure performance isolation and scalability.</div>,
+            <div>💳 <b>Hybrid Payment Gateway – </b>Integrated Adyen for fiat payments and Bitfinity Wallet for crypto transactions.</div>,
+            <div>🤖 <b>Auto-Generated Super Admins – </b>Admin accounts automatically initialized based on principal addresses and II credentials.</div>,
+            <div>🧩 <b>Off-Chain Product Sync – </b>Vendors can sync inventory from platforms like Shopify, WooCommerce, or NopCommerce via HTTP outcalls.</div>,
+            <div>🛡 <b>Security Hardening – </b>Vendor dApps protected via injected core canister IDs and a service registry to mitigate DoS attacks.</div>,
         ],
         business_challenges: [
             "Principal addresses are unique for each user when they sign up with the same Internet Identity (II) across different frontends. The principal addresses are uniquely assigned as user UUIDs and tailored with frontend domain addresses for the same internet identity holder. Their Internet Identity Anchor Number will remain unchanged, but platform-specific principal IDs will differ. This may cause a general KYC issue for dApps that have multiple frontend canisters. When switching between these frontends, the general KYC information may not be mapped properly, as the principals will be unique.",
@@ -147,9 +151,11 @@ export const PROJECTS: any[] = [
             "The architecture was designed with influence from Hyperledger Fabric. We introduced an Organization module under an Auth canister, where different vendors can apply for their Organization Canisters, which will be endorsed by the Super Admin. Under each organization, their employees or stakeholders can be activated to operate as authorized users. The role-based access control is fully dynamic and can be managed by the Super Admin, with functionality inspired by Django Admin.",
         ],
         contributions: [
-            "Here I have contributed as a backend canister developer, worked on different service canisters in Rust.",
-            "Factory pattern to implement various integrations for syncing products through HTTP outcalls from different platform APIs, such as Shopify.",
-            "",
+            "Designed and implemented multiple service canisters to power decentralized e-commerce workflows.",
+            "Applied the Factory Pattern for dynamic backend deployment and external API syncs (Shopify, WooCommerce, NopCommerce).",
+            "Collaborated on the canister orchestration system, integrating DevOps automation via bash-based deployment scripts.",
+            "Architected secure canister communications and improved cross-dApp identity resolution.",
+            "Contributed to system scalability research aligning ICP’s subnet scaling with multi-tenant demands.",
         ],
         find_it_on: {
             github: {
@@ -163,16 +169,20 @@ export const PROJECTS: any[] = [
         },
         gallery: [
             {
-                url: "https://picsum.photos/200",
-                alt: "image",
+                url: "/images/projects/2/1.png",
+                alt: "Store Promotion in ICP Store Marketplace",
             },
             {
-                url: "https://picsum.photos/200",
-                alt: "image",
+                url: "/images/projects/2/2.png",
+                alt: "Product Listing in an Internet Computer E-Commerce Shop",
             },
             {
-                url: "https://picsum.photos/200",
-                alt: "image",
+                url: "/images/projects/2/3.png",
+                alt: "Role Based Access Control in a Public Chain Canister",
+            },
+            {
+                url: "/images/projects/2/4.jpg",
+                alt: "Internet Computer E-Commerce Supports all Wallets",
             },
         ],
     },
