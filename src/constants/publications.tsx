@@ -66,8 +66,23 @@ export const PUBLICATIONS = [
             {
                 title: (
                     <p>
+                        International Conference on Software Engineering® - ICSE 2026 “Beyond Vendor Lock-In: Hybrid EVM-based Event-Driven Architecture for Cross-Organization Collaboration”
+                        DOI:{" "}
+                        <a
+                            href="https://doi.org/#"
+                            className="text-cyan-500 hover:underline"
+                        >
+                            DOI Link
+                        </a>
+                    </p>
+                ),
+                image: "images/publisher/icse-2026-logo.png",
+            },
+            {
+                title: (
+                    <p>
                         M.A.Islam, “Distributed architecture for decentralized application”, in 🇧🇩 ICCIT 2024: 
-                        IEEE 27th International Conference on Computer and Information Technology, Cox’s Bazar, Bangladesh, 2024..
+                        IEEE 27th International Conference on Computer and Information Technology, Cox’s Bazar, Bangladesh, 2024.
                         DOI:{" "}
                         <a
                             href="https://doi.org/#"
