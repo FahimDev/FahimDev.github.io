@@ -38,6 +38,7 @@ export default function ProjectView() {
                         client={project?.client}
                         location={project?.location}
                         find_it_on={project?.find_it_on}
+                        achievement={project?.achievement}
                     />
                 </div>
             </section>

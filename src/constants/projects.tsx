@@ -32,6 +32,10 @@ export const PROJECTS: any[] = [
             Grafana: "/images/tech_logo/grafana.webp",
         },
         cover_img: "/images/projects/5/cover.jpg",
+        achievement: {
+            medal: "/images/doraHacks_medal.png",
+            label: "AWS Global Vibe Hackathon Winner - AI and Web3 Integration Category"
+        },
         github_url: "#",
         view_url: "#",
         features: [

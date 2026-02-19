@@ -19,11 +19,25 @@ export default function Projects() {
                 <div className="container">
                     <div className="flex flex-wrap justify-center gap-5">
                         {PROJECTS.map((project, idx) => (
-                            <Card key={idx} className="bg-background rounded-xl h-[22rem] flex flex-col justify-between w-80">
-                                <img
-                                    className="w-full h-44 rounded-t-xl"
-                                    src={project.cover_img}
-                                />
+                            <Card key={idx} className="bg-background rounded-xl h-[22rem] flex flex-col justify-between w-80 relative">
+                                {project.achievement && (
+                                    <div className="absolute top-0 right-0 z-10">
+                                        <img 
+                                            src={project.achievement.medal} 
+                                            alt="Achievement Medal" 
+                                            className="w-16 h-16 object-contain"
+                                            style={{
+                                                filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))',
+                                            }}
+                                        />
+                                    </div>
+                                )}
+                                <div className="relative">
+                                    <img
+                                        className="w-full h-44 rounded-t-xl"
+                                        src={project.cover_img}
+                                    />
+                                </div>
                                 <CardContent className="flex flex-col gap-1 pt-6">
                                     <h2>{project.title}</h2>
                                     <p className="text-sm line-clamp-3">

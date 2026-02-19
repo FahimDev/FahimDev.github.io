@@ -18,6 +18,10 @@ interface Props {
     techs?: string[];
     tech_icons: any;
     find_it_on?: any;
+    achievement?: {
+        medal: string;
+        label: string;
+    };
 }
 
 export default function MacBoxProject({
@@ -30,6 +34,7 @@ export default function MacBoxProject({
     client,
     location,
     find_it_on,
+    achievement,
 }: Props) {
     return (
         <div className="border rounded-xl">
@@ -81,6 +86,23 @@ export default function MacBoxProject({
                                 <h4 className="text-sm font-normal -mt-4">
                                     {subtitle}
                                 </h4>
+                            )}
+                            {achievement && (
+                                <div className="flex items-center gap-3 bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg px-4 py-3 -mt-2">
+                                    <img 
+                                        src={achievement.medal} 
+                                        alt="Achievement Medal" 
+                                        className="w-12 h-12 object-contain"
+                                    />
+                                    <div className="flex flex-col">
+                                        <span className="text-xs font-semibold text-yellow-700 dark:text-yellow-400 uppercase tracking-wide">
+                                            Achievement
+                                        </span>
+                                        <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                                            {achievement.label}
+                                        </span>
+                                    </div>
+                                </div>
                             )}
                             <div className="flex gap-5 items-center">
                                 {client && (
