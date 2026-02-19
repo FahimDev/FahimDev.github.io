@@ -33,7 +33,7 @@ export const TRAININGS = [
     // },
     {
         title: "B-TopSE Program: Software Architecture Course by Japan International Cooperation Agency (Jica)",
-        link: "",
+        link: "https://wallet.openbadge.net/public/credential/7bcdf08f-1db3-8c26-870b-019c18bb8a1d",
         points: [
             {
                 title: "Object-oriented analysis and design techniques"
