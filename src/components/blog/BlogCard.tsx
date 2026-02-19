@@ -8,7 +8,7 @@ export default function BlogCard({ blog }: Props) {
     return (
         <Card
             className="max-w-5xl bg-secondary cursor-pointer hover:opacity-75"
-            onClick={() => (window.location.href = blog.link)}
+            onClick={() => window.open(blog.link, '_blank', 'noopener,noreferrer')}
         >
             <CardContent className="mt-6">
                 <div className="grid md:grid-cols-3 grid-cols-1 gap-5">

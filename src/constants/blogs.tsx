@@ -1,5 +1,34 @@
 export const BLOGS: any[] = [
     {
+        title:
+            "Trade‑Offs DevOps Can Make: Cloud‑Based Serverless vs Ethereum Serverless Contracts",
+        slug: "tradeoffs-devops-cloud-serverless-vs-ethereum-smart-contracts",
+        description: `Serverless has taken cloud computing by storm. This article compares cloud FaaS platforms (AWS Lambda, Azure Functions) with Ethereum smart contracts as two forms of serverless—use cloud for speed and PII handling, use smart contracts for neutrality and cross-organization coordination.`,
+        image: "images/blog/8.png",
+        link: "https://www.linkedin.com/pulse/tradeoffs-devops-can-make-cloudbased-serverless-vs-ethereum-islam-o6vzc/",
+    },
+    {
+        title: "From Locked Ledgers to Liquid Tokens: Real-Time Cross‑Border Settlement for Emerging Markets",
+        slug: "locked-ledgers-liquid-tokens-real-time-cross-border-settlement",
+        description: `Cross‑border B2B payments are slow and unpredictable in emerging markets. Businesses face Deferred Settlement and must pre‑fund Nostro/Vostro accounts, tying up working capital. Enterprise Web3 layer upgrades existing rails with regulated, fiat‑backed digital settlement for instant settlement.`,
+        image: "images/blog/7.png",
+        link: "https://www.linkedin.com/pulse/from-locked-ledgers-liquid-tokens-real-time-settlement-islam-9lfec/",
+    },
+    {
+        title: "Event Driven Architecture for Web3 Enterprise dApp Design",
+        slug: "event-driven-architecture-web3-enterprise-dapp-design",
+        description: `As fintech leaders adopt Web3, dApps are evolving beyond MVPs to adopt enterprise architectural best practices. Event-driven architecture (EDA) bridges Web2 and Web3, offering a scalable pattern for integrating off-chain databases and on-chain data sources as a unified application.`,
+        image: "images/blog/6.png",
+        link: "https://www.linkedin.com/pulse/event-driven-architecture-web3-enterprise-dapp-design-islam-4vpjc",
+    },
+    {
+        title: "Web3 SSO and Decentralize Hosting with Internet Computer Protocol ∞",
+        slug: "web3-sso-decentralize-hosting-internet-computer-protocol",
+        description: `Internet Identity offers a seamless Web3 Single Sign-On (SSO) experience, allowing users to authenticate across various ICP dApps without usernames or passwords. Learn how Principal IDs connect Cycle Wallets, Ledger Account IDs, and deployed dApp Canisters. Explore the decentralized hosting model of ICP and understand canister ownership management.`,
+        image: "images/blog/5.jpeg",
+        link: "https://www.linkedin.com/pulse/web3-sso-decentralize-hosting-internet-computer-protocol-islam-lf2ac",
+    },
+    {
         title: "Paradigm Shift from Electronic Money to Stablecoins",
         slug: "stablecoin-the-ultimate-future-of-electronic-money",
         description: `𝘍𝘳𝘰𝘮 𝘳𝘦𝘤𝘦𝘯𝘵 𝘤𝘳𝘺𝘱𝘵𝘰 𝘯𝘦𝘸𝘴, 𝘪𝘵 𝘪𝘴 𝘤𝘭𝘦𝘢𝘳 𝘵𝘩𝘢𝘵 𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘰𝘪𝘯𝘴 𝘩𝘢𝘷𝘦 𝘴𝘪𝘨𝘯𝘪𝘧𝘪𝘤𝘢𝘯𝘵 𝘱𝘰𝘵𝘦𝘯𝘵𝘪𝘢𝘭 𝘧𝘰𝘳 𝘢𝘵𝘰𝘮𝘪𝘤 𝘵𝘳𝘢𝘯𝘴𝘢𝘤𝘵𝘪𝘰𝘯𝘴 𝘢𝘯𝘥 𝘥𝘪𝘨𝘪𝘵𝘢𝘭 𝘱𝘢𝘺𝘮𝘦𝘯𝘵𝘴 𝘪𝘯 𝘵𝘩𝘦 𝘯𝘦𝘢𝘳 𝘧𝘶𝘵𝘶𝘳𝘦.`,
