@@ -94,6 +94,95 @@ export const PROJECTS: any[] = [
         ],
     },
     {
+        title: "RAG-based Crypto Fraud Detection",
+        subtitle: "AI-Driven Fraud Detection Module for FinCube",
+        slug: "rag-crypto-fraud-detection-ethereum",
+        client: "FinCube Supporting Module",
+        location: "Global 🌍",
+        description: <div>
+                    This is a supporting module of FinCube designed for fraud detection in Ethereum transactions. 
+                    The system integrates AI-driven modules for eKYC, fraud detection, and anomaly scoring, 
+                    enhancing real-time STP (Straight-Through Processing) rates for high-volume trade and escrow flows.
+        <br/>
+        <br/>
+                    The module leverages RAG (Retrieval-Augmented Generation) technology combined with vector 
+                    databases and machine learning to detect fraudulent activities in real-time, providing 
+                    comprehensive fraud analysis for cryptocurrency transactions. The fraud data is integrated 
+                    with Kaggle API, enabling access to comprehensive datasets for training and validation.
+        </div>,
+        techs: ["Python", "LangChain", "Gemini AI", "OpenSearch", "Alchemy RPC", "The Graph", "K-NN", "RAG", "Vector Database", "Feature Engineering"],
+        tech_icons: {
+            Python: "/images/tech_logo/python.jpg",
+            LangChain: "/images/tech_logo/langChain.jpeg",
+            Gemini: "/images/tech_logo/gemini.webp",
+            OpenSearch: "/images/tech_logo/opensearch.png",
+            Alchemy: "/images/tech_logo/alchemy.png",
+            TheGraph: "/images/tech_logo/theGraph.jpg",
+            Kaggle: "/images/tech_logo/kaggle.png",
+        },
+        cover_img: "/images/projects/6/1.png",
+        github_url: "#",
+        view_url: "#",
+        features: [
+            "🤖 AI-Driven Fraud Detection – Integrated AI modules for eKYC, fraud detection, and anomaly scoring to enhance real-time STP rates for high-volume trade and escrow flows.",
+            "📊 Multi-Source Data Scraper – Data scraper supporting Kaggle API integration, CSV, and JSON sources that fetches real-time Ethereum account data using Alchemy RPC Node Provider. Fraud data is integrated with Kaggle API for comprehensive dataset access.",
+            "🔍 The Graph Integration – Collects and processes logs from The Graph Indexer for comprehensive blockchain data analysis.",
+            "🧮 Feature Extraction Engine – Designed a Feature Extractor that converts raw blockchain data into 44-dimensional feature vectors for machine learning analysis.",
+            "🔎 Vector Database Integration – Integrated with OpenSearch vector database for efficient K-NN (K-Nearest Neighbors) search capabilities.",
+            "🎯 K-NN Fraud Analysis Service – Developed a K-NN Service to analyze nearest neighbors for accurate fraud probability assessment.",
+            "🧠 RAG Service with LangChain – Implemented a RAG Service within the LangChain workflow using Gemini AI for edge case detection and advanced fraud pattern recognition.",
+        ],
+        business_challenges: [
+            "Real-Time Fraud Detection: Detecting fraudulent cryptocurrency transactions in real-time requires processing massive volumes of blockchain data with minimal latency.",
+            "Data Source Integration: Aggregating data from multiple sources (Kaggle API, CSV, JSON, Alchemy RPC, The Graph) into a unified fraud detection system, with fraud data specifically integrated through Kaggle API.",
+            "Feature Engineering Complexity: Converting raw blockchain transaction data into meaningful 44-dimensional feature vectors that accurately represent fraud patterns.",
+            "Edge Case Detection: Identifying sophisticated fraud patterns and edge cases that traditional rule-based systems might miss.",
+            "Scalability for High-Volume Flows: Processing high-volume trade and escrow flows while maintaining real-time STP (Straight-Through Processing) rates.",
+        ],
+        solutions: [
+            "Built a comprehensive data scraper supporting multiple sources (Kaggle API, CSV, JSON) that fetches real-time Ethereum account data using Alchemy RPC Node Provider and collects logs from The Graph Indexer. Integrated fraud data through Kaggle API for comprehensive dataset access.",
+            "Designed a Feature Extractor that converts raw blockchain data into 44-dimensional feature vectors, capturing transaction patterns, account behaviors, and network characteristics.",
+            "Integrated OpenSearch vector database for efficient K-NN search capabilities, enabling fast similarity matching and fraud pattern recognition.",
+            "Developed a K-NN Service that analyzes nearest neighbors to calculate fraud probability based on historical patterns and transaction similarities.",
+            "Implemented a RAG Service within the LangChain workflow using Gemini AI to detect edge cases and sophisticated fraud patterns through advanced natural language understanding and pattern recognition.",
+        ],
+        contributions: [
+            "Integrated AI-driven modules for eKYC, fraud detection, and anomaly scoring, enhancing real-time STP rates for high-volume trade and escrow flows.",
+            "Developed a multi-source data scraper supporting Kaggle API integration, CSV, and JSON sources that fetches real-time Ethereum account data using Alchemy RPC Node Provider. Integrated fraud data with Kaggle API for comprehensive dataset access.",
+            "Designed and implemented the Feature Extractor that converts raw data into 44-dimensional feature vectors for machine learning analysis.",
+            "Integrated OpenSearch vector database for K-NN search capabilities and developed the K-NN Service for fraud probability analysis.",
+            "Built the RAG Service within the LangChain workflow using Gemini AI for advanced edge case detection and fraud pattern recognition.",
+        ],
+        find_it_on: {
+            github: {
+                url: "#",
+                icon: <FaGithub className="size-10" />,
+            },
+            twitter: {
+                url: "#",
+                icon: <FaTwitter className="size-10" />,
+            },
+        },
+        gallery: [
+            {
+                url: "/images/projects/6/1.png",
+                alt: "Fraud Detection Dashboard",
+            },
+            {
+                url: "/images/projects/6/2.png",
+                alt: "Feature Extraction Pipeline",
+            },
+            {
+                url: "/images/projects/6/3.png",
+                alt: "RAG Service Architecture",
+            },
+            {
+                url: "/images/projects/6/4.png",
+                alt: "Payment Successful",
+            },
+        ],
+    },
+    {
         title: "Hoteler✱✱m",
         subtitle: "NFT Marketplace for Hotel Reservation & Reselling",
         slug: "hotel-booking-nft-marketplace",
