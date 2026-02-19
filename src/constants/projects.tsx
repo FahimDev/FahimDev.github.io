@@ -2,6 +2,94 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export const PROJECTS: any[] = [
     {
+        title: "FinCube",
+        subtitle: "Decentralized Traceability & Stablecoin Settlement Layer",
+        slug: "cross-border-stablecoin-settlement",
+        client: "A SaaS for Traders, Export-Import House of UK",
+        location: "Global 🌍",
+        description: <div>
+
+                    FinCube empowers enterprise-grade financial institutions, global e-
+                    commerce ecosystems, traders, and export-import houses that want to
+                    hold their corporate treasuries in form of stablecoins to move money
+                    faster and in real-time. It ensures strict adherence to internal and
+                    governmental audit standards, without adding operational complexity
+                    or compromising trust.
+
+        </div>,
+        techs: ["Solidity", "OpenTelemetry", "Prometheus", "Grafana", "Smart Contracts", "Stablecoins", "ERP Integration", "AML Compliance"],
+        tech_icons: {
+            Solidity: "/images/tech_logo/solidity.jpg",
+            Celo: "/images/tech_logo/celo_logo.jpg",
+            NestJS: "/images/tech_logo/nestJS.jpg",
+            Django: "/images/tech_logo/django.png",
+            OpenZeppelin: "/images/tech_logo/openZepplin.png",
+            KongAPI : "/images/tech_logo/kong.avif",
+            Docker : "/images/tech_logo/docker.svg",
+            RabbitMQ : "/images/tech_logo/rmq.png",
+            OpenTelemetry: "/images/tech_logo/opentelemetry.png",
+            Prometheus: "/images/tech_logo/prometheus.jpg",
+            Grafana: "/images/tech_logo/grafana.webp",
+        },
+        cover_img: "/images/projects/5/cover.jpg",
+        github_url: "#",
+        view_url: "#",
+        features: [
+            "💰 Corporate Treasury in Stablecoins – Enables B2B and institutional clients to hold corporate treasuries in stablecoins for faster, real-time money transfers.",
+            "🔗 Legacy System Integration – Bridges digital assets with legacy ERP, custody, and treasury systems through smart contract anchors.",
+            "📊 Observability & Monitoring – Integrated OpenTelemetry, Prometheus, and Grafana for comprehensive system observability and performance monitoring.",
+            "🛡️ Compliance-First Infrastructure – Built with audit-grade proof-of-reserve, AML-compliant custody mapping, and end-to-end transaction traceability.",
+            "🌐 Cross-Border Treasury Management – Engineered support for programmable cross-border treasury management with full transaction visibility.",
+            "📈 Pilot Program Success – Delivered pilot programs across logistics and trade-finance sectors, reducing nostro pre-funding requirements by 40% and improving reconciliation speed by 65%.",
+        ],
+        business_challenges: [
+            "Legacy System Integration: Bridging modern blockchain-based stablecoin systems with legacy ERP, custody, and treasury systems requires complex integration layers and data synchronization.",
+            "Compliance & Regulatory Requirements: Enterprise clients require audit-grade proof-of-reserve, AML-compliant custody mapping, and full transaction traceability to meet regulatory standards.",
+            "Cross-Border Treasury Management: Managing programmable treasury operations across borders while maintaining compliance and real-time visibility presents significant operational challenges.",
+            "Nostro Account Pre-Funding: Traditional cross-border payments require pre-funding nostro accounts, leading to capital inefficiency and slower settlement times.",
+        ],
+        solutions: [
+            "Built a compliance-first infrastructure layer with smart contract anchors that seamlessly bridge digital assets with legacy systems, ensuring data consistency and real-time synchronization.",
+            "Engineered audit-grade proof-of-reserve mechanisms with AML-compliant custody mapping and end-to-end transaction traceability to meet enterprise regulatory requirements.",
+            "Implemented programmable cross-border treasury management with full observability using OpenTelemetry, Prometheus, and Grafana for real-time monitoring and compliance reporting.",
+            "Delivered stablecoin-based settlement layer that eliminates the need for nostro pre-funding, enabling real-time transfers and reducing capital requirements.",
+        ],
+        contributions: [
+            "Spearheaded the design and development of the enterprise-grade dApp architecture for global B2B and institutional finance clients.",
+            "Built the compliance-first infrastructure layer bridging digital assets with legacy ERP, custody, and treasury systems using observability tools and smart contract anchors.",
+            "Engineered support for cross-border programmable treasury management with audit-grade proof-of-reserve and AML-compliant custody mapping.",
+            "Delivered successful pilot programs across logistics and trade-finance sectors, achieving 40% reduction in nostro pre-funding requirements and 65% improvement in reconciliation speed.",
+        ],
+        find_it_on: {
+            github: {
+                url: "#",
+                icon: <FaGithub className="size-10" />,
+            },
+            twitter: {
+                url: "#",
+                icon: <FaTwitter className="size-10" />,
+            },
+        },
+        gallery: [
+            {
+                url: "/images/projects/5/2.png",
+                alt: "FinCube Dashboard",
+            },
+            {
+                url: "/images/projects/5/3.png",
+                alt: "Stablecoin Treasury Management",
+            },
+            {
+                url: "/images/projects/5/1.png",
+                alt: "Transaction Traceability",
+            },
+            {
+                url: "/images/projects/5/4.png",
+                alt: "User Verification",
+            },
+        ],
+    },
+    {
         title: "Hoteler✱✱m",
         subtitle: "NFT Marketplace for Hotel Reservation & Reselling",
         slug: "hotel-booking-nft-marketplace",
