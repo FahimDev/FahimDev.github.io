@@ -183,6 +183,109 @@ export const PROJECTS: any[] = [
         ],
     },
     {
+        title: "Workforce Management",
+        subtitle: "Real-Time Rota & Shift Compliance Engine",
+        slug: "workforce-management-rota-compliance",
+        client: "Tulip Tech Ltd.",
+        location: "UK 🇬🇧",
+        description: <div>
+                    A real-time compliance validation engine for shift assignments, integrating UK Working Time 
+                    Regulations (WTR) and Visa/Work Permit Rules. The system automates compliance checks, 
+                    reducing manual administrative work by 100% and saving approximately 15-20 administrative 
+                    hours per week per care home.
+        <br/>
+        <br/>
+                    Built using Chain of Responsibility Design Pattern with stateless, reusable compliance rule 
+                    objects that execute in sub-millisecond timeframes. Features a multi-severity compliance 
+                    framework (BLOCK/WARN/PASS) with 12+ rule implementations, enabling proactive compliance 
+                    management and reducing post-assignment corrections by ~85%.
+        <br/>
+        <br/>
+                    The system includes cursor-based pagination for aggregated reporting, reducing database load 
+                    by 95% for large datasets, and implements RFC 5545/iCalendar shift rostering for cross-platform 
+                    scheduling interoperability.
+        </div>,
+        tech_icons: {
+            NextJs: "/images/tech_logo/nextJS.webp",
+            NestJs: "/images/tech_logo/nestJS.jpg",
+            AWS_SQS: "/images/tech_logo/aws_sqs.jpg",
+            PostgreSQL: "/images/tech_logo/postgreSQL.png",
+            MongoDB: "/images/tech_logo/mongoDB.png",
+            AWS_SES: "/images/tech_logo/aws_ses.webp",
+        },
+        cover_img: "/images/projects/7/1.png",
+        github_url: "#",
+        view_url: "#",
+        features: [
+            "⚖️ Real-Time Compliance Validation – Integrated UK Working Time Regulations (WTR) and Visa/Work Permit Rules for automated shift assignment validation, reducing manual compliance checks by 100%.",
+            "🏗️ Chain of Responsibility Pattern – Each compliance rule is a pre-built, stateless object instantiated once and reused across thousands of requests, eliminating object creation overhead and enabling sub-millisecond rule execution.",
+            "⚡ Fail-Fast Approach – Optimized validation pipeline reduces average validation time by 60% through efficient memory usage and early termination of non-compliant assignments.",
+            "🎯 Multi-Severity Compliance Framework – Designed BLOCK/WARN/PASS severity levels with 12+ rule implementations, enabling proactive compliance management and reducing post-assignment corrections by ~85%.",
+            "📊 Cursor-Based Pagination – Built cursor-based pagination system for aggregated reporting, reducing database load by 95% for large datasets and improving response times from ~8s to <1s for 90-day date ranges.",
+            "🔄 Strategy Pattern for Visa Validation – Visa validation uses Strategy Pattern within Chain of Responsibility, where each visa type (Student, Skilled Worker, etc.) implements IVisaPolicy interface, enabling runtime policy selection and zero-downtime extension.",
+            "📅 RFC 5545/iCalendar Integration – Implemented RFC 5545/iCalendar shift rostering for cross-platform scheduling interoperability with Google Calendar and Outlook.",
+        ],
+        business_challenges: [
+            "Manual Compliance Checks: Care homes were spending 15-20 hours per week manually checking shift assignments against UK Working Time Regulations and Visa/Work Permit Rules, leading to errors and inefficiencies.",
+            "Performance Issues with Large Datasets: In-memory pagination for role-week coverage reports resulted in ~8s response times for 90-day date ranges, causing poor user experience and high database load.",
+            "Post-Assignment Corrections: Lack of proactive compliance validation led to ~85% of assignments requiring corrections after creation, causing scheduling conflicts and administrative overhead.",
+            "Visa Policy Complexity: Different visa types (Student, Skilled Worker, etc.) require different validation rules, making it difficult to maintain and extend visa compliance logic without downtime.",
+            "Object Creation Overhead: Traditional validation approaches created new rule objects for each request, causing performance bottlenecks and memory inefficiency.",
+        ],
+        solutions: [
+            "Architected and implemented a real-time compliance validation engine integrating UK Working Time Regulations (WTR) and Visa/Work Permit Rules, reducing manual compliance checks by 100% and saving 15-20 administrative hours per week per care home.",
+            "Implemented Chain of Responsibility Design Pattern with stateless, pre-built compliance rule objects that are instantiated once and reused across thousands of requests, eliminating object creation overhead and enabling sub-millisecond rule execution through efficient memory usage.",
+            "Designed a multi-severity compliance framework (BLOCK/WARN/PASS) with 12+ rule implementations, enabling proactive compliance management and reducing post-assignment corrections by ~85%.",
+            "Built a cursor-based pagination system for aggregated reporting, transforming in-memory pagination to database-level pagination for role-week coverage reports, reducing database load by 95% and improving response times from ~8s to <1s for 90-day date ranges.",
+            "Implemented Strategy Pattern within Chain of Responsibility for visa validation, where each visa type (Student, Skilled Worker, etc.) implements IVisaPolicy interface as separate strategy objects, enabling runtime policy selection and zero-downtime extension.",
+            "Implemented RFC 5545/iCalendar shift rostering for cross-platform scheduling interoperability with Google Calendar and Outlook, enabling seamless calendar integration.",
+        ],
+        contributions: [
+            "Architected and implemented the real-time compliance validation engine for shift assignments, integrating UK Working Time Regulations (WTR) and Visa/Work Permit Rules.",
+            "Designed and implemented Chain of Responsibility Design Pattern with stateless compliance rule objects, achieving sub-millisecond execution times and reducing validation time by 60%.",
+            "Built the multi-severity compliance framework (BLOCK/WARN/PASS) with 12+ rule implementations, reducing post-assignment corrections by ~85%.",
+            "Developed cursor-based pagination system for aggregated reporting, reducing database load by 95% and improving response times from ~8s to <1s for 90-day date ranges.",
+            "Implemented Strategy Pattern for visa validation within Chain of Responsibility, enabling runtime policy selection and zero-downtime extension for different visa types.",
+            "Integrated RFC 5545/iCalendar shift rostering for cross-platform scheduling interoperability with Google Calendar and Outlook.",
+        ],
+        find_it_on: {
+            github: {
+                url: "#",
+                icon: <FaGithub className="size-10" />,
+            },
+            twitter: {
+                url: "#",
+                icon: <FaTwitter className="size-10" />,
+            },
+        },
+        gallery: [
+            {
+                url: "/images/projects/7/1.png",
+                alt: "Compliance Validation Dashboard",
+            },
+            {
+                url: "/images/projects/7/2.png",
+                alt: "Shift Roster Interface",
+            },
+            {
+                url: "/images/projects/7/3.png",
+                alt: "Visa Validation System",
+            },
+            {
+                url: "/images/projects/7/4.png",
+                alt: "Reporting Dashboard",
+            },
+            {
+                url: "/images/projects/7/5.png",
+                alt: "Reporting Dashboard",
+            },
+            {
+                url: "/images/projects/7/6.png",
+                alt: "Reporting Dashboard",
+            },
+        ],
+    },
+    {
         title: "Hoteler✱✱m",
         subtitle: "NFT Marketplace for Hotel Reservation & Reselling",
         slug: "hotel-booking-nft-marketplace",
