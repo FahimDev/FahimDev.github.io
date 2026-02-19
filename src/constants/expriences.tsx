@@ -19,6 +19,15 @@ to support sales in accurate client budget estimation.`
         link: "https://brainstation-23.com/?1"
     },
     {
+        company: "Ostad | EdTech Platform",
+        position: "Instructor | Teaching & Mentorship",
+        duration: "December 2025 - Present",
+        location: "Dhaka, Bangladesh",
+        points: ["As an instructor, Md. Ariful Islam conducting 5 batches with 695+ students, brings clarity, structure, and problem-solving depth to his teaching. He has solved countless real-world engineering challenges involving application architecture, API design, data modeling, and frontend-backend integration. His teaching approach focuses on how MERN is used in real software teams, helping students write clean code, think like engineers, and build job-ready projects with confidence."],
+        logo: "/images/ostad.png",
+        link: "https://ostad.app/instructor/255870"
+    },
+    {
         company: "Cloud Height Technology LTD. (CHTL)",
         position: "Junior Software Engineer",
         duration: "January 2022 - April 2022",
