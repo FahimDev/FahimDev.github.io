@@ -23,8 +23,25 @@ export const PUBLICATIONS = [
                 ),
                 image: "images/publisher/ieee_access.png",
             },
+            {
+                title: (
+                    <p>
+                        M.A.Islam, “Distributed architecture for decentralized application”, in BCRA <code>Under Review</code>: 
+                        Blockchain: Research and Applications an open-access academic journal published by Elsevier.
+                        DOI:{" "}
+                        <a
+                            href="https://www.scimagojr.com/journalsearch.php?q=21101101317&tip=sid&clean=0"
+                            className="text-cyan-500 hover:underline"
+                        >
+                            Journal Link
+                        </a>
+                    </p>
+                ),
+                image: "images/publisher/bcra.jpg",
+            },
         ],
     },
+    
     {
         title: "Conference Proceedings",
         icon: <IoDocumentText className="size-10 rounded-xl text-cyan-500" />,
@@ -81,19 +98,12 @@ export const PUBLICATIONS = [
             {
                 title: (
                     <p>
-                        M.A.Islam, “Distributed architecture for decentralized application”, in 🇧🇩 ICCIT 2024: 
-                        IEEE 27th International Conference on Computer and Information Technology, Cox’s Bazar, Bangladesh, 2024.
-                        DOI:{" "}
-                        <a
-                            href="https://doi.org/#"
-                            className="text-cyan-500 hover:underline"
-                        >
-                            DOI Link
-                        </a>
+                        M.A.Islam, S. Karmaker, S. Sikder, Md Sadek Ferdous, “Horizontal Polynomial Accumulators for Batch-Initialized Zero-Knowledge Membership Proofs”, in 🇳🇱 ACM-CCS 2026 → ACM Conference on 
+                        Computer and Communications Security 2026, The Hague, The Netherlands. 
                     </p>
                 ),
-                image: "images/publisher/ieee_xplore.png",
-            },
+                image: "images/publisher/ccs.jpeg",
+            }
         ],
     },
 
