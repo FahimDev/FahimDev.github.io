@@ -86,10 +86,10 @@ export const PUBLICATIONS = [
                         International Conference on Software Engineering® - ICSE 2026 “Beyond Vendor Lock-In: Hybrid EVM-based Event-Driven Architecture for Cross-Organization Collaboration”
                         DOI:{" "}
                         <a
-                            href="https://doi.org/#"
+                            href="https://dl.acm.org/doi/10.1145/3786157.3788572"
                             className="text-cyan-500 hover:underline"
                         >
-                            DOI Link
+                            10.1145/3786157.3788572
                         </a>
                     </p>
                 ),
