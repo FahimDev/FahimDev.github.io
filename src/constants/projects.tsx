@@ -1,6 +1,220 @@
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export const PROJECTS: any[] = [
+{
+    title: "Integrated Blockchain for Policy-Aware Health Data Exchange",
+
+    subtitle: "A permissioned national health infrastructure for trustworthy records, accountable service delivery, and privacy-aware research collaboration",
+
+    slug: "dlt-integrated-healthcare-solution-bangladesh",
+
+    client: "Industry–Academia Collaboration (National Scope)",
+
+    location: "Norway 🇳🇴",
+
+    description: <div>
+        <p>
+            <strong>IEEE Access–published and Research Council of Norway–funded research</strong> on an integrated, policy-aware blockchain for secure health data exchange (
+            <a
+                href="https://doi.org/10.1109/ACCESS.2023.3279724"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                DOI: 10.1109/ACCESS.2023.3279724
+            </a>
+            ).
+
+        </p>
+
+        <p>
+            This industry–academia collaboration combined Brain Station 23 PLC’s engineering expertise, AIUB’s academic and Bangladesh healthcare research, and the University of Stavanger’s international research contribution under the 5G-MODaNeI project. As first author, I helped design and evaluate a Hyperledger Fabric prototype featuring verified identities, policy-controlled access, auditable consent, and tamper-evident health records.
+        </p>
+
+        <p>
+            🇺🇳 🇪🇺 <br/>
+            <strong>Global Research Scope:</strong> The architecture supports UN SDGs 3, 9, 16, and 17 through connected healthcare, resilient digital infrastructure, accountable data governance, and international research partnership. Its permissioned identity, access-control, integrity, and audit mechanisms provide a foundation for GDPR-aligned EU and HIPAA-aligned US pilot projects, subject to jurisdiction-specific privacy assessment, interoperability, and clinical validation.
+        </p>
+    </div>,
+    cover_img: "/images/projects/banner/ieee-access.png",
+
+    achievement: {
+        medal: "/images/nor-funded.png",
+        label: "Norwegian Research Council–Funded Research: Supported under the 5G-MODaNeI project (Grant No. 308909), advancing blockchain-enabled healthcare, secure data integration, and national digital infrastructure."
+    },
+
+    gallery: [
+            {
+                url: "/images/projects/8/1.png",
+                alt: "Citizen Login Page",
+            },
+            {
+                url: "/images/projects/8/2.png",
+                alt: "Citizen EHR Menu",
+            },
+            {
+                url: "/images/projects/8/3.png",
+                alt: "Doctor Prescription Desktop Software",
+            },
+        
+     ],
+
+    techs: [
+        "Hyperledger Fabric 2.1",
+        "Distributed Ledger Technology",
+        "JavaScript",
+        "Node.js",
+        "Express.js",
+        "Fabric JavaScript SDK",
+        "Fabric CA and MSP",
+        "Smart Contracts / Chaincode",
+        "Raft Consensus",
+        "CouchDB",
+        "Docker",
+        "Flutter",
+        "C#",
+        "Cloudflare",
+        "Apache JMeter"
+    ],
+
+    tech_icons: {
+        Hyperledger_Fabric: "/images/tech_logo/hyperledger.webp",
+        Docker : "/images/tech_logo/docker.svg",
+        Cloudflare : "/images/tech_logo/cloudflare.jpg",
+        Nginx: "/images/tech_logo/Nginx.png",
+        CouchDB: "/images/tech_logo/couchDB.png",
+        NestJS: "/images/tech_logo/nestJS.jpg",
+        ApacheJMeter: "/images/tech_logo/ApacheJMeter.png",
+        C_Sharp_Visual_Studio: "/images/tech_logo/c_sharp.svg",
+        Flutter : "/images/tech_logo/Flutter.webp",
+
+    },    
+
+    features: [
+        "Permissioned network for public and private healthcare providers",
+        "NID or birth-certificate-linked digital health identity",
+        "Certificate-based user enrollment and authentication",
+        "Role-specific citizen, physician, and authority applications",
+        "Consent-aware access to medical records and patient history",
+        "Tamper-evident prescriptions, appointments, and complaints",
+        "Doctor credential and authorized-medicine verification",
+        "Traceable government medicine distribution and prescribing activity",
+        "Hybrid on-chain transaction and off-chain document architecture",
+        "Controlled and anonymized health-data access for research",
+        "Web, mobile, and desktop access through a shared API layer",
+        "Raft-based fault-tolerant transaction ordering"
+    ],
+
+    challenges_and_solution: [
+        {
+            title: "Fragmented National Healthcare Records",
+
+            challenge: {
+                brief: "Public and private providers operate through disconnected processes.",
+                detailed: "Patients lack portable longitudinal records, providers cannot reliably reuse verified medical histories, and central authorities have limited end-to-end visibility across institutions."
+            },
+
+            solution: {
+                brief: "A permissioned multi-organization healthcare ledger.",
+                detailed: "The architecture connects citizen, physician, and authority applications to a shared Hyperledger Fabric network while retaining organization-specific membership, responsibility, and governance."
+            },
+
+            impact: {
+                brief: "A common trust layer without removing institutional control.",
+                detailed: "The model enables verifiable cross-provider workflows and creates a foundation for integrated healthcare delivery and longitudinal medical research."
+            }
+        },
+
+        {
+            title: "Privacy, Identity, and Controlled Data Access",
+
+            challenge: {
+                brief: "Sharing healthcare records can expose highly sensitive identities and histories.",
+                detailed: "A national platform must identify every participant, prevent unauthorized access, preserve patient control, and provide evidence of who accessed or changed information."
+            },
+
+            solution: {
+                brief: "Certificate-based identity and consent-governed authorization.",
+                detailed: "Fabric CA, Membership Service Providers, digital health cards, organization membership, and smart-contract rules authenticate users and restrict operations according to role and patient authorization."
+            },
+
+            impact: {
+                brief: "Traceable access without public-blockchain exposure.",
+                detailed: "Known actors and auditable operations strengthen data governance while the permissioned architecture limits unnecessary disclosure. Formal regulatory certification remains part of the proposed next research phase."
+            }
+        },
+
+        {
+            title: "Healthcare Accountability and Evidence Preservation",
+
+            challenge: {
+                brief: "Complaints and suspected misconduct often lack trustworthy evidence.",
+                detailed: "Doctor qualifications, prescriptions, medicine distribution, service complaints, and record modifications may be difficult to verify when stored through isolated or mutable systems."
+            },
+
+            solution: {
+                brief: "Tamper-evident recording of critical healthcare activities.",
+                detailed: "Smart contracts validate authorized actions before recording their current and historical states across organizational ledgers, creating a chronological and independently verifiable evidence trail."
+            },
+
+            impact: {
+                brief: "Evidence-based oversight and forensic reconstruction.",
+                detailed: "Authorities can investigate complaints and operational irregularities using traceable records rather than relying entirely on incomplete paperwork or conflicting institutional databases."
+            }
+        },
+
+        {
+            title: "Deploying DLT on Accessible Infrastructure",
+
+            challenge: {
+                brief: "Permissioned consensus and cross-platform access can introduce operational complexity.",
+                detailed: "The proof of concept needed to coordinate multiple organizations, certificate authorities, ordering nodes, world-state databases, smart contracts, and user-facing applications using limited hardware."
+            },
+
+            solution: {
+                brief: "A modular and containerized Blockchain-as-a-Service architecture.",
+                detailed: "Hyperledger Fabric services were deployed through Docker containers with two Raft orderers, organization-specific peers and CA servers, CouchDB world states, and an Express.js API gateway."
+            },
+
+            impact: {
+                brief: "Measurable proof-of-concept feasibility.",
+                detailed: "With 100 concurrent users, 96.34% of 25,509 prototype requests completed successfully, including 17,020 responses below 500 milliseconds."
+            }
+        },
+
+        {
+            title: "From Proof of Concept to National Research Infrastructure",
+
+            challenge: {
+                brief: "A working prototype is not yet a clinically validated national platform.",
+                detailed: "The existing evaluation used a controlled, single-host environment. It did not include multi-hospital deployment, formal privacy verification, clinical interoperability testing, independent security assessment, or real-world usability studies."
+            },
+
+            solution: {
+                brief: "A funded multi-institution research and validation programme.",
+                detailed: "The next phase would integrate HL7 FHIR, privacy-preserving analytics, selective disclosure, formal threat modelling, multi-site deployment, healthcare-worker evaluation, and reproducible national-scale benchmarks."
+            },
+
+            impact: {
+                brief: "A pathway from published research to deployable public infrastructure.",
+                detailed: "Funding would transform the architectural proof of concept into a rigorously validated digital-health platform while producing new research in distributed systems, privacy, interoperability, security, and health-data governance."
+            }
+        }
+    ],
+
+    contributions: [
+        "Served as first and corresponding author of a 30-page peer-reviewed IEEE Access article.",
+        "Formulated a Bangladesh-specific national healthcare model connecting citizens, physicians, authorities, and public and private providers.",
+        "Co-designed and implemented a working multi-organization Hyperledger Fabric proof of concept.",
+        "Developed a digital health-card model linked with existing national identity mechanisms.",
+        "Designed certificate-based enrollment, authentication, endorsement, ordering, and ledger-commitment workflows.",
+        "Integrated citizen web and mobile interfaces, physician desktop software, and authority services through a shared API gateway.",
+        "Proposed a hybrid data architecture separating immutable transactions from large medical documents.",
+        "Connected operational healthcare records with controlled secondary use for clinical and biomedical research.",
+        "Evaluated the prototype using Apache JMeter with 100 concurrent users and 25,509 requests.",
+        "Produced a deployment, staffing, maintenance, and National Data Centre scaling roadmap.",
+        "Established a follow-on research agenda covering interoperability, privacy-preserving analytics, clinical validation, and national-scale evaluation."
+    ]
+},
     {
         title: "FinCube",
         subtitle: "Decentralized Traceability & Stablecoin Settlement Layer",
