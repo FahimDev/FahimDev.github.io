@@ -590,6 +590,234 @@ export const PROJECTS: any[] = [
             },
         ],
     },
+
+    {
+        title: "American Football NFT Fan Engagement",
+
+        subtitle: "A production NFT marketplace for verifiable sports collectibles, physical rewards, and low-friction blockchain adoption",
+
+        slug: "hk-sevens-scalable-web3-fan-engagement",
+
+        client: "NuArca Labs",
+
+        location: "United States 🇺🇸",
+
+        cover_img: "/images/projects/9/2.png",
+
+        description: <div>
+            <p>
+                <strong>HK Sevens is a production Web3 sports fan-engagement platform </strong>
+                launched for the 2022 Cathay Pacific/HSBC <a
+                    href="https://www.rugbyasia247.com/hong-kong-sevens-squad-confirmed-cathay-pacific-hsbc-hong-kong-sevens-2022"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Hong Kong Sevens
+                </a>
+                . It enabled
+                fans to collect and trade team-card and mascot NFTs, participate in
+                stadium QR experiences, and bid for digital collectibles linked to
+                match-used jerseys and a game ball (
+                <a
+                    href="https://www.einpresswire.com/article/598325816/hong-kong-rugby-union-and-nuarca-labs-unveil-digital-collectible-marketplace-for-hong-kong-7s-tournament-return"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    public launch
+                </a>
+                ).
+            </p>
+
+            <p>
+                Built with Angular, Node.js, Solidity, and Microsoft Azure, the platform
+                combined credit-card onboarding with blockchain ownership, auctions,
+                trading, and physical-item redemption. Its engineering addressed
+                research-relevant problems including concurrent ownership consistency,
+                transaction recovery, EIP-1559 fee management, and hiding blockchain
+                complexity from mainstream users.
+            </p>
+            <ul>
+                <li>
+                    <strong>Verified Smart Contract: </strong>
+                    <a
+                        href="https://polygon.blockscout.com/token/0x781c735F6A4892963F5e3Bc319a6c45D52E866F6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View HK7S ERC-721 contract on Polygon Blockscout
+                    </a>
+                </li>
+
+                <li>
+                    <strong>NFT Collection: </strong>
+                    <a
+                        href="https://opensea.io/collection/hk7stoken"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Explore Hong Kong Sevens Digital Collectibles on OpenSea
+                    </a>
+                </li>
+            </ul>
+        </div>,
+
+        techs: [
+            "Angular",
+            "Node.js",
+            "Solidity",
+            "Microsoft Azure",
+            "EVM Smart Contracts",
+            "NFT Infrastructure",
+            "EIP-1559",
+            "Web3 Wallets",
+            "Multi-Chain Architecture"
+        ],
+
+        tech_icons: {
+            Angular: "/images/tech_logo/angular.png",
+            NestJs: "/images/tech_logo/nestJS.jpg",
+            Rainbow_Kit: "/images/tech_logo/Rainbow.png",
+            Auth0: "/images/tech_logo/auth0.svg",
+            Solidity: "/images/tech_logo/solidity.jpg",
+            Hardhat: "/images/tech_logo/hardhat.jpg",
+            Polygon: "/images/tech_logo/polygon.png",
+            Slither: "/images/tech_logo/slither.jpg",
+            Aderyn: "/images/tech_logo/aderyn.png"
+        },
+
+        features: [
+            "Team-card and Wai Bei mascot NFT collections",
+            "Credit-card purchases without mandatory wallet setup",
+            "NFT auctions for match-used jerseys and game balls",
+            "Physical memorabilia redemption through digital ownership",
+            "QR-based stadium treasure hunt and VIP rewards",
+            "Collectible ownership, trading, and transfer workflows",
+            "Multi-owner joint-wallet capability",
+            "Gas-sponsored, zero-fee experience for end users",
+            "Cross-platform and multi-chain-ready architecture",
+            "DAO-ready governance and transparent community decisions",
+            "Automated transaction recovery and ownership protection"
+        ],
+
+        gallery: [
+            {
+                url: "/images/projects/9/3.png",
+                alt: "image",
+            },
+            {
+                url: "/images/projects/9/1.png",
+                alt: "image",
+            },
+            {
+                url: "/images/projects/9/4.png",
+                alt: "image",
+            },
+
+            {
+                url: "/images/projects/9/7.png",
+                alt: "image",
+            },
+            {
+                url: "/images/projects/9/5.jpg",
+                alt: "image",
+            },
+            {
+                url: "/images/projects/9/6.jpg",
+                alt: "image",
+            },
+        ],        
+
+        challenges_and_solution: [
+            {
+                title: "Making Web3 Accessible to Mainstream Fans",
+
+                challenge: {
+                    brief: "Traditional wallet and cryptocurrency setup creates adoption barriers.",
+                    detailed: "Most rugby fans were unfamiliar with seed phrases, network fees, and blockchain transactions, making conventional NFT onboarding unsuitable for a global sporting audience."
+                },
+
+                solution: {
+                    brief: "Familiar payment with blockchain complexity handled in the background.",
+                    detailed: "The platform supported credit-card purchases without requiring fans to configure an external wallet, while blockchain infrastructure managed ownership and transactions behind the user experience."
+                },
+
+                impact: {
+                    brief: "A simpler path from sports fan to digital owner.",
+                    detailed: "Fans could participate in Web3 experiences using familiar payment methods while retaining the benefits of verifiable digital ownership."
+                }
+            },
+
+            {
+                title: "Concurrent Transactions and Unique Ownership",
+
+                challenge: {
+                    brief: "Popular collectibles could attract simultaneous purchase attempts.",
+                    detailed: "High fan activity and blockchain confirmation latency introduced risks of failed purchases, repeated submissions, and inconsistent ownership states."
+                },
+
+                solution: {
+                    brief: "Coordinated transaction processing with automated recovery.",
+                    detailed: "Ownership validation, transaction-state monitoring, and automated error-recovery workflows helped safely coordinate minting, purchasing, trading, and auction operations."
+                },
+
+                impact: {
+                    brief: "Reliable ownership during high-demand fan activities.",
+                    detailed: "The platform reduced failed or duplicate transactions while preserving a consistent relationship between marketplace records and on-chain ownership."
+                }
+            },
+
+            {
+                title: "Blockchain Fee Volatility",
+
+                challenge: {
+                    brief: "Changing network fees threatened predictable operating costs.",
+                    detailed: "Transaction costs could fluctuate during periods of network congestion, affecting large collectible drops and time-sensitive auction operations."
+                },
+
+                solution: {
+                    brief: "EIP-1559-aware fee control and strategically timed execution.",
+                    detailed: "The platform used bounded fee parameters, transaction scheduling, status monitoring, and recovery automation to manage on-chain operations more predictably."
+                },
+
+                impact: {
+                    brief: "More stable costs and fewer disrupted transactions.",
+                    detailed: "The approach improved fee predictability while protecting the fan experience from unnecessary blockchain complexity."
+                }
+            },
+
+            {
+                title: "Connecting Physical Events with Digital Ownership",
+
+                challenge: {
+                    brief: "Digital collectibles needed meaningful real-world utility.",
+                    detailed: "Standalone NFTs could offer limited value unless connected to the tournament, physical memorabilia, exclusive access, and stadium participation."
+                },
+
+                solution: {
+                    brief: "Phygital collectibles, redemption, and QR-based engagement.",
+                    detailed: "Match-used jerseys and a game ball were linked to auctioned NFTs, while stadium QR activities unlocked digital collectibles and opportunities for VIP rewards."
+                },
+
+                impact: {
+                    brief: "Blockchain ownership became part of the live fan experience.",
+                    detailed: "Fans gained traceable digital memorabilia with tangible event utility, connecting attendance, collecting, ownership, and physical redemption."
+                }
+            }
+        ],
+
+        contributions: [
+            "Contributed to a production Web3 platform delivered for a globally recognized rugby tournament.",
+            "Supported the integration of Angular, Node.js, Solidity smart contracts, and Microsoft Azure.",
+            "Helped develop NFT workflows covering minting, ownership, auctions, trading, transfer, and redemption.",
+            "Worked on concurrent transaction orchestration to reduce failed purchases and inconsistent ownership states.",
+            "Applied EIP-1559-aware fee handling, execution timing, and automated transaction recovery.",
+            "Supported wallet abstraction and gas-sponsored user journeys for mainstream fan onboarding.",
+            "Contributed to reusable multi-owner wallet, multi-chain, and DAO-ready platform capabilities.",
+            "Connected stadium QR engagement and physical sports memorabilia with verifiable digital ownership."
+        ]
+    },
+
+
     {
         title: "Fischerm✱✱y",
         subtitle: "Decentralized Multi-Tenant E-Commerce with Internet Identity Integration Overview",
