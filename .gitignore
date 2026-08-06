@@ -14,6 +14,8 @@ dist
 
 # Prerender scratch (esbuild bundle of src/seo/snapshot.tsx)
 .dist-prerender-input
+.prerender-snapshot.mjs
+.dev-seo-snapshot.mjs
 
 # Editor / IDE
 .vscode/*
