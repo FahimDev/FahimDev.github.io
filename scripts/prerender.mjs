@@ -19,7 +19,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { build } from "esbuild";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -57,8 +57,57 @@ const writeFile = async (filePath, contents) => {
 
 // ---- Chrome lifecycle ------------------------------------------------------
 
-const chromeProc = spawn(
+// Locate a headless Chrome binary. We don't read any site-config env vars
+// here (the canonical origin still comes from src/constants/site-config.ts);
+// this is purely a build-machine dependency, like the node toolchain.
+const CHROME_CANDIDATES = [
+    process.env.CHROME_PATH,                       // explicit override (e.g. CI symlink target)
     "google-chrome",
+    "google-chrome-stable",
+    "chrome",
+    "chromium",
+    "chromium-browser",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // macOS default
+];
+
+const { existsSync } = await import("node:fs");
+const resolveChromeBinary = () => {
+    for (const candidate of CHROME_CANDIDATES) {
+        if (!candidate) continue;
+        // PATH-based names: only accept if `which` finds them.
+        if (!candidate.includes("/")) {
+            try {
+                const whichOut = spawnSync("which", [candidate], { encoding: "utf8" });
+                if (whichOut.status === 0 && whichOut.stdout.trim()) {
+                    return whichOut.stdout.trim().split("\n")[0];
+                }
+            } catch {
+                // fall through to next candidate
+            }
+            continue;
+        }
+        // Absolute path: accept if the file exists and is executable.
+        if (existsSync(candidate)) return candidate;
+    }
+    return null;
+};
+
+const CHROME_BIN = resolveChromeBinary();
+if (!CHROME_BIN) {
+    err(
+        "Chrome not found. Tried:",
+        CHROME_CANDIDATES.filter(Boolean).join(", ")
+    );
+    err(
+        "Install one of: google-chrome, google-chrome-stable, chromium, " +
+            "chromium-browser (or set CHROME_PATH to an absolute binary path)."
+    );
+    process.exit(1);
+}
+log("using chrome binary:", CHROME_BIN);
+
+const chromeProc = spawn(
+    CHROME_BIN,
     [
         "--headless=new",
         "--disable-gpu",
