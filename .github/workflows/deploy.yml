@@ -22,8 +22,33 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
+      # The prerender step in `npm run build:seo` drives a real Chrome via the
+      # DevTools Protocol to navigate each route, wait for useRouteSeo to
+      # write the head, then capture the rendered HTML. ubuntu-latest runners
+      # ship without Chrome, so install it before the build.
+      - name: Install Google Chrome (stable)
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+          install-dependencies: true
+
+      # `prerender.mjs` spawns the literal binary name `google-chrome`.
+      # setup-chrome may install a binary with a different name depending on
+      # the channel/version, so symlink whatever it installed to the path
+      # the prerender expects.
+      - name: Symlink Chrome to /usr/bin/google-chrome
+        run: sudo ln -sf "${{ steps.setup-chrome.outputs.chrome-path }}" /usr/bin/google-chrome
+
       - name: Build project
-        run: npm run build
+        # `build:seo` runs the type-check + Vite build AND the prerender step
+        # that produces dist/cv.json, dist/llms.txt, dist/sitemap.xml,
+        # dist/robots.txt, plus a fully-prerendered <head> in every route's
+        # index.html (with __SITE_URL__ substituted to the canonical origin).
+        # Plain `npm run build` skips the prerender, so /llms.txt etc. would
+        # be missing on the live site (Cloudflare/Pages would serve them via
+        # the SPA fallback to index.html).
+        run: npm run build:seo
 
       - name: List contents of dist folder for debugging
         run: ls -al ./dist
