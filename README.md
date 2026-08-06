@@ -28,3 +28,14 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## Build & Deploy
+
+```bash
+npm run build       # type-check + vite build (SPA only)
+npm run build:seo   # type-check + vite build + headless-Chrome prerender
+                    # Writes per-route index.html, sitemap.xml, robots.txt into dist/.
+npm run prerender   # run the prerender step against an existing dist/
+```
+
+The prerender step (`scripts/prerender.mjs`) launches a local headless Chrome, navigates to each static + project route, captures the rendered `<head>` (title, description, OG, Twitter, JSON-LD via `useRouteSeo`), and persists it as static HTML so crawlers see route-specific meta before any JS executes. It requires `google-chrome` on `PATH`.
