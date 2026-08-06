@@ -21,6 +21,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn, spawnSync } from "node:child_process";
 import { build } from "esbuild";
+import { WebSocket } from "ws";
+
+// Polyfill global WebSocket for hosts where the Node runtime doesn't expose
+// one (e.g. Cloudflare Pages' build image runs Node 18, which predates
+// `globalThis.WebSocket`). CDP clients like puppeteer-core assume a global is
+// present; installing the `ws`-backed implementation here means the rest of
+// this script can keep using `new WebSocket(...)` unchanged.
+if (typeof globalThis.WebSocket === "undefined") {
+    globalThis.WebSocket = WebSocket;
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const ROOT = path.resolve(path.dirname(__filename), "..");
