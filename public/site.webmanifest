@@ -1,6 +1,9 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Md. Ariful Islam — Portfolio",
+    "short_name": "Ariful Islam",
+    "description": "Portfolio of Md. Ariful Islam — software engineer building production Web3, blockchain, and enterprise systems.",
+    "start_url": "/",
+    "scope": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

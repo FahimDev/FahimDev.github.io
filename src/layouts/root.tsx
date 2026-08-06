@@ -1,8 +1,10 @@
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useRouteSeo } from "@/seo/useRouteSeo";
 import { Outlet } from "react-router-dom";
 
 export default function RootLayout() {
+    useRouteSeo();
     return (
         <>
         <ScrollToTop />
