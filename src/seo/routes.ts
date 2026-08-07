@@ -279,6 +279,49 @@ export const flattenProjects = (): FlatProject[] =>
         })
         .filter((p): p is FlatProject => p !== null);
 
+export type FlatSpeaking = {
+    slug: string;
+    type: string;
+    title: string;
+    subtitle?: string;
+    host: string;
+    role?: string;
+    date: string;
+    endDate?: string;
+    location: string;
+    summary?: string;
+    topics: string[];
+    tags: string[];
+    featured?: boolean;
+};
+
+export const flattenSpeakings = (): FlatSpeaking[] =>
+    (SPEAKINGS ?? [])
+        .map((s: any) => {
+            const slug = String(s?.slug ?? "").trim();
+            if (!slug) return null;
+            return {
+                slug,
+                type: String(s?.type ?? "").trim(),
+                title: String(s?.title ?? "").trim(),
+                subtitle: String(s?.subtitle ?? "").trim() || undefined,
+                host: String(s?.host ?? "").trim(),
+                role: String(s?.role ?? "").trim() || undefined,
+                date: String(s?.date ?? "").trim(),
+                endDate: String(s?.endDate ?? "").trim() || undefined,
+                location: String(s?.location ?? "").trim(),
+                summary: String(s?.summary ?? "").trim() || undefined,
+                topics: Array.isArray(s?.topics)
+                    ? s.topics.map((t: unknown) => String(t ?? "").trim()).filter(Boolean)
+                    : [],
+                tags: Array.isArray(s?.tags)
+                    ? s.tags.map((t: unknown) => String(t ?? "").trim()).filter(Boolean)
+                    : [],
+                featured: Boolean(s?.featured),
+            } as FlatSpeaking;
+        })
+        .filter((s): s is FlatSpeaking => s !== null);
+
 export const resolveRouteMeta = (pathname: string, slug?: string): RouteMeta => {
     if (pathname.startsWith("/projects/") && slug) {
         return buildProjectMeta(slug);

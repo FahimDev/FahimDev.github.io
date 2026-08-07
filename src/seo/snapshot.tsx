@@ -17,6 +17,7 @@ import {
     flattenProjects,
     flattenPublications,
     flattenSkills,
+    flattenSpeakings,
     flattenTrainings,
 } from "./routes";
 import {
@@ -321,6 +322,73 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
         );
         return renderToString(tree);
     }
+    if (pathname.startsWith("/speaking/") && slug) {
+        const all = flattenSpeakings();
+        const s = all.find((x) => x.slug === slug);
+        if (s) {
+            const tree = el(
+                "main",
+                { id: "seo-snapshot", role: "main", "aria-label": `Speaking: ${s.title}` },
+                el(
+                    "article",
+                    {},
+                    el("h1", {}, text(s.title)),
+                    s.subtitle ? el("p", { class: "snap-subtitle" }, text(s.subtitle)) : null,
+                    el(
+                        "p",
+                        { class: "snap-meta" },
+                        text(
+                            `${s.host}${s.role ? " · " + s.role : ""} · ${s.date}${s.endDate ? " – " + s.endDate : ""} · ${s.location}`
+                        )
+                    ),
+                    s.summary ? el("p", {}, text(s.summary)) : null,
+                    s.topics.length
+                        ? el("p", { class: "snap-techs" }, text("Topics: " + s.topics.join(", ")))
+                        : null,
+                    el(
+                        "p",
+                        {},
+                        el("a", { href: `/speaking/${s.slug}`, rel: "noopener" }, text(absoluteUrl(`/speaking/${s.slug}`)))
+                    )
+                ),
+                experiencesSection(),
+                skillsSection()
+            );
+            return renderToString(tree);
+        }
+    }
+    if (pathname === "/speaking") {
+        const all = flattenSpeakings();
+        const tree = el(
+            "main",
+            { id: "seo-snapshot", role: "main", "aria-label": "Speaking index" },
+            el(
+                "section",
+                {},
+                el("h1", {}, text("Speaking engagements")),
+                all.length === 0
+                    ? el("p", {}, text("No speaking engagements on file yet."))
+                    : el(
+                          "ul",
+                          {},
+                          ...all.map((s) =>
+                              el(
+                                  "li",
+                                  {},
+                                  el(
+                                      "a",
+                                      { href: `/speaking/${s.slug}` },
+                                      text(`${s.title} — ${s.host} · ${s.date}`)
+                                  )
+                              )
+                          )
+                      )
+            ),
+            experiencesSection(),
+            skillsSection()
+        );
+        return renderToString(tree);
+    }
     // Fallback: home / unknown -> full snapshot.
     return renderFullSnapshot();
 };
@@ -387,6 +455,22 @@ export const buildCvPayload = () => {
             description: p.description,
             techs: p.techs,
             url: absoluteUrl(`/projects/${p.slug}`),
+        })),
+        speakings: flattenSpeakings().map((s) => ({
+            slug: s.slug,
+            type: s.type,
+            title: s.title,
+            subtitle: s.subtitle ?? null,
+            host: s.host,
+            role: s.role ?? null,
+            date: s.date,
+            endDate: s.endDate ?? null,
+            location: s.location,
+            summary: s.summary ?? null,
+            topics: s.topics,
+            tags: s.tags,
+            featured: s.featured ?? false,
+            url: absoluteUrl(`/speaking/${s.slug}`),
         })),
     };
 };

@@ -358,6 +358,31 @@ const extractProjectSlugsFromBuild = async (servedDir) => {
     return [...set];
 };
 
+const extractSlugsFromBuild = async (servedDir, marker) => {
+    // Same trick as projects but pointed at a different marker slug. Keeps the
+    // SSR shell aligned with the constants files without needing a TS import.
+    const assetsDir = path.join(servedDir, "assets");
+    const files = await fs.readdir(assetsDir);
+    let chunk;
+    for (const f of files) {
+        if (!f.endsWith(".js")) continue;
+        const txt = await fs.readFile(path.join(assetsDir, f), "utf8");
+        if (txt.includes(marker)) { chunk = f; break; }
+    }
+    if (!chunk) return [];
+    const txt = await fs.readFile(path.join(assetsDir, chunk), "utf8");
+    const slugRe = /slug:\s*"([a-z0-9-]+)"/g;
+    const set = new Set();
+    let m;
+    while ((m = slugRe.exec(txt)) !== null) set.add(m[1]);
+    return [...set];
+};
+
+const extractSpeakingSlugsFromBuild = (servedDir) =>
+    // "future-of-fintech-infrastructure" is one of the speaking slugs in
+    // src/constants/speakings.tsx and is unlikely to collide with anything else.
+    extractSlugsFromBuild(servedDir, "future-of-fintech-infrastructure");
+
 // ---- Main -------------------------------------------------------------------
 
 const main = async () => {
@@ -434,13 +459,20 @@ const main = async () => {
 
     const projectSlugs = await extractProjectSlugsFromBuild(SERVED);
     log("detected project slugs:", projectSlugs.length);
+    const speakingSlugs = await extractSpeakingSlugsFromBuild(SERVED);
+    log("detected speaking slugs:", speakingSlugs.length);
 
-    const staticRoutes = ROUTE_FILTER.length ? ROUTE_FILTER.filter((r) => !r.startsWith("/projects/")) : ["/", "/blogs", "/projects"];
+    const staticRoutes = ROUTE_FILTER.length
+        ? ROUTE_FILTER.filter((r) => !r.startsWith("/projects/") && !r.startsWith("/speaking/"))
+        : ["/", "/blogs", "/projects", "/speaking"];
     const projectRoutes = ROUTE_FILTER.length
         ? ROUTE_FILTER.filter((r) => r.startsWith("/projects/"))
         : projectSlugs.map((s) => `/projects/${s}`);
+    const speakingRoutes = ROUTE_FILTER.length
+        ? ROUTE_FILTER.filter((r) => r.startsWith("/speaking/"))
+        : speakingSlugs.map((s) => `/speaking/${s}`);
 
-    const allRoutes = [...staticRoutes, ...projectRoutes];
+    const allRoutes = [...staticRoutes, ...projectRoutes, ...speakingRoutes];
     log("routes to prerender:", allRoutes);
 
     const rendered = new Map();
@@ -450,7 +482,12 @@ const main = async () => {
         await page.navigateAndWait(url);
         const head = await extractHead(page.evalInPage);
         // Server-side snapshot for this route (semantic <main>…</main>).
-        const slug = route.startsWith("/projects/") ? route.replace(/^\/projects\//, "").replace(/\/$/, "") : undefined;
+        let slug;
+        if (route.startsWith("/projects/")) {
+            slug = route.replace(/^\/projects\//, "").replace(/\/$/, "");
+        } else if (route.startsWith("/speaking/")) {
+            slug = route.replace(/^\/speaking\//, "").replace(/\/$/, "");
+        }
         const mainHtml = snapshot.renderRouteSnapshot(route, slug);
         rendered.set(route, { head, mainHtml });
         log("  ok title=", JSON.stringify(head.title), "main=", mainHtml.length, "chars");
@@ -465,7 +502,8 @@ const main = async () => {
         cvPayload.publications.length, "publications,",
         cvPayload.projects.length, "projects,",
         cvPayload.trainings.length, "trainings,",
-        cvPayload.awards.length, "awards");
+        cvPayload.awards.length, "awards,",
+        (cvPayload.speakings?.length ?? 0), "speakings");
 
     page.close();
     try { server.close(); } catch {}
@@ -564,6 +602,7 @@ Sitemap: ${siteUrl}sitemap.xml
         `- **Projects:** ${cvPayload.projects.length}`,
         `- **Trainings / certifications:** ${cvPayload.trainings.length}`,
         `- **Awards:** ${cvPayload.awards.length}`,
+        `- **Speaking engagements:** ${cvPayload.speakings?.length ?? 0}`,
         ``,
         `## Experience`,
         ``,
@@ -612,6 +651,17 @@ Sitemap: ${siteUrl}sitemap.xml
             ``,
             ...t.points.map((pt) => `- ${pt.title}${pt.link ? ` (${pt.link})` : ""}`),
             t.link ? `- Program: ${t.link}` : "",
+            ``,
+        ]),
+        `## Speaking`,
+        ``,
+        ...(cvPayload.speakings ?? []).flatMap((s) => [
+            `### ${s.title}${s.role ? ` — ${s.role}` : ""}`,
+            ``,
+            `*${s.host} · ${s.date}${s.endDate && s.endDate !== s.date ? ` – ${s.endDate}` : ""}${s.location ? ` · ${s.location}` : ""}*`,
+            ``,
+            s.summary ? `${s.summary}` : "",
+            s.url ? `URL: ${s.url}` : "",
             ``,
         ]),
         `## Awards`,
