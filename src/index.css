@@ -5,6 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * The build-time prerender in scripts/prerender.mjs injects a semantic
+ * <main id="seo-snapshot">…</main> block right after <body>. That block
+ * exists so search engines, screen readers, and JS-disabled visitors see
+ * the full profile without executing React.
+ *
+ * For users with JavaScript enabled, we want the React app (#root) to
+ * own the viewport and the snapshot to be invisible. index.html flips
+ * <html> from "seo-snapshot" to "seo-snapshot--js" synchronously in
+ * <head>, so by the time <body> parses the rule below is already in
+ * effect and there's no flash of snapshot text.
+ */
+html.seo-snapshot--js #seo-snapshot {
+    display: none !important;
+}
+
 @layer base {
     :root {
         --background: 210 35% 13%;

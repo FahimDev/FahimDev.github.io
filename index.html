@@ -1,6 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+    `seo-snapshot`   -> pre-React static snapshot is visible (default state
+                         for crawlers / noscript / users with JS disabled).
+    `seo-snapshot--js` -> pre-React snapshot is hidden (set synchronously by
+                         the inline script below as soon as the JS engine is
+                         available, so the React app can render without the
+                         snapshot text flashing underneath it).
+-->
+<html lang="en" class="seo-snapshot">
     <head>
+        <script>
+            // Synchronous class flip — runs before <body> is parsed, so no
+            // flash of the SEO snapshot is possible for users with JS on.
+            // For crawlers / noscript users the class stays as "seo-snapshot"
+            // and the <main id="seo-snapshot">…</main> block (injected by
+            // scripts/prerender.mjs) stays visible.
+            document.documentElement.classList.replace("seo-snapshot", "seo-snapshot--js");
+        </script>
         <meta charset="UTF-8" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,16 +40,16 @@
         <meta property="og:description" content="Portfolio of Md. Ariful Islam — software engineer building production Web3, blockchain, and enterprise systems. Projects, publications, training, and engineering writing.">
         <meta property="og:url" content="__SITE_URL__/">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="__SITE_URL__/images/exim.webp">
+        <meta property="og:image" content="__SITE_URL__/images/OpenGraph-metadata.png">
         <meta property="og:site_name" content="Md. Ariful Islam">
         <meta property="og:locale" content="en_US">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Md. Ariful Islam — Software Engineer · Web3 · Blockchain">
         <meta name="twitter:description" content="Portfolio of Md. Ariful Islam — software engineer building production Web3, blockchain, and enterprise systems. Projects, publications, training, and engineering writing.">
-        <meta name="twitter:image" content="__SITE_URL__/images/exim.webp">
+        <meta name="twitter:image" content="__SITE_URL__/images/OpenGraph-metadata.png">
 
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Md. Ariful Islam","url":"__SITE_URL__","image":"__SITE_URL__/images/exim.webp","jobTitle":"Software Engineer","description":"Portfolio of Md. Ariful Islam — software engineer building production Web3, blockchain, and enterprise systems."}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Md. Ariful Islam","url":"__SITE_URL__","image":"__SITE_URL__/images/OpenGraph-metadata.png","jobTitle":"Software Engineer","description":"Portfolio of Md. Ariful Islam — software engineer building production Web3, blockchain, and enterprise systems."}</script>
 
         <link
             href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
