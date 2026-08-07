@@ -760,3 +760,275 @@ piece of work at build time.
 That's the whole picture. You should now be able to explain to anyone why each of
 those files exists, what would break if you removed them, and how to extend the same
 pattern to new routes (just add an entry to `ROUTE_META` in `src/seo/routes.ts`).
+
+---
+
+## 11. Postscript — three production fixes from 7 Aug 2026, and the durable principles behind them
+
+This section is different from the rest of the document. Sections 1–10 explained the
+SEO-snapshot feature itself. This section explains three follow-up production
+incidents that hit the same codebase the same day, and — more importantly — the
+general engineering principles that each one taught. Every claim here is grounded
+in an actual commit on `master` and in a primary-source reference you can verify
+yourself.
+
+The three commits are:
+
+| Hash | Title |
+|------|-------|
+| [`7e0cce7`](https://github.com/FahimDev/FahimDev.github.io/commit/7e0cce7) | `prerender: polyfill global WebSocket via 'ws' for Node 18 hosts` |
+| [`b4d9138`](https://github.com/FahimDev/FahimDev.github.io/commit/b4d9138) | `fix: hide SEO snapshot from JS-enabled visitors` |
+| [`af31118`](https://github.com/FahimDev/FahimDev.github.io/commit/af31118) | `fix(seo): serve OpenGraph-metadata.png as social share thumbnail` |
+
+You can `git show <hash>` on any of them to see exactly which lines moved and why.
+
+### 11.1 Principle 1 — *Defensive polyfills: never assume a runtime global exists in CI/CD*
+
+**The incident.** Commit `7e0cce7` fixed a build failure on Cloudflare Pages:
+
+> `ReferenceError: WebSocket is not defined` at `scripts/prerender.mjs:171:16`.
+
+The `scripts/prerender.mjs` prerenderer talks to a headless Chrome instance via the
+Chrome DevTools Protocol (CDP). CDP requires a WebSocket client, and Node 22 ships
+`globalThis.WebSocket` out of the box (added in Node **v21.0.0 / v20.10.0**, per the
+official [Node.js globals documentation](https://nodejs.org/api/globals.html)). The
+problem was that Cloudflare's build image could still be pinned to **Node 18 LTS**,
+which never had a `WebSocket` global — confirmed by the [Node 18 globals
+page](https://nodejs.org/docs/latest-v18.x/api/globals.html), which does not list
+`WebSocket` among its globals. The build crashed on the first CDP connection.
+
+**The fix.**
+
+```js
+import { WebSocket } from "ws";
+if (typeof globalThis.WebSocket === "undefined") {
+  globalThis.WebSocket = WebSocket;
+}
+```
+
+Two lines that the rest of the script can ignore: it still writes `new WebSocket(...)`
+as if it were a built-in.
+
+**The durable principle.** *A polyfill is a load-bearing piece of code, not a
+backwards-compatibility hack.* Three lessons fall out of this:
+
+1. **Gate the polyfill with `typeof globalThis.X === "undefined"`.** Today,
+   Cloudflare Pages defaults to Node 22.16.0 (see the
+   [Cloudflare Pages build-image docs](https://developers.cloudflare.com/pages/configuration/build-image/)),
+   which already has the global. The gate means the polyfill becomes a no-op on
+   modern hosts and only kicks in on older ones. If the polyfill were unconditional
+   you would silently shadow the native global and miss bugs in the polyfill itself.
+
+2. **Pull the polyfill from a package with real adoption.** The [`ws`](https://github.com/websockets/ws)
+   package is the de-facto Node WebSocket implementation — ~22k GitHub stars,
+   depended on by `puppeteer-core`, `https-proxy-agent`, `node-fetch` internals,
+   etc. Its README is explicit: ["This module does not work in the browser"](https://github.com/websockets/ws#caveats),
+   which is exactly what you want for a *build-time* tool: zero risk of it
+   accidentally ending up in your client bundle.
+
+3. **Treat polyfills as `devDependencies`, never `dependencies`.** The fix did
+   not bloat the production bundle, did not change anything Cloudflare *runs*,
+   and did not require a Node version bump. The blast radius was one file in
+   `scripts/`.
+
+**What this looks like in plain English for a product owner.** "If we ever pin
+our build to an older Node version — whether on Cloudflare, Vercel, Netlify, or
+a self-hosted runner — the prerender still works. We won't wake up to a broken
+site because a runtime global disappeared."
+
+### 11.2 Principle 2 — *FOUC is a state problem, not a styling problem*
+
+**The incident.** Commit `b4d9138` fixed the visible symptom from commit
+`7e0cce7`'s earlier work: after prerendering started succeeding, the entire
+`<main id="seo-snapshot">` block began rendering *above* the React app on
+JS-enabled browsers. Crawlers (the intended audience) saw the snapshot and were
+happy. Real users saw a wall of Markdown-style text followed by the normal site.
+
+**The fix.** A one-class toggle on `<html>`:
+
+```html
+<html lang="en" class="seo-snapshot">  <!-- snapshot visible by default -->
+<head>
+  <script>
+    // runs synchronously, before <body> parses, before first paint
+    document.documentElement.classList.replace(
+      "seo-snapshot", "seo-snapshot--js"
+    );
+  </script>
+  …
+```
+
+```css
+/* src/index.css */
+html.seo-snapshot--js #seo-snapshot { display: none !important; }
+```
+
+Three properties of this pattern matter:
+
+1. **The script is inline and synchronous.** It runs before the browser parses
+   `<body>`, which means before any pixel of the snapshot paints. No flash of
+   unwanted content.
+2. **The default state serves the crawler.** A `curl` of the page (or Google's
+   HTML crawler) never executes the inline script, so the snapshot stays
+   visible. You do not have to choose between "good for crawlers" and "good
+   for users".
+3. **The CSS is the source of truth.** Anyone reading `index.css` can see, in
+   one line, that the snapshot is hidden under JS. There is no JavaScript
+   `useEffect` hiding it later (which would paint flash), no `display:none`
+   on the server (which would also hide it from crawlers), no race condition.
+
+**The durable principle.** *Anywhere your code will conditionally override
+something that the initial HTML already shows — themes, locales, A/B variants,
+preview banners, experimental layouts — flip a class on `<html>` from a
+synchronous inline `<script>` in `<head>`. Hide by CSS, not by JavaScript.*
+
+This is exactly the pattern Google's [web.dev Cumulative Layout Shift
+guide](https://web.dev/articles/optimize-cls) recommends for any element whose
+visibility state is decided by code that runs after first paint: reserve the
+space (or, in our case, reserve the *non*-space) before paint, then let JS
+adjust it without visual cost.
+
+**What this looks like in plain English for a product owner.** "When we add
+feature flags, dark mode, or experimental layouts in the future, users will
+never see the wrong content flash on screen for a frame. That is what
+'premium feel' is — not new animations, but the *absence* of broken ones."
+
+### 11.3 Principle 3 — *A static asset is not deployed until it is tracked*
+
+**The incident.** Commit `af31118` fixed a thumbnailing problem. The `<meta
+property="og:image">` tag pointed to `/images/OpenGraph-metadata.png`, but
+nothing rendered when the URL was shared on Slack, LinkedIn, or Twitter.
+Two distinct bugs were tangled together:
+
+1. **The file was on disk but not in git.** `git ls-files public/images/`
+   showed no `OpenGraph-metadata.png`. Cloudflare Pages only deploys tracked
+   files — see the [Cloudflare Pages "Serving Pages" docs](https://developers.cloudflare.com/pages/configuration/serving-pages/),
+   which describe the deploy contract. Anything you have not `git add`-ed
+   simply does not ship.
+2. **When the missing file was requested, Cloudflare returned the SPA fallback,
+   not a 404.** The same Cloudflare docs note that Pages "matches all
+   incoming paths to the root (`/`) by default" when no `_redirects` or
+   `404.html` rule intervenes. So `https://site.com/images/OpenGraph-metadata.png`
+   was returning `index.html` with `Content-Type: text/html`. Slack saw an
+   HTML page where it expected an image and refused to render a thumbnail.
+3. **`SITE_IMAGE` itself pointed at a non-existent file** — `/images/exim.webp`,
+   which had been renamed to `exim.jpg` long ago. Even if (1) and (2) were
+   fixed, the meta tag would still have pointed at a missing file.
+
+**The fix.**
+
+- `git add public/images/OpenGraph-metadata.png && git commit`.
+- One-line change in `src/constants/site-config.ts`:
+
+  ```ts
+  export const SITE_IMAGE = "/images/OpenGraph-metadata.png";
+  ```
+
+That's all. Because every consumer (`useRouteSeo`, `structuredData.ts`, `routes.ts`,
+the prerender snapshot bundle) reads from `SITE_CONFIG.image` rather than
+hard-coding the URL, the corrected value cascades to every place it is used.
+
+**The durable principle.** *Treat static assets as part of the source code, not
+the operating environment.*
+
+1. **Centralize URLs that reference assets.** A single `SITE_IMAGE` constant
+   flows into Open Graph tags, Twitter card tags, JSON-LD `image`, the
+   prerendered snapshot, `cv.json`, and `llms.txt`. Change it once, ship it
+   once. This is exactly the principle behind the [Open Graph Protocol's
+   `og:image` spec](https://ogp.me/#structured) — a single canonical URL per
+   piece of content, not three hard-coded copies.
+2. **Verify the deployed artifact, not the source.** The build can succeed
+   while the deployment is broken. Always `curl -I https://your-site/images/foo.png`
+   *after* deploying and check `Content-Type: image/png`. Cloudflare's SPA
+   fallback will happily return `text/html` for any path the static
+   pipeline doesn't satisfy, and the only way to notice is to ask the
+   network directly.
+3. **Pick image dimensions from the spec, not from aesthetics.** Facebook's
+   official [Webmasters image guide](https://developers.facebook.com/docs/sharing/webmasters/images/)
+   recommends **1200 × 630 px** for best display on high-resolution devices,
+   with **600 × 315 px** as the floor. The `OpenGraph-metadata.png` shipped
+   here is **1536 × 1024**, which is a 2× supersample of the spec — sharp on
+   Retina displays and still within the supported range. The same guide
+   also notes that images smaller than 600 × 315 will render at a smaller
+   size, which directly affects click-through on shared links.
+
+**What this looks like in plain English for a product owner.** "When someone
+shares our site on Slack, LinkedIn, or iMessage, they will see our actual
+photo and our name — not a broken-image icon. This is the difference between
+a link that gets clicked and a link that gets ignored. The cost of getting it
+right is a single git-tracked PNG and a one-line constant."
+
+### 11.4 Summary table — principles and the commits that proved them
+
+| Principle | Proven by | Risk if ignored |
+|-----------|-----------|-----------------|
+| Defensive polyfills, gated by `typeof globalThis.X === "undefined"` | `7e0cce7` | Build fails silently on older Node runtimes; deploy broken |
+| FOUC = state problem; solve with class-on-`<html>` + inline `<script>` | `b4d9138` | Users see raw SEO text before React mounts; looks like a broken site |
+| Static assets must be git-tracked; URLs centralized; verify via `curl -I` | `af31118` | OG image broken on every share; missed clicks, missed impressions |
+
+### 11.5 What a frontend engineer carries forward from these three fixes
+
+- **Default to polyfilling anything that is not in the language spec yet.** A
+  "works on my machine" mental model is the enemy of CI/CD pipelines that
+  change Node versions underneath you. The two-line `if (typeof … === "undefined")`
+  gate is the cheapest insurance you can buy.
+- **For any state that JS will override after first paint, flip a class on
+  `<html>` from a synchronous inline `<script>` in `<head>`.** This is
+  reusable for dark mode, locale switching, A/B variants, and feature flags.
+- **Treat `constants/site-config.ts` as the single source of truth for any URL
+  that crawlers, JSON-LD, Open Graph, and the prerender all consume.** Resist
+  the temptation to hard-code "just one more URL" somewhere — it always
+  becomes three.
+- **After every deploy, `curl -I` the static assets you reference.** Build
+  success is not deployment success. Cloudflare Pages' SPA fallback is
+  silently forgiving in ways that will hurt you.
+
+### 11.6 What a product owner gets out of this
+
+If a frontend engineer on your team follows these three patterns, the product
+owner sees:
+
+- **Fewer 3 a.m. pages.** Builds don't break when a runtime disappears.
+  Sites don't break when a CMS renames a file. Refactors don't break sharing.
+- **Higher click-through on shared links.** A real, correctly-sized
+  Open Graph image makes every link into a tiny, branded billboard. Slack
+  previews, LinkedIn previews, Twitter cards, iMessage previews all render
+  the same picture.
+- **Better SEO without extra spend.** The prerender snapshot is invisible
+  to humans and visible to crawlers, which is what Google's
+  [documentation on rendering and indexing](https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers)
+  effectively rewards: serving the same HTML to a crawler and to a no-JS
+  visitor.
+- **Lower maintenance cost.** One constant in `site-config.ts` controls
+  every image, every snapshot, every JSON-LD payload. New routes get SEO
+  for free by joining the `ROUTE_META` map. There is no separate
+  "SEO spreadsheet" to keep in sync.
+
+That is the whole story of 7 Aug 2026: three commits, three principles,
+zero ongoing engineering cost.
+
+### Files added or modified in this section
+
+This section is a post-hoc retrospective; the commits it discusses are the
+"files added or modified" record. They are:
+
+| Commit | Files touched |
+|--------|---------------|
+| `7e0cce7` | `package.json`, `package-lock.json` (adds `ws`), `scripts/prerender.mjs` |
+| `b4d9138` | `index.html`, `src/index.css` |
+| `af31118` | `src/constants/site-config.ts`, `public/images/OpenGraph-metadata.png` |
+
+### References
+
+- [Node.js globals — `WebSocket` global, added in v21.0.0 / v20.10.0](https://nodejs.org/api/globals.html)
+- [Node.js 18 globals (no `WebSocket`)](https://nodejs.org/docs/latest-v18.x/api/globals.html)
+- [Cloudflare Pages build-image versions (current default: Node 22.16.0)](https://developers.cloudflare.com/pages/configuration/build-image/)
+- [Cloudflare Pages "Serving Pages" — SPA fallback behavior](https://developers.cloudflare.com/pages/configuration/serving-pages/)
+- [`websockets/ws` — the canonical Node WebSocket polyfill](https://github.com/websockets/ws)
+- [Open Graph Protocol — `og:image` structured property](https://ogp.me/#structured)
+- [Facebook Webmasters image guide — 1200×630 recommended, 600×315 minimum](https://developers.facebook.com/docs/sharing/webmasters/images/)
+- [web.dev — Optimizing Cumulative Layout Shift](https://web.dev/articles/optimize-cls)
+- [Google Search Central — How Google crawlers see your site](https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers)
+- [Git commit `7e0cce7` — `prerender: polyfill global WebSocket via 'ws' for Node 18 hosts`](https://github.com/FahimDev/FahimDev.github.io/commit/7e0cce7)
+- [Git commit `b4d9138` — `fix: hide SEO snapshot from JS-enabled visitors`](https://github.com/FahimDev/FahimDev.github.io/commit/b4d9138)
+- [Git commit `af31118` — `fix(seo): serve OpenGraph-metadata.png as social share thumbnail`](https://github.com/FahimDev/FahimDev.github.io/commit/af31118)
