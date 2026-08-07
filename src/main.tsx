@@ -7,6 +7,8 @@ import Home from "./pages/home";
 import ProjectView from "./pages/project-view";
 import Blogs from "./pages/blogs";
 import Projects from "./pages/projects";
+import Speakings from "./pages/speakings";
+import SpeakingView from "./pages/speaking-view";
 
 const router = createBrowserRouter(
     [
@@ -29,6 +31,14 @@ const router = createBrowserRouter(
                 {
                     path: "/projects/:slug",
                     element: <ProjectView />,
+                },
+                {
+                    path: "/speaking",
+                    element: <Speakings />,
+                },
+                {
+                    path: "/speaking/:slug",
+                    element: <SpeakingView />,
                 },
             ],
         },
