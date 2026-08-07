@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { PROJECT_SLUGS, resolveRouteMeta, SITE } from "./routes";
+import { PROJECT_SLUGS, SPEAKING_SLUGS, resolveRouteMeta, SITE } from "./routes";
 import {
     buildJsonLdScript,
     buildPersonJsonLd,
@@ -53,6 +53,9 @@ const ensureJsonLd = (id: string): HTMLScriptElement => {
 const isProjectPath = (pathname: string): boolean =>
     pathname.startsWith("/projects/") && pathname.length > "/projects/".length;
 
+const isSpeakingPath = (pathname: string): boolean =>
+    pathname.startsWith("/speaking/") && pathname.length > "/speaking/".length;
+
 export function useRouteSeo(): void {
     const location = useLocation();
     const params = useParams();
@@ -61,7 +64,9 @@ export function useRouteSeo(): void {
         const pathname = location.pathname;
         const slug = isProjectPath(pathname)
             ? decodeURIComponent(pathname.slice("/projects/".length)).replace(/\/$/, "")
-            : undefined;
+            : isSpeakingPath(pathname)
+                ? decodeURIComponent(pathname.slice("/speaking/".length)).replace(/\/$/, "")
+                : undefined;
 
         const meta = resolveRouteMeta(pathname, slug);
         const canonicalPath = meta.path && meta.path !== "/" ? meta.path : pathname;
@@ -118,6 +123,10 @@ export function useRouteSeo(): void {
         if (slug && PROJECT_SLUGS.includes(slug) && isProjectPath(pathname)) {
             const projectLd = buildProjectJsonLd(slug);
             jsonld = projectLd ?? buildPersonJsonLd();
+        } else if (slug && SPEAKING_SLUGS.includes(slug) && isSpeakingPath(pathname)) {
+            // Speaking JSON-LD builder lands in Commit 6; fall back to the
+            // person schema for now so the head still validates.
+            jsonld = buildPersonJsonLd();
         } else if (pathname === "/") {
             jsonld = { ...buildPersonJsonLd(), ...buildWebsiteJsonLd() };
         } else {

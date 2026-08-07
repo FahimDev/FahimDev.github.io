@@ -1,6 +1,7 @@
 import { createElement, type ReactNode } from "react";
 import { renderToString } from "react-dom/server";
 import { PROJECTS } from "@/constants/projects";
+import { SPEAKINGS } from "@/constants/speakings";
 import { EXPERIENCES } from "@/constants/expriences";
 import { EDUCATIONS } from "@/constants/educations";
 import { SKILLS } from "@/constants/skills";
@@ -80,6 +81,23 @@ const buildProjectMeta = (projectSlug: string): RouteMeta => {
     };
 };
 
+const buildSpeakingMeta = (speakingSlug: string): RouteMeta => {
+    const talk = SPEAKINGS.find((s) => s?.slug === speakingSlug);
+    const title = talk?.title ? `${talk.title} — Speaking` : "Speaking";
+    const rawDescription = talk?.summary || talk?.subtitle || "";
+    const description = truncate(
+        rawDescription ||
+            "Speaking engagement, lecture, or workshop by Md. Ariful Islam."
+    );
+    return {
+        path: `/speaking/${speakingSlug}`,
+        title: `${title} | ${SITE_NAME}`,
+        description,
+        image: talk?.cover || DEFAULT_IMAGE,
+        type: "article",
+    };
+};
+
 export const ROUTE_META: Record<string, RouteMeta> = {
     "/": {
         path: "/",
@@ -104,9 +122,21 @@ export const ROUTE_META: Record<string, RouteMeta> = {
         image: DEFAULT_IMAGE,
         type: "website",
     },
+    "/speaking": {
+        path: "/speaking",
+        title: `Speaking | ${SITE_NAME}`,
+        description:
+            "Conferences, guest lectures, workshops, panels, and live teaching engagements by Md. Ariful Islam on Web3, blockchain, fintech, and software architecture.",
+        image: DEFAULT_IMAGE,
+        type: "website",
+    },
 };
 
 export const PROJECT_SLUGS: string[] = PROJECTS.map((p) => p?.slug).filter(
+    (s): s is string => typeof s === "string" && s.length > 0
+);
+
+export const SPEAKING_SLUGS: string[] = SPEAKINGS.map((s) => s?.slug).filter(
     (s): s is string => typeof s === "string" && s.length > 0
 );
 
@@ -252,6 +282,9 @@ export const flattenProjects = (): FlatProject[] =>
 export const resolveRouteMeta = (pathname: string, slug?: string): RouteMeta => {
     if (pathname.startsWith("/projects/") && slug) {
         return buildProjectMeta(slug);
+    }
+    if (pathname.startsWith("/speaking/") && slug) {
+        return buildSpeakingMeta(slug);
     }
     return (
         ROUTE_META[pathname] ?? {
