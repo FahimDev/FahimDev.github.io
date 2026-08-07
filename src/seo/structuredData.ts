@@ -1,6 +1,7 @@
 import { createElement, type ReactNode } from "react";
 import { renderToString } from "react-dom/server";
 import { PROJECTS } from "@/constants/projects";
+import { SPEAKINGS } from "@/constants/speakings";
 import { SOCIAL_LINKS } from "@/constants/social-links";
 import {
     SITE_URL,
@@ -223,6 +224,48 @@ export const buildProjectJsonLd = (slug: string): Record<string, unknown> | null
     if (project.client) detail["publisher"] = { "@type": "Organization", name: project.client };
     if (Array.isArray(project.techs)) detail["keywords"] = project.techs.join(", ");
     return detail;
+};
+
+export const buildSpeakingEventJsonLd = (slug: string): Record<string, unknown> | null => {
+    const talk = SPEAKINGS.find((s) => s?.slug === slug);
+    if (!talk) return null;
+    const description = (talk.summary || talk.subtitle || talk.title || "").slice(0, 500);
+    const imageUrl = talk.cover ? toAbsoluteUrl(talk.cover) : toAbsoluteUrl(SITE.image);
+    const detail: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: talk.title,
+        headline: talk.subtitle || talk.title,
+        description,
+        url: toAbsoluteUrl(`/speaking/${talk.slug}`),
+        image: imageUrl,
+        startDate: talk.date,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        performer: {
+            "@type": "Person",
+            name: SITE.author,
+            url: SITE.url,
+        },
+        organizer: talk.host
+            ? { "@type": "Organization", name: talk.host }
+            : undefined,
+        location: talk.location
+            ? {
+                  "@type": "Place",
+                  name: talk.location,
+              }
+            : undefined,
+        inLanguage: "en",
+    };
+    if (talk.endDate && talk.endDate !== talk.date) detail["endDate"] = talk.endDate;
+    if (Array.isArray(talk.topics) && talk.topics.length) {
+        detail["keywords"] = talk.topics.join(", ");
+    }
+    // Drop undefined keys so the emitted JSON is clean.
+    return Object.fromEntries(
+        Object.entries(detail).filter(([, v]) => v !== undefined)
+    ) as Record<string, unknown>;
 };
 
 export const buildJsonLdScript = (data: Record<string, unknown>): string =>

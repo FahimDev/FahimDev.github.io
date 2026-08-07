@@ -5,6 +5,7 @@ import {
     buildJsonLdScript,
     buildPersonJsonLd,
     buildProjectJsonLd,
+    buildSpeakingEventJsonLd,
     buildWebsiteJsonLd,
 } from "./structuredData";
 
@@ -124,9 +125,8 @@ export function useRouteSeo(): void {
             const projectLd = buildProjectJsonLd(slug);
             jsonld = projectLd ?? buildPersonJsonLd();
         } else if (slug && SPEAKING_SLUGS.includes(slug) && isSpeakingPath(pathname)) {
-            // Speaking JSON-LD builder lands in Commit 6; fall back to the
-            // person schema for now so the head still validates.
-            jsonld = buildPersonJsonLd();
+            const talkLd = buildSpeakingEventJsonLd(slug);
+            jsonld = talkLd ?? buildPersonJsonLd();
         } else if (pathname === "/") {
             jsonld = { ...buildPersonJsonLd(), ...buildWebsiteJsonLd() };
         } else {
