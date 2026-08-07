@@ -334,14 +334,15 @@ const extractHead = async (pageEval) => {
     return JSON.parse(json);
 };
 
-const extractProjectSlugsFromBuild = async (servedDir) => {
-    // The SPA doesn't expose project slugs to the static shell, so we read the
-    // built JS chunk that contains them. Vite names chunks by content hash; we
-    // scan the served assets for the projects chunk by content match.
+const extractSlugsFromBuild = async (servedDir, marker, afterPattern) => {
+    // The SPA doesn't expose entry slugs to the static shell, so we read the
+    // built JS chunk that contains them. Vite names chunks by content hash;
+    // we scan the served assets for the right chunk by content match.
+    // afterPattern is a regex that must match shortly AFTER the slug field
+    // we're extracting — it lets us distinguish project entries (slug
+    // followed by client:) from speaking entries (slug followed by type:).
     const assetsDir = path.join(servedDir, "assets");
     const files = await fs.readdir(assetsDir);
-    // Look for a chunk that mentions "cross-border-stablecoin-settlement" (one of our slugs).
-    const marker = "cross-border-stablecoin-settlement";
     let chunk;
     for (const f of files) {
         if (!f.endsWith(".js")) continue;
@@ -350,38 +351,25 @@ const extractProjectSlugsFromBuild = async (servedDir) => {
     }
     if (!chunk) return [];
     const txt = await fs.readFile(path.join(assetsDir, chunk), "utf8");
-    // Slugs look like slug:"..." or "slug":"..."
-    const slugRe = /slug:\s*"([a-z0-9-]+)"/g;
+    const slugRe = new RegExp(
+        `slug:\\s*"([a-z0-9-]+)"[\\s\\S]{0,40}?${afterPattern}`,
+        "g"
+    );
     const set = new Set();
     let m;
     while ((m = slugRe.exec(txt)) !== null) set.add(m[1]);
     return [...set];
 };
 
-const extractSlugsFromBuild = async (servedDir, marker) => {
-    // Same trick as projects but pointed at a different marker slug. Keeps the
-    // SSR shell aligned with the constants files without needing a TS import.
-    const assetsDir = path.join(servedDir, "assets");
-    const files = await fs.readdir(assetsDir);
-    let chunk;
-    for (const f of files) {
-        if (!f.endsWith(".js")) continue;
-        const txt = await fs.readFile(path.join(assetsDir, f), "utf8");
-        if (txt.includes(marker)) { chunk = f; break; }
-    }
-    if (!chunk) return [];
-    const txt = await fs.readFile(path.join(assetsDir, chunk), "utf8");
-    const slugRe = /slug:\s*"([a-z0-9-]+)"/g;
-    const set = new Set();
-    let m;
-    while ((m = slugRe.exec(txt)) !== null) set.add(m[1]);
-    return [...set];
-};
+const extractProjectSlugsFromBuild = (servedDir) =>
+    extractSlugsFromBuild(servedDir, "cross-border-stablecoin-settlement", "client:");
 
 const extractSpeakingSlugsFromBuild = (servedDir) =>
     // "future-of-fintech-infrastructure" is one of the speaking slugs in
-    // src/constants/speakings.tsx and is unlikely to collide with anything else.
-    extractSlugsFromBuild(servedDir, "future-of-fintech-infrastructure");
+    // src/constants/speakings.tsx. Anchoring on the next field ("type:") is
+    // what isolates speaking entries from project entries, since both share
+    // the same slug:"..." pattern inside the same JS chunk.
+    extractSlugsFromBuild(servedDir, "future-of-fintech-infrastructure", "type:");
 
 // ---- Main -------------------------------------------------------------------
 
