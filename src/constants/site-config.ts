@@ -37,7 +37,7 @@ export const SITE_ABOUT =
     "Md. Ariful Islam is a software engineer specializing in production Web3, blockchain, and enterprise systems. He has authored IEEE Access and ICBC publications, led a Research Council of Norway–funded healthcare DLT project, and shipped commercial Web3 products (FinCube, Hoteler××m, Fischerm××y, HK Sevens NFT). He currently teaches 695+ students on Ostad and works as Senior Software Engineer at Brain Station 23 PLC.";
 
 // Default share image (relative to site root).
-export const SITE_IMAGE = "/images/exim.webp";
+export const SITE_IMAGE = "/images/OpenGraph-metadata.png";
 
 // ---- Social URLs ------------------------------------------------------------
 // Used in JSON-LD `sameAs` and the snapshot. Components that need icons (JSX)
