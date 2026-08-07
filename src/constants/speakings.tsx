@@ -40,7 +40,7 @@ export const SPEAKINGS: any[] = [
         date: "2024-09-01",
         endDate: "2024-11-30",
         location: "Dhaka, Bangladesh",
-        cover: "/images/speaking/ostad-software-architecture-live/cover.jpg",
+        cover: "/images/blog/6.png",
         summary:
             "Twelve weeks of live, project-based instruction in software architecture and system design, taught to 120+ working engineers across four cohorts. Each cohort ships a distributed-system capstone.",
         tags: ["Live Teaching", "Architecture", "Distributed Systems"],
@@ -97,173 +97,449 @@ export const SPEAKINGS: any[] = [
             { kind: "project", ref: "workforce-management-rota-compliance" },
         ],
     },
+
     {
-        slug: "future-of-fintech-infrastructure",
-        type: "conference",
-        title: "The Future of Fintech Infrastructure — Stablecoin Settlement & Compliance",
+        slug: "aiub-ai-tools-in-research-workshop",
+
+        type: "workshop",
+
+        title: "Workshop on AI Tools in Research",
+
         subtitle:
-            "How programmable cross-border settlement and audit-grade observability are reshaping treasury operations for trade and escrow flows",
-        host: "BD Finance Summit 2024",
-        role: "Speaker",
-        date: "2024-11-12",
-        location: "Dhaka, Bangladesh",
-        cover: "/images/speaking/future-of-fintech-infrastructure/cover.jpg",
+            "A faculty-focused workshop exploring practical AI tools for research, teaching, academic writing, publishing, ethics, and responsible AI use",
+
+        host:
+            "Research Cell, Faculty of Business Administration, American International University-Bangladesh (AIUB)",
+
+        role: "Team Member",
+
+        date: "2024-06-12",
+
+        location:
+            "Media Studio, Annex-2, Level-2, AIUB Campus",
+
+        cover:
+            "/images/event/aiub-ai-workshop/cover.jpg",
+
         summary:
-            "A 35-minute keynote at the BD Finance Summit on production stablecoin settlement, AML compliance, and the observability stack required to operate it.",
-        tags: ["Fintech", "Web3", "Conference", "Keynote"],
+            "A two-hour workshop organized by the Research Cell of AIUB's Faculty of Business Administration to introduce faculty members to modern AI tools for research and teaching. The session covered AI-assisted literature review, academic writing and editing, citation generation, illustration, data analysis and visualization, alongside AI ethics, detection, publishing policies, and responsible use.",
+
+        tags: [
+            "AI in Research",
+            "Research Tools",
+            "AI Ethics",
+            "Academic Publishing",
+            "Workshop",
+        ],
+
         topics: [
-            "Why nostro pre-funding is the wrong default for cross-border B2B",
-            "Programmable settlement with stablecoins and audit-grade proof-of-reserve",
-            "Bridging digital assets with legacy ERP / custody / treasury systems",
-            "Observability as a compliance primitive: OpenTelemetry, Prometheus, Grafana",
-            "Pilot results: 40% reduction in nostro pre-funding, 65% faster reconciliation",
+            "Artificial Intelligence fundamentals and Human vs AI benchmarking",
+
+            "AI tools for literature review and research discovery",
+
+            "AI-assisted academic writing and editing",
+
+            "Citation-generation and illustration tools",
+
+            "AI-supported data analysis and visualization",
+
+            "AI ethics, AI detection, and responsible use",
+
+            "Publishing bodies' perspectives and policies regarding AI",
+
+            "Using AI to augment human creativity and research productivity",
         ],
+
         interaction: [
-            "Q&A with the audience",
-            "Panel discussion with central-bank and treasury representatives",
+            "Faculty-focused workshop",
+            "Presentation and practical discussion of AI research tools",
+            "Active participation from Faculty of Business Administration members",
         ],
-        keyTakeaways: [
-            "Standing-room audience of 280+",
-            "Coverage in two fintech trade publications the following week",
-            "Two pilot follow-ups with trade-finance partners",
-        ],
+
         photos: [
             {
-                src: "/images/speaking/future-of-fintech-infrastructure/01-stage.jpg",
-                alt: "On stage at BD Finance Summit 2024",
-                caption: "Main hall — BD Finance Summit 2024",
+                src:
+                    "/images/event/aiub-ai-workshop/1.jpg",
+
+                alt:
+                    "Workshop session on AI tools in research at the AIUB Media Studio.",
+
+                caption:
+                    "Dr. Khandaker Tabin Hasan - Professor, Associate Dean and Engr. Md Ariful Islam - Web3 Lead, Senior Software Engineer",
             },
+
             {
-                src: "/images/speaking/future-of-fintech-infrastructure/02-panel.jpg",
-                alt: "Panel discussion with central-bank representatives",
-                caption: "Panel: programmable money and central-bank oversight",
-            },
+                src:
+                    "/images/event/aiub-ai-workshop/2.jpg",
+
+                alt:
+                    "Workshop session on AI tools in research at the AIUB Media Studio.",
+
+                caption:
+                    "Former Tech Lead of Microsoft Engr. MJ Ferdous and Engr. Ariful Islam's Team taking workshop token of memory from AIUB Associate Dean",
+            },   
+            
             {
-                src: "/images/speaking/future-of-fintech-infrastructure/03-qa.jpg",
-                alt: "Q&A session after the keynote",
-                caption: "Q&A with the audience after the keynote",
-            },
-            {
-                src: "/images/speaking/future-of-fintech-infrastructure/04-slides.jpg",
-                alt: "Slide deck on the projector",
-                caption: "Pilot results slide — 40% reduction in nostro pre-funding",
-            },
+                src:
+                    "/images/event/aiub-ai-workshop/3.jpg",
+
+                alt:
+                    "Workshop session on AI tools in research at the AIUB Media Studio.",
+
+                caption:
+                    "Former Tech Lead of Microsoft Engr. MJ Ferdous is presenting and Engr. Ariful Islam and assisting him on the workshop visuals",
+            },             
         ],
+
         evidence: [
             {
-                type: "slides",
-                url: "https://github.com/fahimdev/talks/fintech-infrastructure-2024",
-                label: "Slide deck on GitHub",
-            },
-            {
                 type: "press",
-                url: "https://example.com/fintech-press/future-of-fintech-infrastructure",
-                label: "Trade press coverage",
+
+                url:
+                    "https://www.aiub.edu/workshop-on-ai-tools-in-research",
+
+                label:
+                    "Official AIUB event coverage",
             },
         ],
-        related: [
-            { kind: "project", ref: "cross-border-stablecoin-settlement" },
-            { kind: "project", ref: "rag-crypto-fraud-detection-ethereum" },
-        ],
+
+        related: [],
     },
+
     {
-        slug: "research-council-norway-dlt-lecture",
-        type: "guest-lecture",
-        title: "Permissioned DLT for National Healthcare — Research-to-Production",
+        slug: "kuet-bitfest-philosophy-of-decentralized-applications",
+
+        type: "industry-talk",
+
+        title: "The Philosophy of Decentralized Applications",
+
         subtitle:
-            "A guest lecture at the University of Stavanger on translating the 5G-MODaNeI healthcare-DLT research into a working Hyperledger Fabric prototype",
-        host: "University of Stavanger · 5G-MODaNeI Research Group",
-        role: "Guest Lecturer",
-        date: "2024-02-21",
-        location: "Stavanger, Norway",
-        cover: "/images/speaking/research-council-norway-dlt-lecture/cover.jpg",
+            "An industry seminar at KUET BitFest exploring why decentralization is more than putting application logic on a blockchain — and how trust, ownership, governance, architecture, and real-world engineering shape meaningful decentralized applications",
+
+        host:
+            "KUET BitFest 2.0 · Department of Computer Science and Engineering, Khulna University of Engineering & Technology (KUET)",
+
+        role: "Invited Industry Speaker · Brain Station 23 PLC Representative",
+
+        // KUET lists BitFest 2.0 from 3–5 January 2025.
+        // Replace this with the exact seminar date if your invitation/certificate
+        // confirms that your speaking slot was on another day.
+        date: "2025-01-03",
+
+        location:
+            "Khulna University of Engineering & Technology (KUET), Khulna, Bangladesh",
+
+        cover:
+            "/images/event/kuet-web3/cover.png",
+
         summary:
-            "Guest lecture in the MSc Data Science program on the end-to-end journey from published research to a working multi-organization Hyperledger Fabric prototype for Bangladesh's national healthcare system.",
-        tags: ["Guest Lecture", "Research", "Blockchain", "Healthcare"],
+            "Invited to KUET BitFest as an industry speaker representing Brain Station 23 PLC, I presented a seminar on the philosophy behind decentralized applications. Rather than treating blockchain as a technology to add by default, the session focused on the deeper engineering question of what should actually be decentralized, why decentralization matters, and how application architecture changes when trust, ownership, governance, and control are distributed. The engagement concluded with recognition from KUET, where I received a speaker crest from Pro-Vice-Chancellor Professor Dr. Sk. Shariful Alam.",
+
+        tags: [
+            "Decentralized Applications",
+            "Web3",
+            "Blockchain",
+            "Software Architecture",
+            "Industry–Academia",
+        ],
+
         topics: [
-            "From IEEE Access paper to a working proof of concept",
-            "Permissioned identity with Fabric CA, MSPs, and digital health cards",
-            "Smart-contract-driven consent and tamper-evident prescriptions",
-            "Performance: 25,509 requests with 96.34% success under 100 concurrent users",
-            "Research agenda: HL7 FHIR, privacy-preserving analytics, multi-site evaluation",
+            "The philosophy behind decentralization and why a DApp is more than a blockchain-enabled frontend",
+
+            "Centralized applications versus decentralized applications from an architectural perspective",
+
+            "Removing or reducing dependence on a single trusted authority",
+
+            "Trust, verification, transparency, and ownership in decentralized systems",
+
+            "Understanding what should — and should not — be placed on-chain",
+
+            "Smart contracts as programmable coordination and business-rule infrastructure",
+
+            "The relationship between decentralization, governance, and user control",
+
+            "Engineering trade-offs between decentralization, scalability, usability, cost, and maintainability",
+
+            "Moving from blockchain concepts and prototypes toward production-grade decentralized applications",
         ],
+
         interaction: [
-            "60-minute lecture",
-            "45-minute Q&A with MSc and PhD students",
-            "Research-group dinner and informal discussion",
+            "Invited industry seminar",
+            "Technical presentation to the KUET BitFest audience",
+            "Industry–academia knowledge sharing on Web3 and decentralized application engineering",
+            "Recognition ceremony with speaker crest presented by the KUET Pro-Vice-Chancellor",
         ],
+
         photos: [
             {
-                src: "/images/speaking/research-council-norway-dlt-lecture/01-lecture-hall.jpg",
-                alt: "Lecture hall at the University of Stavanger",
-                caption: "MSc Data Science cohort — University of Stavanger",
+                src:
+                    "/images/event/kuet-web3/1.jpg",
+
+                alt:
+                    "Industry speaker representing Brain Station 23 presenting a seminar on decentralized applications at KUET BitFest.",
+
+                caption:
+                    "Presenting “The Philosophy of Decentralized Applications” at KUET BitFest.",
             },
+
             {
-                src: "/images/speaking/research-council-norway-dlt-lecture/02-prototype.jpg",
-                alt: "Live demo of the Fabric network",
-                caption: "Live demo — multi-organization Fabric network",
+                src:
+                    "/images/event/kuet-web3/2.jpg",
+
+                alt:
+                    "Speaker presenting decentralized application concepts to participants at KUET BitFest.",
+
+                caption:
+                    "Discussing how decentralization changes trust, ownership, governance, and application architecture.",
             },
+
             {
-                src: "/images/speaking/research-council-norway-dlt-lecture/03-research-group.jpg",
-                alt: "Research-group dinner after the lecture",
-                caption: "With the 5G-MODaNeI research group after the lecture",
+                src:
+                    "/images/event/kuet-web3/3.jpg",
+
+                alt:
+                    "Industry speaker receiving a recognition crest from KUET Pro-Vice-Chancellor Professor Dr. Sk. Shariful Alam.",
+
+                caption:
+                    "Receiving the industry-speaker crest from KUET Pro-Vice-Chancellor Professor Dr. Sk. Shariful Alam on behalf of Brain Station 23 PLC.",
             },
         ],
+
         evidence: [
             {
-                type: "publication",
-                url: "https://doi.org/10.1109/ACCESS.2023.3279724",
-                label: "IEEE Access paper — DOI 10.1109/ACCESS.2023.3279724",
+                type: "official",
+                url: "https://www.kuet.ac.bd/",
+                label: "KUET — BitFest 2.0 event listing",
             },
+
             {
                 type: "press",
-                url: "https://www.uis.no/en/news/healthcare-blockchain-lecture",
-                label: "University of Stavanger news",
+                url: "https://www.bdren.net.bd/news/200",
+                label: "BdREN coverage of KUET BitFest 2025",
             },
         ],
+
         related: [
-            { kind: "project", ref: "dlt-integrated-healthcare-solution-bangladesh" },
+            {
+                kind: "project",
+                ref: "cross-border-stablecoin-settlement",
+            },
+
+            {
+                kind: "project",
+                ref: "dlt-integrated-healthcare-solution-bangladesh",
+            },
         ],
-    },
+    },   
+
+
     {
-        slug: "developer-week-blockchain-panel",
+        slug: "linea-voyage-road-to-dencun-dhaka",
+
         type: "panel",
-        title: "Web3 Mainstream Adoption — The Engineering Path Forward",
+
+        title: "Linea Voyage Waypoint: The Road to Dencun",
+
         subtitle:
-            "A 50-minute panel on the engineering trade-offs between Web3 friction and mainstream onboarding, with hands-on examples from production launches",
-        host: "DeveloperWeek Global 2023",
-        role: "Panelist",
-        date: "2023-11-15",
-        location: "Virtual",
-        cover: "/images/speaking/developer-week-blockchain-panel/cover.jpg",
+            "A Dhaka panel exploring Ethereum's Dencun upgrade, EIP-4844, Layer 2 scalability, lower transaction costs, and what the next phase of Ethereum infrastructure means for builders and decentralized applications",
+
+        host:
+            "Linea Voyage Waypoint · Road to Dencun — Dhaka · Community event with Leveor",
+
+        role:
+            "Invited Panel Speaker · Substitute for Prof. Dr. Md Sadek Ferdous",
+
+        date: "2024-02-17",
+
+        location: "Dhaka, Bangladesh",
+
+        cover: 
+            "/images/event/linea/cover.jpeg",
+
+
         summary:
-            "A virtual panel with three other engineers on the engineering trade-offs behind Web3 mainstream adoption: gas-sponsored UX, recovery flows, and EIP-1559 fee control.",
-        tags: ["Web3", "Panel", "UX"],
-        topics: [
-            "Hiding blockchain complexity from mainstream users",
-            "Credit-card onboarding and gas-sponsored transactions",
-            "EIP-1559 fee control and bounded-fee parameter design",
-            "Transaction recovery and concurrent-ownership consistency",
-            "Multi-chain and DAO-ready platform primitives",
+            "Invited to join the Dhaka edition of Linea Voyage Waypoint: The Road to Dencun as a panel speaker when Prof. Dr. Md Sadek Ferdous was unable to attend. The discussion brought together engineers and Web3 ecosystem contributors to examine Ethereum's upcoming Dencun upgrade, particularly EIP-4844, and its implications for rollup economics, Layer 2 scalability, data availability, transaction costs, and the developer experience of building decentralized applications.",
+
+        tags: [
+            "Ethereum",
+            "Dencun",
+            "EIP-4844",
+            "Layer 2",
+            "Linea",
+            "Panel",
         ],
-        interaction: ["Live panel", "Audience Q&A from the DeveloperWeek app"],
+
+        topics: [
+            "Why Ethereum needed the Dencun network upgrade",
+
+            "EIP-4844 and proto-danksharding as a step toward Ethereum's rollup-centric scaling roadmap",
+
+            "How blob transactions change the way Layer 2 networks publish data to Ethereum",
+
+            "Reducing Layer 2 data-availability costs and transaction fees",
+
+            "The impact of Dencun on rollups such as Linea",
+
+            "Scalability trade-offs between Ethereum Layer 1 and Layer 2 networks",
+
+            "How lower transaction costs can improve the usability and adoption of decentralized applications",
+
+            "What protocol-level improvements mean for application developers and Web3 product teams",
+
+            "The relationship between infrastructure evolution, developer experience, and mainstream Web3 adoption",
+        ],
+
+        interaction: [
+            "Invited technical panel",
+            "Multi-speaker discussion on Ethereum infrastructure and Layer 2 scaling",
+            "Community discussion around the upcoming Dencun upgrade",
+            "Discussion with engineers and Web3 ecosystem contributors",
+            "Audience Q&A and community interaction",
+        ],
+
+        panelists: [
+            {
+                name: "Md. Ariful Islam",
+                role: "Invited Panel Speaker",
+                note:
+                    "Joined the panel in place of Prof. Dr. Md Sadek Ferdous, who was unable to attend",
+            },
+
+            {
+                name: "Late Engr. Tahlil Abser",
+                roleAtEvent: "Founding Blockchain Engineer",
+                organizationAtEvent: "Leveor",
+            },
+
+            {
+                name: "Susmita",
+                organizationAtEvent: "Consensys",
+            },
+
+            {
+                name: "Engr. Saad",
+                roleAtEvent: "Founder",
+                organizationAtEvent: "Leveor",
+            },
+
+            {
+                name: "Mohammad Rayed",
+                roleAtEvent: "Blockchain Engineer",
+                organizationAtEvent: "Tero Labs LLC",
+            },
+
+            {
+                name: "Mahmudul Alam",
+                roleAtEvent: "Software Engineer",
+                organizationAtEvent: "Universal Machine",
+            },
+
+            {
+                name: "Shubho",
+                organizationAtEvent: "Red Oracle Lab",
+            },
+        ],
+
         photos: [
             {
-                src: "/images/speaking/developer-week-blockchain-panel/01-panel.jpg",
-                alt: "Panel screen with all four panelists",
-                caption: "Live panel — DeveloperWeek Global 2023",
+                src:
+                    "/images/event/linea/1.jpeg",
+
+                alt:
+                    "Panel speakers discussing Ethereum and Layer 2 scalability during the Linea Voyage Waypoint Road to Dencun event in Dhaka.",
+
+                caption:
+                    "Panel discussion at Linea Voyage Waypoint: The Road to Dencun — Dhaka.",
             },
+
+            {
+                src:
+                    "/images/event/linea/2.jpeg",
+
+                alt:
+                    "Technical discussion with Web3 engineers and ecosystem contributors at the Linea Road to Dencun event in Dhaka.",
+
+                caption:
+                    "Discussing how Dencun and EIP-4844 could reshape Layer 2 scalability and transaction economics.",
+            },
+
+            {
+                src:
+                    "/images/event/linea/3.jpeg",
+
+                alt:
+                    "Panel speakers discussing Ethereum and Layer 2 scalability during the Linea Voyage Waypoint Road to Dencun event in Dhaka.",
+
+                caption:
+                    "Panel discussion at Linea Voyage Waypoint: The Road to Dencun — Dhaka.",
+            },
+
+            {
+                src:
+                    "/images/event/linea/5.jpeg",
+
+                alt:
+                    "Technical discussion with Web3 engineers and ecosystem contributors at the Linea Road to Dencun event in Dhaka.",
+
+                caption:
+                    "Discussing how Dencun and EIP-4844 could reshape Layer 2 scalability and transaction economics.",
+            },  
+
+            {
+                src:
+                    "/images/event/linea/7.jpeg",
+
+                alt:
+                    "Panel speakers discussing Ethereum and Layer 2 scalability during the Linea Voyage Waypoint Road to Dencun event in Dhaka.",
+
+                caption:
+                    "Panel discussion at Linea Voyage Waypoint: The Road to Dencun — Dhaka.",
+            },
+
+            {
+                src:
+                    "/images/event/linea/8.jpeg",
+
+                alt:
+                    "Technical discussion with Web3 engineers and ecosystem contributors at the Linea Road to Dencun event in Dhaka.",
+
+                caption:
+                    "Discussing how Dencun and EIP-4844 could reshape Layer 2 scalability and transaction economics.",
+            },      
         ],
+
         evidence: [
             {
-                type: "press",
-                url: "https://developerweek.com/global/agenda",
-                label: "Agenda listing",
+                type: "official",
+
+                url:
+                    "https://linea.build/blog/linea-voyage-waypoint-road-to-dencun",
+
+                label:
+                    "Official Linea — Road to Dencun announcement",
+            },
+
+            {
+                type: "official",
+
+                url:
+                    "https://blog.ethereum.org/2024/02/27/dencun-mainnet-announcement",
+
+                label:
+                    "Ethereum Foundation — Dencun Mainnet Announcement",
             },
         ],
+
         related: [
-            { kind: "project", ref: "hk-sevens-scalable-web3-fan-engagement" },
-            { kind: "project", ref: "hotel-booking-nft-marketplace" },
+            {
+                kind: "project",
+                ref: "cross-border-stablecoin-settlement",
+            },
+
+            {
+                kind: "project",
+                ref: "hotel-booking-nft-marketplace",
+            },
         ],
     },
 ];
