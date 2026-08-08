@@ -99,6 +99,239 @@ export const SPEAKINGS: any[] = [
     },
 
     {
+        slug: "bracu-cse-research-day-frontier-engineering-dhaka",
+
+        type: "guest-lecture",
+
+        title: "Engineering Frontier Technologies from Dhaka",
+
+        subtitle:
+            "An industry talk at BRAC University CSE Research Day 2026 on how a Dhaka-based engineering team combined global client delivery, Web3 R&D, research publication, AI-DLC, and Spec-Driven Development instead of accepting the traditional divide between commercial software and academic research",
+
+        host:
+            "CSE Research Day 2026 · Department of Computer Science and Engineering, BRAC University",
+
+        role:
+            "Invited Guest Speaker · Industry Representative, Brain Station 23 PLC",
+
+        date: "2026-06-19",
+
+        location:
+            "BRAC University, Merul Badda Campus, Dhaka, Bangladesh",
+
+        cover:
+            "/images/event/bracu/cover.jpeg",
+
+        summary:
+            "Invited as an industry guest speaker at BRAC University's CSE Research Day 2026, I presented the engineering and R&D journey of Brain Station 23's Web3 team as a counterexample to the idea that serious frontier-technology work must happen outside Bangladesh. The session explored how one engineering unit can deliver production systems for global clients while continuously investing in research, publishing technical work, adopting AI-assisted development practices, and building engineers capable of working across software architecture, Web3, distributed systems, and emerging technologies.",
+
+        tags: [
+            "Web3",
+            "Frontier Technologies",
+            "AI-DLC",
+            "Spec-Driven Development",
+            "R&D",
+            "Industry–Academia",
+        ],
+
+        topics: [
+            "Breaking the stereotype that software engineering in Dhaka is limited to CRUD development and API integration",
+
+            "How a production engineering team can serve global clients while maintaining an active research and publication culture",
+
+            "The Web3 engineering journey of Brain Station 23 and the transition from project delivery toward reusable technical capability",
+
+            "Why commercial software development and academic research do not need to operate as separate career tracks",
+
+            "Building a team culture where production incidents, architecture discussions, and engineering problems can become research questions",
+
+            "AI-Driven Development Lifecycle (AI-DLC) and how AI is changing software-development workflows",
+
+            "Spec-Driven Development (SDD) as a way to define architecture, constraints, behavior, and acceptance criteria before generating code",
+
+            "Why strong fundamentals, technical reading, and continuous learning remain essential even when AI can generate code",
+
+            "Prompt quality as an engineering skill: giving AI enough architectural context to generate maintainable, secure, and cost-effective software",
+
+            "Developing frontier-technology capability locally instead of assuming advanced engineering opportunities only exist abroad",
+
+            "Building stronger bridges between academic research and production engineering in Bangladesh",
+        ],
+
+        interaction: [
+            "Invited industry presentation",
+
+            "Frontier Technologies panel discussion",
+
+            "Industry–academia discussion with researchers working across blockchain, machine learning, cosmology, and quantum computing",
+
+            "Audience interaction in a capacity-filled university auditorium",
+
+            "Discussion on engineering careers, research culture, and emerging software-development practices",
+        ],
+
+        panelists: [
+            {
+                name: "Md. Ariful Islam",
+                roleAtEvent: "Invited Guest Speaker · Industry Representative",
+                organizationAtEvent: "Brain Station 23 PLC",
+                focus:
+                    "Web3 engineering, production R&D, AI-DLC, Spec-Driven Development, and industry–academia collaboration",
+            },
+
+            {
+                name: "Dr. Md. Sadek Ferdous",
+                roleAtEvent: "Professor",
+                organizationAtEvent:
+                    "Department of Computer Science and Engineering, BRAC University",
+                additionalAffiliation:
+                    "Honorary Research Fellow, Institute for Security Science and Technology, Imperial College London",
+                focus:
+                    "Blockchain, security, decentralized identity, and cryptographic governance",
+            },
+
+            {
+                name: "Ipshita Bonhi Upoma",
+                roleAtEvent: "Lecturer",
+                organizationAtEvent:
+                    "Department of Computer Science and Engineering, BRAC University",
+                education:
+                    "Durham University",
+                focus:
+                    "Machine learning, interdisciplinary research, and computational science",
+            },
+
+            {
+                name: "Sowmitra Das",
+                roleAtEvent: "Senior Lecturer",
+                organizationAtEvent:
+                    "Department of Computer Science and Engineering, BRAC University",
+                additionalAffiliation:
+                    "Visiting Researcher in Theoretical Quantum Information Sciences, Imperial College London",
+                focus:
+                    "Quantum computing, quantum information theory, and interdisciplinary computing research",
+            },
+        ],
+
+        photos: [
+            {
+                src:
+                    "/images/event/bracu/1.jpeg",
+
+                alt:
+                    "Guest speaker presenting the engineering and research journey of Brain Station 23's Web3 team at BRAC University CSE Research Day 2026.",
+
+                caption:
+                    "Presenting how production engineering, Web3 R&D, and research publication can coexist within the same engineering team.",
+            },
+
+            {
+                src:
+                    "/images/event/bracu/2.jpeg",
+
+                alt:
+                    "Frontier Technologies panel at BRAC University CSE Research Day 2026 with academic researchers and an industry guest speaker.",
+
+                caption:
+                    "Frontier Technologies panel connecting active academic research with industry engineering practice.",
+            },
+
+            {
+                src:
+                    "/images/event/bracu/3.jpeg",
+
+                alt:
+                    "Students filling the auditorium during CSE Research Day 2026 at BRAC University.",
+
+                caption:
+                    "A packed auditorium during the holiday event reflected strong student interest in research and frontier engineering.",
+            },
+
+            {
+                src:
+                    "/images/event/bracu/4.jpeg",
+
+                alt:
+                    "Guest speaker receiving recognition at BRAC University CSE Research Day 2026.",
+
+                caption:
+                    "Recognition following the Frontier Technologies session at BRAC University.",
+            },
+
+            {
+                src:
+                    "/images/event/bracu/5.jpeg",
+
+                alt:
+                    "Students filling the auditorium during CSE Research Day 2026 at BRAC University.",
+
+                caption:
+                    "Building a team culture where production incidents, architecture discussions, and engineering problems can become research questions",
+            },
+
+            {
+                src:
+                    "/images/event/bracu/6.jpeg",
+
+                alt:
+                    "Frontier Technologies academic researchers and an industry guest speaker networking session.",
+
+                caption:
+                    "Frontier Technologies academic researchers and an industry guest speaker networking session.",
+            },
+        ],
+
+        evidence: [
+            {
+                type: "press",
+
+                url:
+                    "https://www.tbsnews.net/economy/corporates/brac-university-hosts-cse-research-day-2026-1469566",
+
+                label:
+                    "The Business Standard — BRAC University hosts CSE Research Day 2026",
+            },
+
+            {
+                type: "press",
+
+                url:
+                    "https://www.dhakatribune.com/business/413324/brac-university-cse-research-day-2026-explores",
+
+                label:
+                    "Dhaka Tribune — CSE Research Day 2026 coverage",
+            },
+
+            {
+                type: "official",
+
+                url:
+                    "https://cse.sds.bracu.ac.bd/",
+
+                label:
+                    "BRAC University · Department of Computer Science and Engineering",
+            },
+        ],
+
+        related: [
+            {
+                kind: "project",
+                ref: "cross-border-stablecoin-settlement",
+            },
+
+            {
+                kind: "project",
+                ref: "dlt-integrated-healthcare-solution-bangladesh",
+            },
+
+            {
+                kind: "publication",
+                ref: "hybrid-evm-event-driven-architecture",
+            },
+        ],
+    },    
+
+    {
         slug: "aiub-ai-tools-in-research-workshop",
 
         type: "workshop",
