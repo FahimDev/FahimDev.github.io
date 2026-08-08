@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import ContactButton from "./ContactButton";
+import PrimaryNav from "./PrimaryNav";
 
 interface Props {
     title: string;
@@ -15,11 +14,10 @@ export default function MacBox({ title, desc }: Props) {
                     <div className="size-4 rounded-full bg-yellow-500"></div>
                     <div className="size-4 rounded-full bg-green-500"></div>
                 </div>
-                <div className="flex gap-2 font-bold text-base">
-                    <Link to="/">Home</Link>
-                    <div>|</div>
-                    <ContactButton />
-                </div>
+                {/* Shared global nav keeps the browser-window title bar in
+                    sync with the same Home | Blog | Contact row used on the
+                    Projects / Speaking / Blog list pages. */}
+                <PrimaryNav variant="bar" className="font-bold text-base" />
             </div>
             <div className="bg-secondary py-3 px-5 rounded-xl h-[32rem]">
                 <div className="grid lg:grid-cols-2 grid-cols-1  lg:gap-44 h-full">

@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useMemo } from "react";
-import { ChevronsLeft, Calendar, MapPin, Building2, Tag } from "lucide-react";
+import { Calendar, MapPin, Building2, Tag } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SPEAKINGS } from "@/constants/speakings";
 import { SpeakingCard, TYPE_META } from "@/components/speaking/SpeakingCard";
 import { SpeakingGallery } from "@/components/speaking/SpeakingGallery";
 import { SpeakingEvidence } from "@/components/speaking/SpeakingEvidence";
+import Breadcrumb from "@/components/layout/Breadcrumb";
 import { useRouteSeo } from "@/seo/useRouteSeo";
 
 const formatDate = (iso: string): string => {
@@ -78,15 +79,15 @@ export default function SpeakingView() {
 
     return (
         <div className="container">
-            {/* Breadcrumb */}
-            <div className="flex gap-3 items-center my-7">
-                <Link to="/speaking" className="flex items-center gap-2">
-                    <ChevronsLeft className="size-10" />
-                    <span className="text-sm text-muted-foreground">
-                        Back to all speaking
-                    </span>
-                </Link>
-            </div>
+            {/* Breadcrumb: Home / Speaking / Current Event. The last item
+                is the current page and gets aria-current="page". */}
+            <Breadcrumb
+                items={[
+                    { label: "Home", to: "/" },
+                    { label: "Speaking", to: "/speaking" },
+                    { label: item.title },
+                ]}
+            />
 
             {/* Hero */}
             <section className="grid md:grid-cols-2 gap-8 pb-8">

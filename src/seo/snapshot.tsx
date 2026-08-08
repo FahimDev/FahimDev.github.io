@@ -262,15 +262,102 @@ const awardsSection = () => {
     );
 };
 
+// Minimal Contact section so /#contact resolves in the prerendered
+// snapshot (Footer is React-only and lives outside the snapshot). Mirrors
+// src/components/layout/Footer.tsx.
+const contactSection = () =>
+    el(
+        "section",
+        { "aria-label": "Contact", id: "contact" },
+        el("h2", {}, "Contact"),
+        el(
+            "p",
+            {},
+            text("Email: "),
+            el(
+                "a",
+                { href: "mailto:fahim.arif0373@outlook.com" },
+                text("fahim.arif0373@outlook.com")
+            )
+        )
+    );
+
+// Site-wide primary nav (Home | Blog | Contact) for per-route snapshots.
+// Mirrors src/components/layout/PrimaryNav.tsx.
+const primaryNavBlock = () =>
+    el(
+        "nav",
+        { "aria-label": "Primary" },
+        el("a", { href: "/" }, text("Home")),
+        el("span", { "aria-hidden": "true" }, text("|")),
+        el("a", { href: "/blogs" }, text("Blog")),
+        el("span", { "aria-hidden": "true" }, text("|")),
+        el("a", { href: "/#contact" }, text("Contact"))
+    );
+
+// Breadcrumb block for detail-page snapshots. Mirrors
+// src/components/layout/Breadcrumb.tsx. The last item is rendered as a
+// <span aria-current="page"> rather than a link.
+const breadcrumbBlock = (items: Array<{ label: string; to?: string }>) => {
+    const last = items.length - 1;
+    return el(
+        "nav",
+        { "aria-label": "Breadcrumb" },
+        el(
+            "ol",
+            {},
+            ...items.map((item, idx) => {
+                const isLast = idx === last;
+                if (isLast || !item.to) {
+                    return el(
+                        "li",
+                        {},
+                        el(
+                            "span",
+                            { "aria-current": "page" },
+                            text(item.label)
+                        )
+                    );
+                }
+                return el(
+                    "li",
+                    {},
+                    el("a", { href: item.to }, text(item.label)),
+                    el("span", { "aria-hidden": "true" }, text("/"))
+                );
+            })
+        )
+    );
+};
+
 // ---- Entry points -----------------------------------------------------------
 
 // Full snapshot: every section. Used on the home page (/) and as the body of
 // cv.json. Safe to call at build time and in the browser.
 export const renderFullSnapshot = (): string => {
-    // Top-of-page discovery nav so crawlers and JS-disabled visitors can
-    // reach the four primary destinations (/projects, /speaking, plus the
-    // in-page #experience and #research fragments) from the homepage
-    // snapshot. Order matches the React-side <nav> in src/pages/home.tsx.
+    // Top-of-page site-wide nav so crawlers and JS-disabled visitors see
+    // the same Home | Blog | Contact row as the React-rendered page. Mirrors
+    // src/components/layout/PrimaryNav.tsx.
+    const primaryNav = el(
+        "nav",
+        { "aria-label": "Primary" },
+        el("a", { href: "/" }, text("Home")),
+        el(
+            "span",
+            { "aria-hidden": "true" },
+            text("|")
+        ),
+        el("a", { href: "/blogs" }, text("Blog")),
+        el(
+            "span",
+            { "aria-hidden": "true" },
+            text("|")
+        ),
+        el("a", { href: "/#contact" }, text("Contact"))
+    );
+    // The four landing-page IA targets (Projects / Experience / Research /
+    // Speaking) inside the MacBox title-bar wrapper. Order matches the
+    // React-side <nav aria-label="Primary discovery"> in src/pages/home.tsx.
     const discoveryNav = el(
         "nav",
         { "aria-label": "Primary discovery" },
@@ -303,6 +390,7 @@ export const renderFullSnapshot = (): string => {
     const tree = el(
         "main",
         { id: "seo-snapshot", role: "main", "aria-label": "Profile snapshot" },
+        primaryNav,
         discoveryNav,
         headshotSection(),
         aboutSection(),
@@ -312,7 +400,8 @@ export const renderFullSnapshot = (): string => {
         projectsSection(0),
         publicationsSection(),
         trainingsSection(),
-        awardsSection()
+        awardsSection(),
+        contactSection()
     );
     return renderToString(tree);
 };
@@ -326,6 +415,12 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
             const tree = el(
                 "main",
                 { id: "seo-snapshot", role: "main", "aria-label": `Project: ${p.title}` },
+                primaryNavBlock(),
+                breadcrumbBlock([
+                    { label: "Home", to: "/" },
+                    { label: "Projects", to: "/projects" },
+                    { label: p.title },
+                ]),
                 el(
                     "article",
                     {},
@@ -347,6 +442,11 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
         const tree = el(
             "main",
             { id: "seo-snapshot", role: "main", "aria-label": "Blogs index" },
+            primaryNavBlock(),
+            breadcrumbBlock([
+                { label: "Home", to: "/" },
+                { label: "Blog" },
+            ]),
             publicationsSection(),
             trainingsSection()
         );
@@ -356,6 +456,11 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
         const tree = el(
             "main",
             { id: "seo-snapshot", role: "main", "aria-label": "Projects index" },
+            primaryNavBlock(),
+            breadcrumbBlock([
+                { label: "Home", to: "/" },
+                { label: "Projects" },
+            ]),
             projectsSection(0)
         );
         return renderToString(tree);
@@ -367,6 +472,12 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
             const tree = el(
                 "main",
                 { id: "seo-snapshot", role: "main", "aria-label": `Speaking: ${s.title}` },
+                primaryNavBlock(),
+                breadcrumbBlock([
+                    { label: "Home", to: "/" },
+                    { label: "Speaking", to: "/speaking" },
+                    { label: s.title },
+                ]),
                 el(
                     "article",
                     {},
@@ -400,6 +511,11 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
         const tree = el(
             "main",
             { id: "seo-snapshot", role: "main", "aria-label": "Speaking index" },
+            primaryNavBlock(),
+            breadcrumbBlock([
+                { label: "Home", to: "/" },
+                { label: "Speaking" },
+            ]),
             el(
                 "section",
                 {},

@@ -1,4 +1,5 @@
 import MacBoxProject from "@/components/layout/MacBoxProject";
+import Breadcrumb from "@/components/layout/Breadcrumb";
 import MoreAboutProject from "@/components/project/MoreAboutProject";
 import { PROJECTS } from "@/constants/projects";
 import { findLast } from "@/utils/helpers";
@@ -21,6 +22,13 @@ export default function ProjectView() {
 
     return (
         <div>
+            <Breadcrumb
+                items={[
+                    { label: "Home", to: "/" },
+                    { label: "Projects", to: "/projects" },
+                    { label: project?.title ?? "Project" },
+                ]}
+            />
             <div className="container">
                 <h1 className="text-4xl font-extrabold my-7">
                     Project Overview of {project?.title}

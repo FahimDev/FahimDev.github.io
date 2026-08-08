@@ -1,11 +1,10 @@
-import { ChevronsLeft } from "lucide-react";
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { SPEAKINGS } from "@/constants/speakings";
 import {
     SpeakingCard,
     SpeakingFeatured,
 } from "@/components/speaking/SpeakingCard";
+import PageHeader from "@/components/layout/PageHeader";
 
 const ALL_TYPES = [
     "all",
@@ -67,13 +66,8 @@ export default function Speakings() {
 
     return (
         <div>
+            <PageHeader title="Speaking" backLabel="Back to home" />
             <div className="container">
-                <div className="flex gap-5 items-center my-7">
-                    <Link to="/">
-                        <ChevronsLeft className="size-14" />
-                    </Link>
-                    <h1 className="text-4xl font-extrabold">Speaking</h1>
-                </div>
                 <p className="text-lg text-muted-foreground max-w-3xl mb-7">
                     Conferences, guest lectures, workshops, panels, and live
                     teaching. Each entry links to the recorded session, the

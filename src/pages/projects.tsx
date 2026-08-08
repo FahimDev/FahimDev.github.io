@@ -1,19 +1,12 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { PROJECTS } from "@/constants/projects";
-import { ChevronsLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import PageHeader from "@/components/layout/PageHeader";
 
 export default function Projects() {
     return (
         <div>
-            <div className="container">
-                <div className="flex gap-5 items-center my-7">
-                    <Link to="/">
-                        <ChevronsLeft className="size-14" />
-                    </Link>
-                    <h1 className="text-4xl font-extrabold ">My Projects</h1>
-                </div>
-            </div>
+            <PageHeader title="My Projects" backLabel="Back to home" />
 
             <section className="pb-10">
                 <div className="container">
