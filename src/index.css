@@ -30,7 +30,8 @@ html {
  * offset. Same rules apply to both Experience and Research targets.
  */
 #experience,
-#research {
+#research,
+#contact {
     scroll-margin-top: 2rem;
 }
 

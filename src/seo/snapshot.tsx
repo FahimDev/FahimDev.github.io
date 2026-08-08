@@ -91,11 +91,12 @@ const skillsSection = () => {
 const experiencesSection = () => {
     const exps = flattenExperiences();
     if (!exps.length) return null;
-    // Dual id (snap-experience + experience) so /#experience fragment links
-    // resolve even in the prerendered (no-JS) snapshot, before React hydrates.
+    // id="snap-experience" (snap-prefixed) — the interactive React UI owns
+    // the real `id="experience"` so /#experience resolves to the visible
+    // homepage section, not the hidden snapshot duplicate.
     return el(
         "section",
-        { "aria-label": "Experience", id: "experience snap-experience" },
+        { "aria-label": "Experience", id: "snap-experience" },
         el("h2", {}, "Experience"),
         ...exps.map((e) =>
             el(
@@ -188,11 +189,12 @@ const publicationsSection = () => {
         if (!groups.has(p.group)) groups.set(p.group, []);
         groups.get(p.group)!.push(p);
     }
-    // Dual id (snap-publications + research) so /#research fragment links
-    // resolve even in the prerendered (no-JS) snapshot, before React hydrates.
+    // id="snap-publications" (snap-prefixed) — the interactive React UI owns
+    // the real `id="research"` so /#research resolves to the visible homepage
+    // section, not the hidden snapshot duplicate.
     return el(
         "section",
-        { "aria-label": "Publications", id: "research snap-publications" },
+        { "aria-label": "Publications", id: "snap-publications" },
         el("h2", {}, "Publications"),
         ...Array.from(groups.entries()).map(([name, items]) =>
             el(
@@ -262,13 +264,14 @@ const awardsSection = () => {
     );
 };
 
-// Minimal Contact section so /#contact resolves in the prerendered
-// snapshot (Footer is React-only and lives outside the snapshot). Mirrors
-// src/components/layout/Footer.tsx.
+// Minimal Contact section so the prerendered snapshot still has semantic
+// Contact content for crawlers. id="snap-contact" (snap-prefixed) — the
+// interactive React UI owns the real `id="contact"` (in <Footer>) so
+// /#contact resolves to the visible footer, not the hidden snapshot duplicate.
 const contactSection = () =>
     el(
         "section",
-        { "aria-label": "Contact", id: "contact" },
+        { "aria-label": "Contact", id: "snap-contact" },
         el("h2", {}, "Contact"),
         el(
             "p",
