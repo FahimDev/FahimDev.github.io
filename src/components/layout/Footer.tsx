@@ -7,14 +7,14 @@ export default function Footer() {
             id="contact"
             className="text-center p-6 text-base border-t"
         >
-            Developed &amp; Designed by{" "}
+            LET'S CONNECT! {" "}
             <a
                 className="text-cyan-500 hover:underline"
-                href="https://github.com/antonin686"
+                href="https://www.linkedin.com/in/engr-arif/"
             >
-                Antonin Islam
+                Interested in engineering, research collaboration, technical speaking, or professional opportunities?
             </a>{" "}
-            ·{" "}
+            · eMail:{" "}
             <a
                 className="text-cyan-500 hover:underline"
                 href="mailto:fahim.arif0373@outlook.com"
