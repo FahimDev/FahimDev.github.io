@@ -91,9 +91,11 @@ const skillsSection = () => {
 const experiencesSection = () => {
     const exps = flattenExperiences();
     if (!exps.length) return null;
+    // Dual id (snap-experience + experience) so /#experience fragment links
+    // resolve even in the prerendered (no-JS) snapshot, before React hydrates.
     return el(
         "section",
-        { "aria-label": "Experience", id: "snap-experience" },
+        { "aria-label": "Experience", id: "experience snap-experience" },
         el("h2", {}, "Experience"),
         ...exps.map((e) =>
             el(
@@ -186,9 +188,11 @@ const publicationsSection = () => {
         if (!groups.has(p.group)) groups.set(p.group, []);
         groups.get(p.group)!.push(p);
     }
+    // Dual id (snap-publications + research) so /#research fragment links
+    // resolve even in the prerendered (no-JS) snapshot, before React hydrates.
     return el(
         "section",
-        { "aria-label": "Publications", id: "snap-publications" },
+        { "aria-label": "Publications", id: "research snap-publications" },
         el("h2", {}, "Publications"),
         ...Array.from(groups.entries()).map(([name, items]) =>
             el(
@@ -263,9 +267,43 @@ const awardsSection = () => {
 // Full snapshot: every section. Used on the home page (/) and as the body of
 // cv.json. Safe to call at build time and in the browser.
 export const renderFullSnapshot = (): string => {
+    // Top-of-page discovery nav so crawlers and JS-disabled visitors can
+    // reach the four primary destinations (/projects, /speaking, plus the
+    // in-page #experience and #research fragments) from the homepage
+    // snapshot. Order matches the React-side <nav> in src/pages/home.tsx.
+    const discoveryNav = el(
+        "nav",
+        { "aria-label": "Primary discovery" },
+        el("h2", {}, text("Discover My Work")),
+        el(
+            "ul",
+            {},
+            el(
+                "li",
+                {},
+                el("a", { href: "/projects" }, text("Projects"))
+            ),
+            el(
+                "li",
+                {},
+                el("a", { href: "/#experience" }, text("Experience"))
+            ),
+            el(
+                "li",
+                {},
+                el("a", { href: "/#research" }, text("Research"))
+            ),
+            el(
+                "li",
+                {},
+                el("a", { href: "/speaking" }, text("Speaking"))
+            )
+        )
+    );
     const tree = el(
         "main",
         { id: "seo-snapshot", role: "main", "aria-label": "Profile snapshot" },
+        discoveryNav,
         headshotSection(),
         aboutSection(),
         skillsSection(),

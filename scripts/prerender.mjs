@@ -365,11 +365,12 @@ const extractProjectSlugsFromBuild = (servedDir) =>
     extractSlugsFromBuild(servedDir, "cross-border-stablecoin-settlement", "client:");
 
 const extractSpeakingSlugsFromBuild = (servedDir) =>
-    // "future-of-fintech-infrastructure" is one of the speaking slugs in
-    // src/constants/speakings.tsx. Anchoring on the next field ("type:") is
-    // what isolates speaking entries from project entries, since both share
-    // the same slug:"..." pattern inside the same JS chunk.
-    extractSlugsFromBuild(servedDir, "future-of-fintech-infrastructure", "type:");
+    // "ostad-software-architecture-live" is one of the speaking slugs in
+    // src/constants/speakings.tsx and is unlikely to collide with anything
+    // else. Anchoring on the next field ("type:") is what isolates speaking
+    // entries from project entries, since both share the same slug:"…"
+    // pattern inside the same JS chunk.
+    extractSlugsFromBuild(servedDir, "ostad-software-architecture-live", "type:");
 
 // ---- Main -------------------------------------------------------------------
 

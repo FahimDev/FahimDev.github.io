@@ -6,6 +6,35 @@
 @tailwind utilities;
 
 /*
+ * Smooth in-page fragment scrolling (Experience / Research anchors on the
+ * homepage). Native `scroll-behavior` keeps the URL fragment intact, supports
+ * back/forward, and degrades to instant jump if CSS animations are off.
+ * Respect the user's OS-level reduced-motion preference: a hard cut for
+ * vestibular-sensitive visitors beats a 600ms smooth scroll every time.
+ */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/*
+ * Offset for fragment-anchored sections so the target heading isn't flush
+ * against the very top edge after a hash jump. There is no fixed header on
+ * this site — the homepage's <section> wrappers sit at the natural flow
+ * position — so this is a small breathing-room buffer, not a header-clearing
+ * offset. Same rules apply to both Experience and Research targets.
+ */
+#experience,
+#research {
+    scroll-margin-top: 2rem;
+}
+
+/*
  * The build-time prerender in scripts/prerender.mjs injects a semantic
  * <main id="seo-snapshot">…</main> block right after <body>. That block
  * exists so search engines, screen readers, and JS-disabled visitors see
