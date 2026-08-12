@@ -1,6 +1,266 @@
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export const PROJECTS: any[] = [
+
+{
+    title: "ADPP – Agri Digital Product Passport",
+
+    subtitle: "Blockchain-backed W3C Verifiable Credentials Data Model v2.0 for traceability, QC certification, and digital product passport platform",
+
+    slug: "adpp-agri-digital-product-passport-malik-seed",
+
+    client: "RVO – Netherlands Enterprise Agency",
+
+    location: "Bangladesh",
+
+    description: (
+        <div>
+            <p>
+                ADPP is an Agri Digital Product Passport concept designed for Malik Seed to make agricultural sourcing, 
+                quality control, certification, packaging, and supply-chain traceability more transparent and verifiable.
+                The platform connects farm, hub, plant, QC, production, warehouse, and dispatch operations into a single
+                traceability system.
+            </p>
+
+            <p>
+                The proposed solution combines GS1/ISO-aligned data capture, batch and lot genealogy, offline QR-based
+                operations, QC certificate verification, blockchain anchoring, and public verification pages. It is designed
+                to support future readiness for GLOBALG.A.P., domestic certification bodies, exporters, retailers, and
+                international compliance stakeholders.
+            </p>
+
+            <p>
+                My contribution focused on shaping the product architecture, DPP positioning, blockchain certificate
+                verification model, GS1 Digital Link strategy, ICP/L2 verification concept, role mapping, and portfolio-ready
+                technical storytelling for client and CTO-level recommendation.
+            </p>
+        </div>
+    ),
+
+    cover_img: "/images/projects/banner/adpp-agri-digital-product-passport.png",
+
+    gallery: [
+        {
+            url: "/images/projects/10/web3-independent-evidence-layer.png",
+            alt: "ADPP traceability showing off-chain operations, anchor evidence, and independent verification workflow",
+        },
+        {
+            url: "/images/projects/10/real-life-evidence-consensus.png",
+            alt: "Multi-source Data Reconciliation and RBAC Attestation",
+        },
+        {
+            url: "/images/projects/10/ADPP-DREF-Engine.png",
+            alt: "The system does not determine truth at the point of data entry. It accumulates evidence across the product lifecycle and progressively converges toward a canonical record.",
+        },
+    ],
+
+    techs: [
+        "GS1 Digital Link",
+        "GS1 / ISO Traceability",
+        "Digital Product Passport",
+        "W3C Verifiable Credentials",
+        "EIP-712 Signing",
+        "EVM Blockchain Anchoring",
+        "ERC-4337 Account Abstraction",
+        "Paymaster / Gas Sponsorship",
+        "ICP Frontend Hosting Concept",
+        "NestJS",
+        "Django Admin",
+        "JWT Authentication",
+        "OpenAPI",
+        "RabbitMQ",
+        "Hash-Chained Audit Log",
+        "Vite",
+        "Pinia",
+        "Vue Router",
+        "Mobile Offline Sync",
+        "SQLite / Drift",
+        "Secure Storage",
+        "Dio",
+        "ESP32",
+        "IoT Ingestion",
+        "RS-232 / RS-485 / Modbus",
+        "Docker",
+        "Kong API Gateway",
+        "GitHub Actions",
+        "OpenTelemetry",
+        "Prometheus",
+        "Grafana",
+    ],
+
+    tech_icons: {
+        GS1_Digital_Link: "/images/tech_logo/gs1-barcodes.png",
+        Docker : "/images/tech_logo/docker.svg",
+        Digital_Product_Passport : "/images/tech_logo/DPP.png",
+        Nginx: "/images/tech_logo/Nginx.png",
+        CouchDB: "/images/tech_logo/couchDB.png",
+        NestJS: "/images/tech_logo/nestJS.jpg",
+        Flutter : "/images/tech_logo/Flutter.webp",
+    },   
+
+    features: [
+        "GS1/ISO-aligned discovery and standards validation for agri traceability",
+        "Farmer, crop, lot, and genealogy management for batch-level visibility",
+        "Hub intake and plant receiving workflows with measurement and reconciliation support",
+        "QC and compliance engine with PASS, WARN, HOLD, and FAIL decision states",
+        "Production, packaging, warehouse, dispatch, and QR scan/generation workflows",
+        "Public certificate verification page for QC, compliance, and revocation status",
+        "W3C VC-style certificate builder with EIP-712 issuer signing support",
+        "EVM hash anchoring for certificates and event-root verification",
+        "Offline-first mobile workflow with local event queue, retry-safe sync, and conflict handling",
+        "Tamper-evident hash-chain and local signature model for field operations",
+        "Reporting dashboards and export-ready compliance views",
+        "Enterprise readiness layer for future ERP, dashboard, and historical trend integration",
+        "Account abstraction and gas sponsorship model for non-technical operations staff",
+        "IoT/device integration readiness for measurements, sensors, and field equipment",
+    ],
+
+    challenges_and_solution: [
+        {
+            title: "Conflicting Multi-Source Data for the Same Lot",
+
+            challenge: {
+                brief: "The same agricultural lot can produce different values from human, IoT, supplier, and system-generated sources.",
+                detailed: "A single lot may enter the hub with a supplier-declared quantity of 30 kg, a hub operator may manually record 31 kg, while a connected weighing device independently captures 32 kg. Similar discrepancies can occur again at plant receiving, QC, processing, packaging, and warehouse stages. Treating one source as automatically correct would either discard useful evidence or create misleading traceability data."
+            },
+
+            solution: {
+                brief: "Preserve every observation as independent evidence instead of overwriting conflicting values.",
+                detailed: "ADPP is designed around an append-only evidence model where human entries, IoT readings, external-system records, QC observations, and operational events retain their own provenance, timestamp, source identity, measurement method, and supporting metadata. Adapters normalize these inputs into a common evidence format before they enter reconciliation."
+            },
+
+            impact: {
+                brief: "Creates an auditable foundation for determining trusted data without losing the original evidence.",
+                detailed: "The business can reconstruct exactly what each participant or device reported, while later reconciliation can determine the most defensible value using all available evidence instead of relying on the latest database entry."
+            }
+        },
+
+        {
+            title: "Progressive Cross-Stage Reconciliation",
+
+            challenge: {
+                brief: "The most reliable interpretation of a disputed value may only become clear after later supply-chain stages provide additional evidence.",
+                detailed: "A discrepancy detected at hub intake should not always be resolved immediately. Plant receiving, QC measurements, processing losses, packaged output, rejected quantity, waste, and warehouse records may provide stronger downstream evidence about what actually happened to the lot."
+            },
+
+            solution: {
+                brief: "Designed a lifecycle evidence reconciliation model that can wait for downstream evidence before finalizing consensus.",
+                detailed: "The proposed engine evaluates evidence progressively across hub, plant, QC, production, packaging, warehouse, and dispatch stages. Deterministic rules and mass-balance constraints can be combined with source reliability scoring, robust statistics, anomaly detection, and later probabilistic evidence-fusion approaches. A process/state model controls when a lot is collecting evidence, has detected conflicts, requires additional evidence, needs manual review, or is ready for consensus."
+            },
+
+            impact: {
+                brief: "Improves the accuracy and defensibility of the final trusted record.",
+                detailed: "Instead of prematurely selecting a value at each stage, ADPP can use the entire product journey to converge toward a canonical record and attach a confidence level to that conclusion."
+            }
+        },
+
+        {
+            title: "Internal Audit vs. External Trusted Data",
+
+            challenge: {
+                brief: "Businesses need full visibility into conflicting evidence, while buyers and consumers need one clear and trustworthy representation.",
+                detailed: "Showing every conflicting measurement to a buyer or consumer would create confusion and reduce trust. Hiding those inconsistencies from internal teams, however, would remove valuable evidence for identifying operational loss, faulty devices, repeated human errors, supplier discrepancies, or potential fraud."
+            },
+
+            solution: {
+                brief: "Separated forensic audit output from the external consensus projection.",
+                detailed: "ADPP maintains two views over the same evidence history. The internal audit view preserves discrepancies, anomalies, corrections, device and actor histories, and reconciliation reasoning for investigation. The external passport view exposes only the reconciled product data, QC status, traceability information, certificate status, and relevant confidence indicators."
+            },
+
+            impact: {
+                brief: "Turns traceability data into both loss intelligence and buyer trust.",
+                detailed: "Internal teams gain evidence for root-cause analysis, process improvement, device calibration, supplier assessment, and loss reduction, while distributors, buyers, auditors, and consumers receive a consistent and non-confusing trusted product record."
+            }
+        },
+
+        {
+            title: "Digitally Verifiable QC & Compliance Credentials",
+
+            challenge: {
+                brief: "Traditional PDFs and uploaded certificates can be copied, modified, expired, revoked, or presented outside their original product context.",
+                detailed: "A certificate file alone does not provide a machine-verifiable relationship between the issuing organization, the agricultural lot, the claims inside the certificate, and its current validity status. This becomes increasingly problematic when certificates need to be consumed by exporters, retailers, auditors, certification organizations, or automated compliance systems."
+            },
+
+            solution: {
+                brief: "Designed W3C Verifiable Credential-style certificates with cryptographic issuer signing and blockchain anchoring.",
+                detailed: "The backlog includes a W3C VC-style certificate builder, EIP-712 typed-data signing, EVM anchoring, public verification, and revocation/status handling. Certificate and evidence documents can remain off-chain, while cryptographic hashes, issuer proofs, event roots, timestamps, and status information are anchored on an L2 network. This separates the credential format from the blockchain trust anchor rather than treating blockchain itself as the certificate."
+            },
+
+            impact: {
+                brief: "Creates a future-ready certificate verification layer for domestic and international agri ecosystems.",
+                detailed: "The model can complement QC laboratories, certification bodies, exporters, retailers, GLOBALG.A.P.-related workflows, and other organizations by making their issued evidence easier to authenticate, verify, exchange, and connect with specific lots or product passports."
+            }
+        },
+
+        {
+            title: "Field Reliability, Offline Capture & Evidence Integrity",
+
+            challenge: {
+                brief: "Agricultural operations may capture critical evidence in locations with intermittent connectivity and heterogeneous devices.",
+                detailed: "Hub, plant, QC, warehouse, and field users may depend on tablets, mobile devices, weighing machines, sensors, manual measurements, and external systems. Network interruptions can create duplicate submissions, missing records, synchronization conflicts, or uncertainty about whether a measurement was successfully transmitted."
+            },
+
+            solution: {
+                brief: "Designed offline-first event capture with retry safety, deduplication, device integration, and tamper-evident records.",
+                detailed: "The proposed platform uses an append-only local event queue, idempotent synchronization, server acknowledgements, conflict handling, duplication safeguards, operational QR handover, local signatures, hash-chain integrity, and IoT ingestion. Device adapters provide a common interface for measurements coming from heterogeneous equipment."
+            },
+
+            impact: {
+                brief: "Makes the evidence model practical for real-world agricultural operations.",
+                detailed: "Users can continue capturing operational and QC evidence during connectivity problems while the system preserves provenance and safely synchronizes the records when connectivity returns."
+            }
+        },
+
+        {
+            title: "Blockchain Usability for Non-Technical Operations",
+
+            challenge: {
+                brief: "Blockchain-backed verification becomes impractical if operational users must manage wallets, private keys, gas fees, and transaction mechanics.",
+                detailed: "Field operators, QC officers, warehouse personnel, and business users should not need blockchain expertise to create verifiable product evidence or submit certificate-related transactions."
+            },
+
+            solution: {
+                brief: "Planned account abstraction, gas sponsorship, relay infrastructure, and controlled production deployment.",
+                detailed: "The proposed blockchain layer includes ERC-4337 smart wallets, paymaster-based gas sponsorship, reliable bundler and relay architecture, security testing, sandbox simulation, and multi-signer deployment controls. Blockchain interaction remains behind normal web and mobile workflows."
+            },
+
+            impact: {
+                brief: "Provides blockchain-backed integrity without exposing blockchain complexity to end users.",
+                detailed: "Organizations can gain tamper-evident certificate and audit proofs while their operational teams continue using familiar application workflows."
+            }
+        }
+    ],
+
+    contributions: [
+        "Conceptualized ADPP as an Agri Digital Product Passport focused on traceability, QC evidence, certificate verification, and buyer trust rather than treating fresh produce as a conventional ESPR-mandated DPP use case.",
+
+        "Defined the multi-source evidence model for preserving conflicting observations from supplier declarations, human operators, IoT devices, QC teams, plants, packaging operations, and external systems without overwriting the original data.",
+
+        "Proposed the Progressive Reconciliation / Lifecycle Evidence Reconciliation concept, where disputed data can remain unresolved until downstream stages provide enough evidence to determine a defensible canonical value.",
+
+        "Designed the high-level Data Reconciliation & Evidence Fusion Engine combining provenance, validation rules, mass-balance constraints, source reliability, anomaly detection, evidence fusion, confidence scoring, and manual-review escalation.",
+
+        "Separated ADPP output into two major projections: an internal forensic audit view for investigation and loss minimization, and an external consensus view for buyers, distributors, auditors, and consumers.",
+
+        "Defined the role of machine learning as an assistive evidence-intelligence layer rather than an opaque source of truth, including anomaly detection, learned source reliability, expected-loss prediction, and future probabilistic evidence fusion.",
+
+        "Recommended an Event Sourcing, CQRS, Process Manager / Saga, State Machine, Strategy, Adapter, Specification, Transactional Outbox, and idempotent-consumer architecture for implementing the reconciliation workflow.",
+
+        "Shaped the W3C Verifiable Credential-style certificate model so QC and compliance claims can be machine-readable, cryptographically attributable to an issuer, and independently verifiable.",
+
+        "Defined the separation between off-chain evidence and blockchain anchoring, keeping operational records and certificate documents off-chain while anchoring certificate hashes, issuer proofs, status, timestamps, and event roots on an L2 network.",
+
+        "Recommended GS1 Digital Link-compatible QR identification for product and lot-level access while keeping authenticated mobile workflows, JWT-based actions, and internal reconciliation independent from the QR payload.",
+
+        "Proposed a public verification architecture where consumers and buyers receive a clean trusted passport while authenticated operational users can continue adding evidence through web, mobile, IoT, and enterprise integrations.",
+
+        "Mapped the future interoperability potential of ADPP with QC laboratories, exporters, certification bodies, GLOBALG.A.P.-related processes, retailers, domestic authorities, and other international agricultural stakeholders.",
+
+        "Contributed to solution-architecture and CTO-level decision framing across traceability, blockchain, certificate authenticity, reconciliation, offline operations, IoT integration, compliance, and long-term platform extensibility."
+    ]
+},
+
+
 {
     title: "Integrated Blockchain for Policy-Aware Health Data Exchange",
 
