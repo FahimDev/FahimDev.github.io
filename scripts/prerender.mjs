@@ -9,7 +9,10 @@
 //   dist/sitemap.xml
 //   dist/robots.txt
 //   dist/cv.json                  (machine-readable profile for LLMs)
-//   dist/llms.txt                 (Markdown index following llmstxt.org)
+//   dist/llms.txt                 (concise AI-CV index, see scripts/prerender-helpers.mjs)
+//   dist/ai/cv-agent-instructions.md
+//   dist/ai/ats-audience-blueprint.md
+//   dist/ai/ats-audience-guardrails.schema.json
 //
 // Usage: node scripts/prerender.mjs [--port=9222] [--route=/,/projects,...]
 //   Defaults: chrome on a free debug port, all routes inferred from PROJECTS.
@@ -306,6 +309,16 @@ const loadSnapshot = async () => {
     };
 };
 
+// Pre-render helper bundle (pure JS, no TS). Loaded once at startup and
+// re-used for sitemap, llms.txt, and the /ai/* AI-readable resources.
+// Keeping this separate from the SSR snapshot bundle (which carries the
+// react/renderToString surface) lets the same helpers run in both the
+// prerender and the dev plugin.
+const HELPERS_PATH = path.join(ROOT, "scripts", "prerender-helpers.mjs");
+const loadHelpers = async () => {
+    return await import(pathToFileUrl(HELPERS_PATH));
+};
+
 const pathToFileUrl = (p) => {
     // Use URL import + .href for cross-platform safety.
     return new URL("file://" + path.resolve(p).replace(/\\/g, "/")).href;
@@ -384,6 +397,9 @@ const main = async () => {
     const snapshot = await loadSnapshot();
     SITE_URL = snapshot.SITE_URL;
     log("snapshot module ready; SITE_URL =", SITE_URL);
+
+    const helpers = await loadHelpers();
+    log("helpers module ready");
 
     // Make a pristine copy of dist/ to serve from. The prerender writes its
     // output (per-route index.html files, sitemap, robots) directly into DIST,
@@ -540,15 +556,16 @@ const main = async () => {
         lastmod: today,
     }));
     // Add the machine-readable profile files as priority 1.0 entries so any
-    // crawler (Googlebot, GPTBot, etc.) finds them first.
+    // crawler (Googlebot, GPTBot, etc.) finds them first. The five live
+    // endpoints of the AI-CV contract are listed here so every crawler
+    // discovers them in one place.
+    sitemapEntries.unshift({ loc: `${siteUrl}ai/cv-agent-instructions.md`, lastmod: today });
+    sitemapEntries.unshift({ loc: `${siteUrl}ai/ats-audience-guardrails.schema.json`, lastmod: today });
+    sitemapEntries.unshift({ loc: `${siteUrl}ai/ats-audience-blueprint.md`, lastmod: today });
     sitemapEntries.unshift({ loc: `${siteUrl}cv.json`, lastmod: today });
     sitemapEntries.unshift({ loc: `${siteUrl}llms.txt`, lastmod: today });
 
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries.map((e) => `    <url><loc>${escapeHtml(e.loc)}</loc><lastmod>${e.lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`).join("\n")}
-</urlset>
-`;
+    const sitemap = helpers.buildSitemap(siteUrl.replace(/\/$/, ""), sitemapEntries, today);
     writePromises.push(writeFile(path.join(DIST, "sitemap.xml"), sitemap));
 
     const robots = `User-agent: *
@@ -563,105 +580,32 @@ Sitemap: ${siteUrl}sitemap.xml
         writeFile(path.join(DIST, "cv.json"), JSON.stringify(cvPayload, null, 2))
     );
 
-    // --- llms.txt (Markdown index following llmstxt.org) -------------------
-    const llmsTxt = [
-        `# ${cvPayload.name}`,
-        ``,
-        `> ${cvPayload.headline}`,
-        ``,
-        `## Summary`,
-        ``,
-        `${cvPayload.about}`,
-        ``,
-        `## Machine-readable profile`,
-        ``,
-        `- Full JSON profile: [${siteUrl}cv.json](${siteUrl}cv.json)`,
-        `- HTML snapshot of every route is embedded inline in the page body.`,
-        `- Structured data (Schema.org Person): every HTML page includes JSON-LD with name, jobTitle, worksFor, alumniOf, hasCredential, award, knowsAbout, sameAs.`,
-        ``,
-        `## Quick facts`,
-        ``,
-        `- **Name:** ${cvPayload.name}`,
-        `- **Role:** ${cvPayload.jobTitle}`,
-        `- **Location:** ${cvPayload.location}`,
-        `- **Current employer:** ${cvPayload.currentEmployer}`,
-        `- **Experience entries:** ${cvPayload.experience.length}`,
-        `- **Education entries:** ${cvPayload.education.length}`,
-        `- **Publications:** ${cvPayload.publications.length}`,
-        `- **Projects:** ${cvPayload.projects.length}`,
-        `- **Trainings / certifications:** ${cvPayload.trainings.length}`,
-        `- **Awards:** ${cvPayload.awards.length}`,
-        `- **Speaking engagements:** ${cvPayload.speakings?.length ?? 0}`,
-        ``,
-        `## Experience`,
-        ``,
-        ...cvPayload.experience.flatMap((e) => [
-            `### ${e.position} — ${e.company}`,
-            ``,
-            `*${e.duration}${e.location ? ` · ${e.location}` : ""}*`,
-            ``,
-            ...e.points.map((pt) => `- ${pt}`),
-            e.link ? `- Link: ${e.link}` : "",
-            ``,
-        ]),
-        `## Education`,
-        ``,
-        ...cvPayload.education.flatMap((e) => [
-            `### ${e.title}${e.subtitle ? ` — ${e.subtitle}` : ""}`,
-            ``,
-            `*${e.institute} · ${e.duration}${e.location ? ` · ${e.location}` : ""}*`,
-            ``,
-            ...e.points.map((pt) => `- ${pt}`),
-            e.link ? `- Link: ${e.link}` : "",
-            ``,
-        ]),
-        `## Publications`,
-        ``,
-        ...cvPayload.publications.map((p) => `- [${p.group}] ${p.title}`),
-        ``,
-        `## Projects`,
-        ``,
-        ...cvPayload.projects.flatMap((p) => [
-            `### ${p.title}${p.subtitle ? ` — ${p.subtitle}` : ""}`,
-            ``,
-            `Slug: \`${p.slug}\``,
-            p.client ? `Client: ${p.client}` : "",
-            p.techs.length ? `Tech: ${p.techs.join(", ")}` : "",
-            ``,
-            `${p.description}`,
-            ``,
-            `URL: ${p.url}`,
-            ``,
-        ]),
-        `## Trainings & certifications`,
-        ``,
-        ...cvPayload.trainings.flatMap((t) => [
-            `### ${t.title}`,
-            ``,
-            ...t.points.map((pt) => `- ${pt.title}${pt.link ? ` (${pt.link})` : ""}`),
-            t.link ? `- Program: ${t.link}` : "",
-            ``,
-        ]),
-        `## Speaking`,
-        ``,
-        ...(cvPayload.speakings ?? []).flatMap((s) => [
-            `### ${s.title}${s.role ? ` — ${s.role}` : ""}`,
-            ``,
-            `*${s.host} · ${s.date}${s.endDate && s.endDate !== s.date ? ` – ${s.endDate}` : ""}${s.location ? ` · ${s.location}` : ""}*`,
-            ``,
-            s.summary ? `${s.summary}` : "",
-            s.url ? `URL: ${s.url}` : "",
-            ``,
-        ]),
-        `## Awards`,
-        ``,
-        ...cvPayload.awards.map((a) => `- **${a.title}** — ${a.award}${a.link ? ` ([link](${a.link}))` : ""}`),
-        ``,
-    ].filter((line) => line !== undefined).join("\n");
+    // --- llms.txt (concise AI-CV index) -----------------------------------
+    // Concise by design: it links out to the three machine-readable
+    // resources (instructions, profile, schema) plus the detailed blueprint.
+    // No payload data is interpolated, so this file never goes stale
+    // relative to cv.json. See scripts/prerender-helpers.mjs.
+    const llmsTxt = helpers.buildLlmsTxtV2(SITE_URL);
     writePromises.push(writeFile(path.join(DIST, "llms.txt"), llmsTxt));
 
+    // --- /ai/* AI-readable resources --------------------------------------
+    // Single source of truth for each file lives in docs/ai-cv/. We copy
+    // them into the build output here so the production deployment serves
+    // the same content the spec mandates. The schema's live `$id` is
+    // forced to the production URL by materializeAiDocsSync, so the
+    // deployed schema always identifies itself correctly.
+    const aiDocs = helpers.materializeAiDocsSync(
+        SITE_URL,
+        path.join(ROOT, "docs", "ai-cv")
+    );
+    const aiDir = path.join(DIST, "ai");
+    writePromises.push(writeFile(path.join(aiDir, "ats-audience-blueprint.md"), aiDocs.blueprint));
+    writePromises.push(writeFile(path.join(aiDir, "ats-audience-guardrails.schema.json"), aiDocs.schema));
+    writePromises.push(writeFile(path.join(aiDir, "cv-agent-instructions.md"), aiDocs.instructions));
+    log("wrote dist/ai/ (3 files)");
+
     await Promise.all(writePromises);
-    log(`wrote ${rendered.size} routes + cv.json + llms.txt + sitemap.xml + robots.txt`);
+    log(`wrote ${rendered.size} routes + cv.json + llms.txt + sitemap.xml + robots.txt + dist/ai/`);
 
     // Clean up temp bundle + temp served copy.
     try { await fs.rm(SNAPSHOT_BUNDLE, { force: true }); } catch {}

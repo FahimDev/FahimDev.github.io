@@ -1,17 +1,29 @@
 /**
- * Vite dev-server plugin: serve /cv.json, /llms.txt, /sitemap.xml, and
- * /robots.txt with the same content the production prerender emits.
+ * Vite dev-server plugin: serve the AI-CV contract endpoints (and the
+ * existing SEO files) with the same content the production prerender
+ * emits.
+ *
+ * Endpoints handled (all five live AI-CV endpoints, plus the existing
+ * SEO helpers):
+ *   - /cv.json
+ *   - /llms.txt
+ *   - /sitemap.xml
+ *   - /robots.txt
+ *   - /ai/cv-agent-instructions.md
+ *   - /ai/ats-audience-blueprint.md
+ *   - /ai/ats-audience-guardrails.schema.json
  *
  * Without this, requests for those paths fall through Vite's HTML transform
  * and end up at React Router's catch-all 404 page.
  *
  * Strategy:
- *   1. On server start, configure middleware that intercepts the four SEO
+ *   1. On server start, configure middleware that intercepts the SEO/AI
  *      paths before any other middleware runs.
  *   2. On first request, lazily build the SSR snapshot bundle with esbuild
  *      (same approach as scripts/prerender.mjs) and cache the exports.
- *   3. Reuse scripts/prerender-helpers.mjs for sitemap + llms.txt, and
- *      buildCvPayload from the snapshot bundle for cv.json.
+ *   3. Reuse scripts/prerender-helpers.mjs for sitemap, llms.txt, and
+ *      the three /ai/* resources, and buildCvPayload from the snapshot
+ *      bundle for cv.json.
  */
 
 import type { Plugin, ViteDevServer } from "vite";
@@ -76,11 +88,14 @@ const SEO_PATHS = new Set([
     "/llms.txt",
     "/sitemap.xml",
     "/robots.txt",
+    "/ai/cv-agent-instructions.md",
+    "/ai/ats-audience-blueprint.md",
+    "/ai/ats-audience-guardrails.schema.json",
 ]);
 
 function isSeoPath(reqUrl: string): string | null {
     // Strip query string and trailing slashes; only exact-match one of the
-    // four SEO URLs. Everything else should fall through to Vite normally.
+    // known SEO/AI URLs. Everything else falls through to Vite normally.
     const pathOnly = (reqUrl.split("?")[0] || "/").replace(/\/$/, "") || "/";
     return SEO_PATHS.has(pathOnly) ? pathOnly : null;
 }
@@ -125,17 +140,23 @@ export default function devSeoPlugin(): Plugin {
                             entries: { loc: string; lastmod: string }[],
                             date: string
                         ) => string;
-                        buildLlmsTxt: (payload: unknown, siteUrl: string) => string;
+                        // Legacy builder retained for tests/imports.
+                        buildLlmsTxt?: (payload: unknown, siteUrl: string) => string;
+                        // New concise AI-CV contract builder.
+                        buildLlmsTxtV2: (siteUrl: string) => string;
+                        materializeAiDocsSync: (
+                            siteUrl: string,
+                            sourceDir: string
+                        ) => { blueprint: string; schema: string; instructions: string };
                     };
 
                     if (matched === "/llms.txt") {
-                        const payload = bundle.buildCvPayload() as Record<string, unknown>;
                         res.statusCode = 200;
                         res.setHeader(
                             "Content-Type",
                             "text/markdown; charset=utf-8"
                         );
-                        res.end(helpers.buildLlmsTxt(payload, siteUrl));
+                        res.end(helpers.buildLlmsTxtV2(siteUrl));
                         return;
                     }
 
@@ -144,6 +165,9 @@ export default function devSeoPlugin(): Plugin {
                         // prerender enumerates every route + project slug.
                         const today = new Date().toISOString().slice(0, 10);
                         const entries = [
+                            { loc: `${siteUrl}/ai/cv-agent-instructions.md`, lastmod: today },
+                            { loc: `${siteUrl}/ai/ats-audience-guardrails.schema.json`, lastmod: today },
+                            { loc: `${siteUrl}/ai/ats-audience-blueprint.md`, lastmod: today },
                             { loc: `${siteUrl}/cv.json`, lastmod: today },
                             { loc: `${siteUrl}/llms.txt`, lastmod: today },
                             { loc: `${siteUrl}/`, lastmod: today },
@@ -168,6 +192,45 @@ export default function devSeoPlugin(): Plugin {
                         res.end(
                             `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`
                         );
+                        return;
+                    }
+
+                    // --- /ai/* AI-readable resources ----------------------------
+                    // Same single-source-of-truth as production: every body is
+                    // read from docs/ai-cv/*. The guardrail schema has its live
+                    // `$id` forced to the production URL by
+                    // materializeAiDocsSync so the dev schema is identical to
+                    // the deployed one for parsing purposes.
+                    const aiDocs = helpers.materializeAiDocsSync(
+                        siteUrl,
+                        path.join(ROOT, "docs", "ai-cv")
+                    );
+
+                    if (matched === "/ai/cv-agent-instructions.md") {
+                        res.statusCode = 200;
+                        res.setHeader(
+                            "Content-Type",
+                            "text/markdown; charset=utf-8"
+                        );
+                        res.end(aiDocs.instructions);
+                        return;
+                    }
+                    if (matched === "/ai/ats-audience-blueprint.md") {
+                        res.statusCode = 200;
+                        res.setHeader(
+                            "Content-Type",
+                            "text/markdown; charset=utf-8"
+                        );
+                        res.end(aiDocs.blueprint);
+                        return;
+                    }
+                    if (matched === "/ai/ats-audience-guardrails.schema.json") {
+                        res.statusCode = 200;
+                        res.setHeader(
+                            "Content-Type",
+                            "application/schema+json; charset=utf-8"
+                        );
+                        res.end(aiDocs.schema);
                         return;
                     }
                 } catch (err) {
