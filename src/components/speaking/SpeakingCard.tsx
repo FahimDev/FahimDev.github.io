@@ -1,5 +1,5 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Mic2, GraduationCap, Wrench, Users, Video } from "lucide-react";
+import { Mic2, GraduationCap, Wrench, Users, Video, Briefcase } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Shared between archive (small grid card) and detail (none yet, but kept
@@ -11,6 +11,7 @@ const TYPE_META: Record<string, { label: string; icon: any }> = {
     workshop: { label: "Workshop", icon: Wrench },
     panel: { label: "Panel", icon: Users },
     "live-teaching": { label: "Live Teaching", icon: Video },
+    "industry-talk": { label: "Industry Talk", icon: Briefcase },
 };
 
 const formatDate = (iso: string): string => {

@@ -1,5 +1,3 @@
-import { createElement, type ReactNode } from "react";
-import { renderToString } from "react-dom/server";
 import { PROJECTS } from "@/constants/projects";
 import { SPEAKINGS } from "@/constants/speakings";
 import { SOCIAL_LINKS } from "@/constants/social-links";
@@ -15,6 +13,7 @@ import {
     SITE_SAME_AS,
     absoluteUrl,
 } from "@/constants/site-config";
+import { stripHtml } from "./routes";
 
 const toAbsoluteUrl = (path: string): string => absoluteUrl(path);
 
@@ -28,31 +27,9 @@ const SITE = {
     url: SITE_URL,
 } as const;
 
-const isReactElement = (v: unknown): boolean =>
-    typeof v === "object" && v !== null && "type" in (v as Record<string, unknown>);
-
-const jsxToPlainText = (input: unknown): string => {
-    if (input == null) return "";
-    if (typeof input === "string") return input;
-    if (typeof input === "number" || typeof input === "boolean") return String(input);
-    if (Array.isArray(input)) return input.map(jsxToPlainText).filter(Boolean).join(" ");
-    if (isReactElement(input)) {
-        try {
-            // Render to an HTML string and strip tags. This works in both
-            // browser and node SSR contexts.
-            const html = renderToString(createElement("div", null, input as ReactNode));
-            return html
-                .replace(/<[^>]*>/g, " ")
-                .replace(/\s+/g, " ")
-                .trim();
-        } catch {
-            return "";
-        }
-    }
-    return "";
-};
-
-const stripHtml = (input: unknown): string => jsxToPlainText(input);
+// `stripHtml` is imported from ./routes — it's the same JSX-aware
+// flattener used by the in-app meta builder and the prerender snapshot,
+// so all call sites agree on how JSX object values become strings.
 
 const collectSocialUrls = (): string[] => {
     // Prefer the central mirror from site-config so URLs stay in lockstep with
@@ -229,7 +206,12 @@ export const buildProjectJsonLd = (slug: string): Record<string, unknown> | null
 export const buildSpeakingEventJsonLd = (slug: string): Record<string, unknown> | null => {
     const talk = SPEAKINGS.find((s) => s?.slug === slug);
     if (!talk) return null;
-    const description = (talk.summary || talk.subtitle || talk.title || "").slice(0, 500);
+    // `summary` may be a plain string or a JSX element (see
+    // constants/speakings.tsx), so strip it to plain text first —
+    // otherwise `.slice()` on a JSX object throws "text.slice is not a
+    // function".
+    const description =
+        stripHtml(talk.summary) || talk.subtitle || talk.title || "";
     const imageUrl = talk.cover ? toAbsoluteUrl(talk.cover) : toAbsoluteUrl(SITE.image);
     const detail: Record<string, unknown> = {
         "@context": "https://schema.org",

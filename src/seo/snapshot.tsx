@@ -19,6 +19,7 @@ import {
     flattenSkills,
     flattenSpeakings,
     flattenTrainings,
+    jsxToPlainText,
 } from "./routes";
 import {
     SITE_AUTHOR,
@@ -493,7 +494,9 @@ export const renderRouteSnapshot = (pathname: string, slug?: string): string => 
                             `${s.host}${s.role ? " · " + s.role : ""} · ${s.date}${s.endDate ? " – " + s.endDate : ""} · ${s.location}`
                         )
                     ),
-                    s.summary ? el("p", {}, text(s.summary)) : null,
+                    // `summary` may be a JSX element — flatten it to text
+                    // before handing to `text()` (which expects a string).
+                    s.summary ? el("p", {}, text(jsxToPlainText(s.summary))) : null,
                     s.topics.length
                         ? el("p", { class: "snap-techs" }, text("Topics: " + s.topics.join(", ")))
                         : null,

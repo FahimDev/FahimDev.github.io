@@ -7,6 +7,7 @@ import { SPEAKINGS } from "@/constants/speakings";
 import { SpeakingCard, TYPE_META } from "@/components/speaking/SpeakingCard";
 import { SpeakingGallery } from "@/components/speaking/SpeakingGallery";
 import { SpeakingEvidence } from "@/components/speaking/SpeakingEvidence";
+import { HistoricalRecord } from "@/components/speaking/HistoricalRecord";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import { useRouteSeo } from "@/seo/useRouteSeo";
 
@@ -199,19 +200,32 @@ export default function SpeakingView() {
                 </Card>
             </section>
 
-            {/* Summary + interaction */}
+            {/* Summary + interaction. `summary` may be a plain string or a
+                JSX element (mirroring how `description` is rendered on the
+                project page), so render it directly without a wrapping
+                <p> — a <p> cannot legally contain a <div>, and putting a
+                JSX object inside a <p> throws "Objects are not valid as a
+                React child". */}
             <section className="pb-8 max-w-3xl">
                 <h2 className="text-2xl font-bold mb-3">Summary</h2>
-                <p className="text-base text-muted-foreground leading-relaxed">
+                <div className="text-base text-muted-foreground leading-relaxed space-y-3">
                     {item.summary}
-                </p>
-                {item.interaction && (
-                    <p className="text-base text-muted-foreground leading-relaxed mt-3">
-                        <span className="font-semibold text-foreground">
-                            Format:
-                        </span>{" "}
-                        {item.interaction}
-                    </p>
+                </div>
+                {/* `interaction` is an array of strings (one entry per
+                    channel of audience engagement). Items may also be
+                    JSX — render as a bulleted list to match the visual
+                    style of `topics` and `keyTakeaways`. */}
+                {Array.isArray(item.interaction) && item.interaction.length > 0 && (
+                    <div className="mt-5">
+                        <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-2">
+                            Format & Audience Interaction
+                        </h3>
+                        <ul className="list-disc pl-6 space-y-1 text-base text-muted-foreground">
+                            {item.interaction.map((t: any, i: number) => (
+                                <li key={i}>{t}</li>
+                            ))}
+                        </ul>
+                    </div>
                 )}
             </section>
 
@@ -225,6 +239,13 @@ export default function SpeakingView() {
                         ))}
                     </ul>
                 </section>
+            ) : null}
+
+            {/* Archival admin record (invoice, payment, etc.). Renders
+                with data-nosnippet inside the component so search engines
+                ignore it. Only shown when the entry opts in. */}
+            {item.historicalRecord ? (
+                <HistoricalRecord record={item.historicalRecord} />
             ) : null}
 
             {/* Gallery */}

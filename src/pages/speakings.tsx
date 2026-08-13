@@ -13,6 +13,7 @@ const ALL_TYPES = [
     "guest-lecture",
     "panel",
     "workshop",
+    "industry-talk",
 ] as const;
 
 const TYPE_LABELS: Record<string, string> = {
@@ -22,6 +23,7 @@ const TYPE_LABELS: Record<string, string> = {
     "guest-lecture": "Guest Lecture",
     panel: "Panel",
     workshop: "Workshop",
+    "industry-talk": "Industry Talk",
 };
 
 const yearOf = (iso: string): number => {

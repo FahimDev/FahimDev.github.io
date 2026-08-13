@@ -6,7 +6,7 @@ import { SiGoogleslides, SiZoom } from "react-icons/si";
 //
 // Field reference (all required unless marked):
 //   slug        — URL slug for /speaking/:slug
-//   type        — "conference" | "guest-lecture" | "workshop" | "panel" | "live-teaching"
+//   type        — "conference" | "guest-lecture" | "workshop" | "panel" | "live-teaching" | "industry-talk"
 //   title       — Talk title
 //   subtitle    — One-line summary
 //   host        — Hosting organization or event
@@ -21,6 +21,8 @@ import { SiGoogleslides, SiZoom } from "react-icons/si";
 //   topics      — Outline bullets (what the talk covered)
 //   interaction — How the audience engaged ("Q&A", "Panel", "Live coding", ...)
 //   keyTakeaways? — Optional array of memorable outcomes
+//   historicalRecord? — Optional archival block (invoice, payment, etc.)
+//                       rendered with data-nosnippet on the detail page
 //   photos      — Array of { src, alt, caption? } for the gallery + lightbox
 //   evidence?   — Array of { type, url, label } for slides / recording / press
 //   related?    — Array of { kind, ref } pointing to projects / publications
@@ -99,6 +101,427 @@ export const SPEAKINGS: any[] = [
     },
 
     {
+        slug: "ieee-icbc-2024-gasless-onchain-password-manager",
+
+        type: "conference",
+
+        title: "Gasless On-Chain Password Manager — IEEE ICBC 2024",
+
+        subtitle:
+            "Representing Brain Station 23 PLC as an IEEE ICBC 2024 patron coordinator in Dublin, with the special honour of presenting the late Engr. Tahlil Abser's blockchain research at Trinity College Dublin.",
+
+        host:
+            "IEEE Communications Society — IEEE International Conference on Blockchain and Cryptocurrency (ICBC 2024)",
+
+        role: "Speaker",
+
+        date: "2024-05-27",
+
+        endDate: "2024-05-31",
+
+        location: "Edmund Burke Theatre, Trinity College Dublin, Dublin, Ireland",
+
+        cover:
+            "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/icbc_banner.png",
+
+        summary: (
+            <div>
+                <p>
+                    <strong>IEEE ICBC 2024 at Trinity College Dublin</strong> remains one of the most meaningful
+                    international milestones of my professional journey — not only because I participated in the
+                    conference as a research author, but because I was entrusted with representing 
+                    <strong> Brain Station 23 PLC </strong>during its patron engagement with IEEE.
+                </p>
+
+                <p>
+                    I served as the <strong> main Brain Station 23 PLC-side coordinator </strong> for the IEEE ICBC 2024
+                    sponsorship and patron process. The sponsorship communication was handled with
+                    <strong> Rich Jannuzzi </strong>, recorded in our 2024 correspondence as
+                    <em>Sr. Director, IEEE MCE Business Operations, IEEE International LLC</em>,
+                    while the agreement from Brain Station 23 PLC was signed under the leadership of our
+                    Strategic Business Unit Head, <strong> Engr. Raisul Islam </strong>.
+                </p>
+
+                <p>
+                    After supporting that institutional journey, I had the special honour of presenting
+                    <strong> “Gasless On-Chain Password Manager: A Comparative Analysis Across EVM-Based Platforms” </strong>
+                    at Trinity College Dublin. I was not an author of this particular work, which made the responsibility
+                    even more meaningful: I was carrying forward the research contribution of our beloved and deeply
+                    respected late colleague, <strong> Engr. Tahlil Abser</strong>.
+                </p>
+
+                <p>
+                    The work is indexed by IEEE under
+                    <strong> DOI: 10.1109/ICBC59979.2024.10634380 </strong> and explores gasless interaction,
+                    decentralized password management, recovery mechanisms, and comparative deployment considerations
+                    across EVM-based blockchain platforms.
+                </p>
+
+                <p>
+                    The Dublin experience was also shaped by the people around us. I remain especially grateful to
+                    <strong> Prof. Donal Edward O'Mahony </strong> of Trinity College Dublin for his support throughout
+                    the journey, including his personal assistance during my visa processing. I also had the opportunity
+                    to interact with <strong> Dr. Yuansong (John) Qiao </strong>, while
+                    <strong> Jimmy Le </strong> and the IEEE Communications Society team continuously supported us in
+                    making the conference experience smooth and memorable.
+                </p>
+
+                <p>
+                    During the same IEEE ICBC 2024 conference, I also participated separately as a research author
+                    for my own peer-reviewed work,
+                    <strong> “Unlocking DeFi Literacy: Understanding NFT Market Microstructure in the Decentralized Finance Landscape.” </strong>
+                    That research contribution is documented separately in my portfolio.
+                </p>    
+            </div>
+            
+        ),
+
+        tags: [
+            "IEEE ICBC 2024",
+            "Brain Station 23 PLC",
+            "IEEE Patron",
+            "Blockchain Research",
+            "Gasless Transactions",
+            "EVM Blockchain",
+            "Web3 Security",
+            "Trinity College Dublin",
+            "International Research",
+            "Research Representation"
+        ],
+
+        // Archival admin record (invoice + payment) preserved for the
+        // IEEE ICBC 2024 patron coordination journey. Renders below Key
+        // Takeaways with data-nosnippet so search engines ignore it.
+        historicalRecord: {
+            title: "IEEE ICBC 2024 Patron Administration Record",
+            summary:
+                "Retained as part of the historical record of Brain Station 23 PLC's patron engagement with IEEE ICBC 2024 and my coordination journey.",
+            invoice: {
+                heading: "Sponsorship & Invoice Record",
+                rows: [
+                    {
+                        label: "Invoice Reference",
+                        value: "59979BrainStation",
+                    },
+                    {
+                        label: "Processed By",
+                        value: "IEEE Communications Society",
+                    },
+                    { label: "Attention", value: "Bruce Worthman" },
+                    {
+                        label: "Address",
+                        value: [
+                            "3 Park Avenue, 17th Floor",
+                            "New York, NY 10016",
+                        ],
+                        multiline: true,
+                    },
+                ],
+            },
+            payment: {
+                heading: "Patron Payment Record",
+                rows: [
+                    { label: "Transaction ID", value: "681986975" },
+                    {
+                        label: "Payment Date",
+                        value: "May 22, 2024 · 12:02 PM",
+                    },
+                    { label: "Paid To", value: "Wells Fargo (0326)" },
+                    {
+                        label: "Bank Account Holder",
+                        value: "Institute of Electrical and Electronics Engineers",
+                    },
+                ],
+            },
+            footnote:
+                "This administrative record is preserved as a personal and professional archive of the IEEE ICBC 2024 patron coordination process.",
+        },
+
+        topics: [
+            "Gasless On-Chain Password Management",
+            "Gasless Transaction Design Across EVM-Based Platforms",
+            "Decentralized Password and Credential Management",
+            "Blockchain-Based Password Recovery Mechanisms",
+            "Gas Cost and Web3 User Experience",
+            "Comparative Analysis of EVM-Compatible Blockchain Platforms"
+        ],
+
+        interaction: [
+            <>
+                <strong>IEEE Patron Coordination:</strong> Served as the primary
+                Brain Station 23 PLC-side coordinator for the organization's
+                IEEE ICBC 2024 patron and sponsorship engagement.
+            </>,
+
+            <>
+                <strong>International Representation:</strong> Represented
+                Brain Station 23 PLC in Dublin, Ireland, following the
+                sponsorship coordination and conference preparation process.
+            </>,
+
+            <>
+                <strong>Tribute Research Presentation:</strong> Had the honour
+                of presenting the late Engr. Tahlil Abser's work, “Gasless
+                On-Chain Password Manager: A Comparative Analysis Across
+                EVM-Based Platforms,” despite not being an author of the
+                paper.
+            </>,
+
+            <>
+                <strong>IEEE Business Coordination:</strong> Worked with Rich
+                Jannuzzi, whose designation in the 2024 sponsorship
+                correspondence was recorded as Sr. Director, IEEE MCE Business
+                Operations, IEEE International LLC.
+            </>,
+
+            <>
+                <strong>BS23 Leadership Coordination:</strong> The sponsorship
+                agreement was executed from Brain Station 23 PLC under
+                Strategic Business Unit Head Engr. Raisul Islam.
+            </>,
+
+            <>
+                <strong>Research Community:</strong> Connected with
+                international researchers, engineers, academics, blockchain
+                foundations, and technology professionals participating in
+                IEEE ICBC 2024.
+            </>,
+
+            <>
+                <strong>Trinity College Dublin:</strong> Received memorable
+                support from Prof. Donal Edward O'Mahony, including personal
+                assistance surrounding the Ireland visa process.
+            </>,
+
+            <>
+                <strong>Research Networking:</strong> Had the opportunity to
+                interact with Dr. Yuansong (John) Qiao and other members of
+                the international blockchain research community.
+            </>,
+
+            <>
+                <strong>Conference Support:</strong> Jimmy Le and the IEEE
+                Communications Society conference team provided continuous
+                operational support throughout the event.
+            </>,
+        ],
+
+    people: [
+        {
+            name: "Engr. Tahlil Abser",
+            relation:
+                "Late respected colleague whose Gasless On-Chain Password Manager research I had the honour of presenting.",
+            organization: "Brain Station 23 PLC"
+        },
+        {
+            name: "Engr. Raisul Islam",
+            relation:
+                "Strategic Business Unit Head representing Brain Station 23 PLC during the sponsorship agreement process.",
+            organization: "Brain Station 23 PLC"
+        },
+        {
+            name: "Prof. Donal Edward O'Mahony",
+            designation:
+                "Fellow Emeritus, Computer Science",
+            organization: "Trinity College Dublin",
+            relation:
+                "Research community host and a memorable source of personal support during the Dublin journey."
+        },
+        {
+            name: "Dr. Yuansong (John) Qiao",
+            designation:
+                "Research Fellow, Software Research Institute",
+            organization:
+                "Technological University of the Shannon",
+            relation:
+                "Researcher and connection from the ICBC 2024 experience."
+        },
+        {
+            name: "Jimmy Le",
+            designation:
+                "IEEE Communications Society Conference Operations / Event Program Manager",
+            organization:
+                "IEEE Communications Society",
+            relation:
+                "Provided conference and operational support to participating teams."
+        },
+        {
+            name: "Bruce Worthman",
+            designation:
+                "Director of Finance and Business Operations",
+            organization:
+                "IEEE Communications Society",
+            relation:
+                "IEEE ComSoc finance and business operations function associated with conference contracts and administration."
+        },
+        {
+            name: "Rich Jannuzzi",
+            designation:
+                "Sr. Director, IEEE MCE Business Operations, IEEE International LLC — title recorded in 2024 sponsorship correspondence",
+            organization: "IEEE",
+            relation:
+                "Primary IEEE-side business operations contact during the Brain Station 23 patron coordination process."
+        }
+    ],
+
+        keyTakeaways: [
+            "The experience extended far beyond speaking at a conference: I was trusted to coordinate an institutional patron relationship between Brain Station 23 PLC and IEEE for an internationally recognized blockchain research event.",
+
+            "Presenting a research work that was not my own carried a unique responsibility — preserving and communicating the technical contribution of our late and deeply respected colleague Engr. Tahlil Abser.",
+
+            "The journey strengthened my experience in cross-border stakeholder coordination involving engineering, research, sponsorship, finance, senior leadership, and international conference operations.",
+
+            "IEEE ICBC 2024 demonstrated how industry organizations can contribute to the global research ecosystem through publication, sponsorship, technical collaboration, and active institutional representation.",
+
+            "The support of people such as Prof. Donal Edward O'Mahony, Dr. Yuansong Qiao, Jimmy Le, and the wider IEEE community remains one of the most memorable parts of the Dublin experience.",
+
+            "Alongside this responsibility, I also attended the conference as an author of my own separate peer-reviewed DeFi and NFT market microstructure research."
+        ],
+
+        photos: [
+            {
+                src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/0.png",
+                alt: "Gasless On-Chain Password Manager presentation at IEEE ICBC 2024 Trinity College Dublin",
+                caption:
+                    "Presenting the late Engr. Tahlil Abser's Gasless On-Chain Password Manager research at IEEE ICBC 2024, Trinity College Dublin."
+            },
+
+            {
+                src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/1.png",
+                alt: "Brain Station 23 PLC IEEE ICBC 2024 patron representation in Dublin Ireland",
+                caption:
+                    "Representing Brain Station 23 PLC during IEEE ICBC 2024 following the organization's patron and sponsorship engagement."
+            },
+
+            {
+                src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/5.jpeg",
+                alt: "IEEE ICBC 2024 blockchain conference at Trinity College Dublin Ireland",
+                caption:
+                    "IEEE International Conference on Blockchain and Cryptocurrency 2024 at Trinity College Dublin."
+            },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/6.png",
+        alt: "Brain Station 23 PLC IEEE ICBC 2024 patron sponsor recognition at Trinity College Dublin with Prof. Donal O'Mahony",
+        caption:
+            "Brain Station 23 PLC recognized as an IEEE ICBC 2024 patron at Trinity College Dublin, with Prof. Donal O'Mahony acknowledging the organizations supporting the international blockchain and cryptocurrency research community."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/7.png",
+        alt: "Brain Station 23 PLC IEEE ICBC 2024 patron alongside Cardano Foundation and Ripple at Trinity College Dublin",
+        caption:
+            "IEEE ICBC 2024 patron announcement featuring Brain Station 23 PLC alongside globally recognized Web3 and blockchain organizations including Cardano Foundation and Ripple — marking BS23's presence within the international blockchain research ecosystem in Dublin, Ireland."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/11.jpg",
+        alt: "Brain Station 23 blockchain engineer Engr. Ariful Islam with NTT Digital engineering leader Hiroshi Matsuura at IEEE ICBC 2024 Dublin",
+        caption:
+            "Engr. Ariful Islam of Brain Station 23 PLC with Hiroshi Matsuura from Japan's NTT Digital during IEEE ICBC 2024 — connecting blockchain engineering perspectives from Bangladesh and Japan at Trinity College Dublin."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/10.jpg",
+        alt: "IEEE CryptoEx steering committee from POSTECH with Brain Station 23 PLC representative at IEEE ICBC 2024",
+        caption:
+            "Brain Station 23 PLC representation with members of the IEEE CryptoEx steering committee from POSTECH during ICBC 2024, reflecting international academic and industry collaboration around blockchain, cryptocurrency, Web3 security and decentralized systems."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/8.jpg",
+        alt: "Engr. Ariful Islam with KodaDot founder at IEEE ICBC 2024 blockchain conference in Dublin Ireland",
+        caption:
+            "Engr. Ariful Islam connecting with the founder of KodaDot, a Web3 and NFT platform, during IEEE ICBC 2024 in Dublin — exchanging perspectives on NFT infrastructure, decentralized applications, blockchain ecosystems and the future of Web3."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/9.jpg",
+        alt: "Engr. Ariful Islam discussing blockchain engineering collaboration with ABC Research Austria at IEEE ICBC 2024 Dublin",
+        caption:
+            "Engr. Ariful Islam in discussion with ABC Research, Austria, exploring Brain Station 23 PLC's blockchain engineering capabilities, international technology collaboration and potential resource augmentation between European research organizations and BS23."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/12.jpg",
+        alt: "Dr. Yuansong Qiao and Engr. Ariful Islam at IEEE ICBC 2024 Trinity College Dublin blockchain conference",
+        caption:
+            "Dr. Yuansong Qiao and Engr. Ariful Islam during IEEE ICBC 2024 at Trinity College Dublin — a memorable connection within the international blockchain research community spanning distributed systems, Web3, cybersecurity and emerging decentralized technologies."
+    },
+        {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/14.jpg",
+        alt: "Engr. Md. Ariful Islam of Brain Station 23 PLC with zero-knowledge proof researchers Jonathan Heiss, Johannes Sedlmeir and Alvaro Alonso at IEEE ICBC 2024 Dublin",
+        caption:
+            "Engr. Md. Ariful Islam of Brain Station 23 PLC with leading zero-knowledge proof researchers Dr.-Ing. Jonathan Heiß, Johannes Sedlmeir and Álvaro Alonso Domenech during IEEE ICBC 2024 in Dublin. Their ICBC program brought together programmable cryptography, zk-SNARKs, Circom, ZoKrates, verifiable off-chain computation and decentralized applications through the inaugural ZKDAPPS workshop and the tutorial “Compute Off-chain, Verify On-chain.” A memorable connection with researchers actively advancing practical ZKP and blockchain engineering across TU Berlin and the University of Luxembourg."
+    },
+
+    {
+        src: "/images/event/ieee-icbc-2024-gasless-onchain-password-manager/13.jpg",
+        alt: "Engr. Md. Ariful Islam of Brain Station 23 PLC with Professor Donal O'Mahony at Trinity College Dublin during IEEE ICBC 2024",
+        caption:
+            "Engr. Md. Ariful Islam with Prof. Donal Edward O'Mahony, Fellow Emeritus in Computer Science at Trinity College Dublin and researcher in cryptography, electronic payments, blockchain, Bitcoin and Ethereum. Beyond IEEE ICBC 2024, this photograph preserves one of the most personal memories of the Dublin journey: Prof. O'Mahony's extraordinary support during a difficult Ireland visa process when Ariful's passport was held for processing in Delhi. His willingness to personally help during that uncertainty transformed a professional conference connection into a gesture of kindness and support that remains unforgettable."
+    }
+
+        ],
+
+        evidence: [
+            {
+                type: "publication",
+                url: "https://ieeexplore.ieee.org/document/10634380",
+                label:
+                    "IEEE Xplore — Gasless On-Chain Password Manager: A Comparative Analysis Across EVM-Based Platforms"
+            },
+
+            {
+                type: "doi",
+                url: "https://doi.org/10.1109/ICBC59979.2024.10634380",
+                label:
+                    "DOI — 10.1109/ICBC59979.2024.10634380"
+            },
+
+            {
+                type: "conference",
+                url: "https://www.comsoc.org/conferences-events/ieee-international-conference-blockchain-and-cryptocurrency-2024",
+                label:
+                    "IEEE Communications Society — IEEE ICBC 2024"
+            },
+
+            {
+                type: "sponsorship-record",
+                url: "",
+                label:
+                    "Brain Station 23 PLC × IEEE ICBC 2024 Patron Agreement — coordinated with Rich Jannuzzi; agreement executed from Brain Station 23 PLC under SBU Head Engr. Raisul Islam"
+            },
+
+            {
+                type: "invoice-record",
+                url: "",
+                label:
+                    "IEEE Communications Society Sponsorship Invoice — Reference: 59979BrainStation | Attn. Bruce Worthman | 3 Park Avenue, 17th Floor, New York, NY 10016"
+            },
+
+            {
+                type: "payment-record",
+                url: "",
+                label:
+                    "Patron Payment Record — Transaction ID: 681986975 | Payment Date: May 22 2024, 12:02 PM | Paid to: Wells Fargo (0326) | Bank Account Holder: Institute of Electrical and Electronics Engineers"
+            }
+        ],
+
+        related: [
+            {
+                kind: "publication",
+                ref: "gasless-on-chain-password-manager"
+            },
+
+            {
+                kind: "publication",
+                ref: "unlocking-defi-literacy-nft-market-microstructure"
+            }
+        ]
+    },    
+
+    {
         slug: "bracu-cse-research-day-frontier-engineering-dhaka",
 
         type: "guest-lecture",
@@ -117,7 +540,7 @@ export const SPEAKINGS: any[] = [
         date: "2026-06-19",
 
         location:
-            "BRAC University, Merul Badda Campus, Dhaka, Bangladesh",
+            "Theatre Room (09E-20T), BRAC University, Dhaka, Bangladesh",
 
         cover:
             "/images/event/bracu/cover.jpeg",

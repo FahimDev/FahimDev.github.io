@@ -60,6 +60,11 @@ const jsxToPlainText = (input: unknown): string => {
 
 const stripHtml = (input: unknown): string => jsxToPlainText(input);
 
+// Re-exported so other modules (snapshot.tsx, structuredData.ts) can use the
+// same JSX-aware flattener instead of duplicating it or passing JSX through
+// String() (which yields "[object Object]").
+export { stripHtml, jsxToPlainText };
+
 const truncate = (text: string, max = 160): string => {
     if (text.length <= max) return text;
     const trimmed = text.slice(0, max);
@@ -84,7 +89,10 @@ const buildProjectMeta = (projectSlug: string): RouteMeta => {
 const buildSpeakingMeta = (speakingSlug: string): RouteMeta => {
     const talk = SPEAKINGS.find((s) => s?.slug === speakingSlug);
     const title = talk?.title ? `${talk.title} — Speaking` : "Speaking";
-    const rawDescription = talk?.summary || talk?.subtitle || "";
+    // `summary` may be a plain string or a JSX element (see
+    // constants/speakings.tsx) — strip to plain text first so truncate()
+    // (which calls `.slice`) doesn't blow up on a JSX object.
+    const rawDescription = stripHtml(talk?.summary) || talk?.subtitle || "";
     const description = truncate(
         rawDescription ||
             "Speaking engagement, lecture, or workshop by Md. Ariful Islam."
@@ -310,7 +318,8 @@ export const flattenSpeakings = (): FlatSpeaking[] =>
                 date: String(s?.date ?? "").trim(),
                 endDate: String(s?.endDate ?? "").trim() || undefined,
                 location: String(s?.location ?? "").trim(),
-                summary: String(s?.summary ?? "").trim() || undefined,
+                // `summary` may be a JSX element — flatten to plain text first.
+                summary: stripHtml(s?.summary).trim() || undefined,
                 topics: Array.isArray(s?.topics)
                     ? s.topics.map((t: unknown) => String(t ?? "").trim()).filter(Boolean)
                     : [],
