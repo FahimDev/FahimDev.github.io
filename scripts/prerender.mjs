@@ -375,7 +375,17 @@ const extractSlugsFromBuild = async (servedDir, marker, afterPattern) => {
 };
 
 const extractProjectSlugsFromBuild = (servedDir) =>
-    extractSlugsFromBuild(servedDir, "cross-border-stablecoin-settlement", "client:");
+    // Most project entries put `client:` right after `slug:`, but a few put
+    // `description:` first (e.g. icp-blockchain-ecommerce, device-tracker,
+    // customs-house-gov-project). Both `client:` and `description:` are
+    // project-exclusive fields — neither appears in src/constants/speakings.tsx
+    // — so accepting either here is a safe widening that picks up every
+    // project slug without colliding with speaking entries.
+    extractSlugsFromBuild(
+        servedDir,
+        "cross-border-stablecoin-settlement",
+        "(client:|description:)"
+    );
 
 const extractSpeakingSlugsFromBuild = (servedDir) =>
     // "ostad-software-architecture-live" is one of the speaking slugs in
